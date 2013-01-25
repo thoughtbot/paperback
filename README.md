@@ -16,9 +16,26 @@ Or install it yourself as:
 
     $ gem install paperback
 
+## Dependencies
+
+Install Pandoc:
+
+    http://johnmacfarlane.net/pandoc/installing.html
+
+Install BasicTeX:
+
+    http://www.tug.org/mactex/morepackages.html
+
+Install Homebrew packages:
+
+    $ brew install gs
+    $ brew install imagemagick
+
 ## Usage
 
-TODO: Write usage instructions here
+See help:
+
+    $ paperback
 
 ## Contributing
 
