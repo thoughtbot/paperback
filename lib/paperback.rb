@@ -15,6 +15,7 @@ module Paperback
   end
 
   def self.in_build_dir(&block)
+    build_root.mkpath
     Dir.chdir build_root, &block
   end
 

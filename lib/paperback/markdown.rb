@@ -6,14 +6,12 @@ module Paperback
       RAW = /\<\<\[(.+)\]/
     end
 
-    def initialize(input, output)
-      @input = input
-      @output = output
+    def initialize(source, root = nil)
+      @input = Paperback.book_root.join(source)
+      @root = root || source
     end
 
     def generate
-      @output.dirname.mkpath
-
       @input.each_line do |line|
         case line
         when Regex::CODE
@@ -37,8 +35,10 @@ module Paperback
     private
 
     def append(line)
-      @output.open('a') do |f|
-        f.puts line
+      Paperback.in_build_dir do
+        File.open(@root, 'a') do |f|
+          f.puts line
+        end
       end
     end
 
@@ -51,8 +51,7 @@ module Paperback
     end
 
     def import(path)
-      input = @input.dirname.join(path)
-      self.class.new(input, @output).generate
+      self.class.new(path, @root).generate
     end
   end
 end

@@ -43,9 +43,7 @@ module Paperback
     end
 
     def to_markdown
-      input = Paperback.book_root.join(source)
-      output = Paperback.build_root.join(source)
-      Paperback::Markdown.new(input, output).generate
+      Paperback::Markdown.new(source).generate
     end
 
     def to_mobi
