@@ -4,7 +4,7 @@ describe Paperback::Configuration do
   describe '#git_command' do
     context 'when a configuration is not specified' do
       it do
-        Paperback.configuration.git_command.should == 'git'
+        expect(Paperback.configuration.git_command).to eq('git')
       end
     end
 
@@ -18,7 +18,7 @@ describe Paperback::Configuration do
       end
 
       it do
-        Paperback.configuration.git_command.should == 'foo'
+        expect(Paperback.configuration.git_command).to eq('foo')
       end
     end
 
@@ -36,7 +36,7 @@ describe Paperback::Configuration do
       end
 
       it do
-        Paperback.configuration.git_command.should == 'foo'
+        expect(Paperback.configuration.git_command).to eq('foo')
       end
     end
 
@@ -58,7 +58,7 @@ describe Paperback::Configuration do
       end
 
       it do
-        Paperback.configuration.git_command.should == 'foo'
+        expect(Paperback.configuration.git_command).to eq('foo')
       end
     end
   end
