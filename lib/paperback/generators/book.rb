@@ -9,7 +9,7 @@ module Paperback
       argument :path, :type => :string
 
       def create
-        directory Paperback.book_root, path
+        directory 'book', path
       end
 
       private

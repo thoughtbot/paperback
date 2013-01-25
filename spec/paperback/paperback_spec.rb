@@ -1,22 +1,27 @@
-require 'pathname'
 require 'spec_helper'
 
 describe Paperback do
   describe '#book_root' do
     it do
-      Paperback.book_root.should == Pathname.new('book')
+      Paperback.book_root.should be_an_expanded_pathname('book')
     end
   end
 
   describe '#build_root' do
     it do
-      Paperback.build_root.should == Pathname.new('build')
+      Paperback.build_root.should be_an_expanded_pathname('build')
     end
   end
 
   describe '#release_root' do
     it do
-      Paperback.release_root.should == Pathname.new('release')
+      Paperback.release_root.should be_an_expanded_pathname('release')
+    end
+  end
+
+  describe '#root' do
+    it do
+      Paperback.root.should be_an_expanded_pathname('.')
     end
   end
 

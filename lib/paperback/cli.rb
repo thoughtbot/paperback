@@ -34,9 +34,8 @@ module Paperback
       end
 
       build
-      target = Paperback.release_root
-      FileUtils.rm_rf target
-      FileUtils.cp_r Paperback.build_root, target
+      FileUtils.rm_rf Paperback.release_root
+      FileUtils.cp_r Paperback.build_root, Paperback.release_root
     end
 
     private

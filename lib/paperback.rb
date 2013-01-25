@@ -7,11 +7,11 @@ require 'pathname'
 
 module Paperback
   def self.book_root
-    Pathname.new 'book'
+    root.join 'book'
   end
 
   def self.build_root
-    Pathname.new 'build'
+    root.join 'build'
   end
 
   def self.in_build_dir(&block)
@@ -20,7 +20,11 @@ module Paperback
   end
 
   def self.release_root
-    Pathname.new 'release'
+    root.join 'release'
+  end
+
+  def self.root
+    Pathname.new Dir.pwd
   end
 
   def self.sources
