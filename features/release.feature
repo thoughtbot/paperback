@@ -4,7 +4,7 @@ Feature: Release
   So that I can promote the current build
 
   Scenario:
-    Given I successfully run `paperback new .`
+    When I successfully run `paperback new .`
     And I fake git `diff --quiet --ignore-submodules HEAD`
     And I successfully run `paperback release`
     Then the following files should exist:

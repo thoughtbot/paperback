@@ -4,8 +4,8 @@ Feature: New
   So that I can use the necessary files and directory structure
 
   Scenario: The path is the current directory
-    Given I successfully run `paperback new .`
-    And the following files should exist:
+    When I successfully run `paperback new .`
+    Then the following files should exist:
       | .gitignore            |
       | Gemfile               |
       | LICENSE               |
@@ -16,8 +16,8 @@ Feature: New
       | templates/pdf.latex   |
 
   Scenario: The path is a single directory
-    Given I successfully run `paperback new foo`
-    And the following files should exist:
+    When I successfully run `paperback new foo`
+    Then the following files should exist:
       | foo/.gitignore            |
       | foo/Gemfile               |
       | foo/LICENSE               |
@@ -28,8 +28,8 @@ Feature: New
       | foo/templates/pdf.latex   |
 
   Scenario: The path is a nested directory
-    Given I successfully run `paperback new foo/bar`
-    And the following files should exist:
+    When I successfully run `paperback new foo/bar`
+    Then the following files should exist:
       | foo/bar/.gitignore            |
       | foo/bar/Gemfile               |
       | foo/bar/LICENSE               |

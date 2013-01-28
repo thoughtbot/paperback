@@ -4,7 +4,7 @@ Feature: Build
   So that I can generate a book in multiple formats
 
   Scenario:
-    Given I successfully run `paperback new .`
+    When I successfully run `paperback new .`
     And a file named "book/book.md" with:
       """
       % Book
