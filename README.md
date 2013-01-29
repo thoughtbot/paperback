@@ -1,6 +1,13 @@
 # Paperback
 
-TODO: Write a gem description
+Standardize and streamline ebook production.
+
+Paperback makes it easy to generate ebooks in many formats (pdf, html, epub and
+mobi) from Markdown files.
+
+It combines [Pandoc](http://johnmacfarlane.net/pandoc/index.html) with some
+custom Markdown extensions which make it easy to pull in code samples from a
+bundled example application.
 
 ## Installation
 

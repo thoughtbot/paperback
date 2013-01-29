@@ -8,8 +8,16 @@ Gem::Specification.new do |gem|
   gem.version = Paperback::VERSION
   gem.authors = ['thoughtbot']
   gem.email = ['support@thoughtbot.com']
-  gem.description = %q{TODO: Write a gem description}
-  gem.summary = %q{TODO: Write a gem summary}
+  gem.description = %q{
+    Paperback makes it easy to generate ebooks in many formats (pdf, html, epub
+    and mobi) from Markdown files.
+
+    It combines Pandoc with some custom Markdown extensions which make it easy
+    to pull in code samples from a bundled example application.
+  }
+
+  gem.summary = %q{Standardize and streamline ebook production.}
+
   gem.homepage = 'http://github.com/thoughtbot/paperback'
   gem.license = 'MIT'
 
