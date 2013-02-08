@@ -7,27 +7,33 @@ module Paperback
   class CLI < Thor
     include Thor::Actions
 
-    desc 'build', 'Builds all book formats'
+    desc 'build', 'Build all book formats'
+    option :preview, desc: 'Open PDF format', type: :boolean
     def build
       clean
       copy_assets
 
       Paperback.sources.each do |source|
-        Paperback::Book.new(source).generate
+        book = Paperback::Book.new(source)
+        book.generate
+
+        if options[:preview]
+          book.preview
+        end
       end
     end
 
-    desc 'clean', 'Removes build artifacts'
+    desc 'clean', 'Remove build artifacts'
     def clean
       FileUtils.rm_rf Paperback.build_root
     end
 
-    desc 'new [PATH]', 'Creates a new Paperback project'
+    desc 'new [PATH]', 'Create a new Paperback project'
     def new(path)
       Paperback::Generators::Book.start [path]
     end
 
-    desc 'release', 'Creates a new release'
+    desc 'release', 'Create a new release'
     def release
       if Paperback::Git.dirty?
         raise 'You have local changes; not releasing.'
