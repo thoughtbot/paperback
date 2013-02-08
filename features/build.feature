@@ -3,7 +3,7 @@ Feature: Build
   I want a CLI to build my Paperback project
   So that I can generate a book in multiple formats
 
-  Scenario:
+  Scenario: Without any options
     When I successfully run `paperback new .`
     And a file named "book/book.md" with:
       """
@@ -32,7 +32,6 @@ Feature: Build
       """
       foo.bar
       """
-    And I double `open`
     When I successfully run `paperback build`
     Then the file "build/book.md" should contain:
       """
@@ -62,3 +61,9 @@ Feature: Build
       | build/sample.html      |
       | build/sample.mobi      |
       | build/sample.pdf       |
+
+  Scenario: With the preview option
+    When I successfully run `paperback new .`
+    And I double `open`
+    And I run `paperback build --preview`
+    Then the exit status should be 0

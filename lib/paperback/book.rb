@@ -4,6 +4,13 @@ require 'pandoc-ruby'
 
 module Paperback
   class Book
+    module Formats
+      EPUB = '.epub'
+      HTML = '.html'
+      MOBI = '.mobi'
+      PDF = '.pdf'
+    end
+
     def initialize(source)
       @source = source
     end
@@ -18,14 +25,20 @@ module Paperback
       end
     end
 
+    def preview
+      pdf = Paperback.build_root.join(source(Formats::PDF))
+
+      if pdf.file?
+        Cocaine::CommandLine.new('open', pdf).run
+      end
+    end
+
     private
 
     def pandoc(extension, flags, options)
-      output = source(extension)
-      options.merge! output: output
+      options.merge! output: source(extension)
       PandocRuby.allow_file_paths = true
       PandocRuby.convert source, *flags, options
-      output
     end
 
     def source(extension = nil)
@@ -37,12 +50,13 @@ module Paperback
     end
 
     def to_epub
-      pandoc '.epub', %w(toc), epub_cover_image: Paperback::Cover.generate
+      flags = %w(toc)
+      pandoc Formats::EPUB, flags, epub_cover_image: Paperback::Cover.generate
     end
 
     def to_html
       flags = %w(section_divs self_contained standalone toc)
-      pandoc '.html', flags, to: 'html5'
+      pandoc Formats::HTML, flags, to: 'html5'
     end
 
     def to_markdown
@@ -51,13 +65,12 @@ module Paperback
 
     def to_mobi
       to_epub
-      Kindlegen.run "#{source('.epub')} -o #{source('.mobi')}"
+      Kindlegen.run "#{source('.epub')} -o #{source(Formats::MOBI)}"
     end
 
     def to_pdf
       flags = %w(chapters toc)
-      output = pandoc('.pdf', flags, data_dir: '..', template: 'pdf')
-      Cocaine::CommandLine.new('open', output).run
+      pandoc Formats::PDF, flags, data_dir: '..', template: 'pdf'
     end
   end
 end

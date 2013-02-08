@@ -6,7 +6,6 @@ Feature: Release
   Scenario:
     When I successfully run `paperback new .`
     And I fake git `diff --quiet --ignore-submodules HEAD`
-    And I double `open`
     And I successfully run `paperback release`
     Then the following files should exist:
       | release/book.epub        |
