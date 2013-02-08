@@ -1,3 +1,4 @@
+require 'cocaine'
 require 'kindlegen'
 require 'pandoc-ruby'
 
@@ -20,9 +21,11 @@ module Paperback
     private
 
     def pandoc(extension, flags, options)
-      options.merge! output: source(extension)
+      output = source(extension)
+      options.merge! output: output
       PandocRuby.allow_file_paths = true
       PandocRuby.convert source, *flags, options
+      output
     end
 
     def source(extension = nil)
@@ -52,7 +55,9 @@ module Paperback
     end
 
     def to_pdf
-      pandoc '.pdf', %w(chapters toc), data_dir: '..', template: 'pdf'
+      flags = %w(chapters toc)
+      output = pandoc('.pdf', flags, data_dir: '..', template: 'pdf')
+      Cocaine::CommandLine.new('open', output).run
     end
   end
 end

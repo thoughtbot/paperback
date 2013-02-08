@@ -32,6 +32,7 @@ Feature: Build
       """
       foo.bar
       """
+    And I double `open`
     When I successfully run `paperback build`
     Then the file "build/book.md" should contain:
       """
