@@ -4,7 +4,7 @@ describe Paperback::Git do
   describe '.dirty?' do
     context 'when changes are not present' do
       it 'returns false' do
-        command_line = stub_command_line('', 0)
+        command_line = stub_command_line('')
 
         actual = Paperback::Git.dirty?
 
