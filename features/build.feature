@@ -32,7 +32,7 @@ Feature: Build
       """
       foo.bar
       """
-    And I set my origin URL to `git@github.com:thoughtbot/a-nice-adventure.git`
+    And I set my origin URL to "git@github.com:thoughtbot/a-nice-adventure.git"
     When I successfully run `paperback build`
     Then the file "build/a-nice-adventure.md" should contain:
       """
@@ -65,7 +65,7 @@ Feature: Build
 
   Scenario: With the preview option
     When I successfully run `paperback new .`
-    And I set my origin URL to `git@github.com:thoughtbot/a-nice-adventure.git`
+    And I set my origin URL to "git@github.com:thoughtbot/a-nice-adventure.git"
     And I double `open`
     And I run `paperback build --preview`
     Then the exit status should be 0
