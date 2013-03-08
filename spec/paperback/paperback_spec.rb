@@ -24,10 +24,4 @@ describe Paperback do
       expect(Paperback.root).to be_an_expanded_pathname('.')
     end
   end
-
-  describe '#sources' do
-    it do
-      expect(Paperback.sources).to eq(%w(book.md sample.md))
-    end
-  end
 end

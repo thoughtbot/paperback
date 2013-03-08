@@ -32,8 +32,9 @@ Feature: Build
       """
       foo.bar
       """
+    And I set my origin URL to `git@github.com:thoughtbot/a-nice-adventure.git`
     When I successfully run `paperback build`
-    Then the file "build/book.md" should contain:
+    Then the file "build/a-nice-adventure.md" should contain:
       """
       % Book
       One
@@ -45,25 +46,26 @@ Feature: Build
       ```
       ```
       """
-    And the file "build/sample.md" should contain:
+    And the file "build/a-nice-adventure-sample.md" should contain:
       """
       % Sample
       Two
       """
     And the following files should exist:
-      | build/book.epub        |
-      | build/book.html        |
-      | build/book.mobi        |
-      | build/book.pdf         |
-      | build/images/cover.pdf |
-      | build/images/cover.png |
-      | build/sample.epub      |
-      | build/sample.html      |
-      | build/sample.mobi      |
-      | build/sample.pdf       |
+      | build/a-nice-adventure.epub        |
+      | build/a-nice-adventure.html        |
+      | build/a-nice-adventure.mobi        |
+      | build/a-nice-adventure.pdf         |
+      | build/images/cover.pdf             |
+      | build/images/cover.png             |
+      | build/a-nice-adventure-sample.epub |
+      | build/a-nice-adventure-sample.html |
+      | build/a-nice-adventure-sample.mobi |
+      | build/a-nice-adventure-sample.pdf  |
 
   Scenario: With the preview option
     When I successfully run `paperback new .`
+    And I set my origin URL to `git@github.com:thoughtbot/a-nice-adventure.git`
     And I double `open`
     And I run `paperback build --preview`
     Then the exit status should be 0

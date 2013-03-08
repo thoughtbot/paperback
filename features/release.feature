@@ -6,15 +6,16 @@ Feature: Release
   Scenario:
     When I successfully run `paperback new .`
     And I fake git `diff --quiet --ignore-submodules HEAD`
+    And I set my origin URL to `git@github.com:thoughtbot/a-nice-adventure.git`
     And I successfully run `paperback release`
     Then the following files should exist:
-      | release/book.epub        |
-      | release/book.html        |
-      | release/book.mobi        |
-      | release/book.pdf         |
-      | release/images/cover.pdf |
-      | release/images/cover.png |
-      | release/sample.epub      |
-      | release/sample.html      |
-      | release/sample.mobi      |
-      | release/sample.pdf       |
+      | release/a-nice-adventure.epub        |
+      | release/a-nice-adventure.html        |
+      | release/a-nice-adventure.mobi        |
+      | release/a-nice-adventure.pdf         |
+      | release/images/cover.pdf             |
+      | release/images/cover.png             |
+      | release/a-nice-adventure-sample.epub |
+      | release/a-nice-adventure-sample.html |
+      | release/a-nice-adventure-sample.mobi |
+      | release/a-nice-adventure-sample.pdf  |

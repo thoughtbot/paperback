@@ -11,3 +11,7 @@ end
 Given /^I fake git `([^`]*)` with:$/ do |cmd, stdout|
   fake_git cmd, stdout
 end
+
+When /^I set my origin URL to `([^`]*)`$/ do |url|
+  fake_git 'config --get remote.origin.url', "#{url}\n"
+end

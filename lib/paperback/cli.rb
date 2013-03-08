@@ -13,8 +13,8 @@ module Paperback
       clean
       copy_assets
 
-      Paperback.sources.each do |source|
-        book = Paperback::Book.new(source)
+      Paperback::PACKAGES.each do |package|
+        book = Paperback::Book.new(package)
         book.generate
 
         if options[:preview]

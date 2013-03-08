@@ -25,6 +25,19 @@ describe Paperback::Git do
     end
   end
 
+  describe '.origin_url' do
+    it 'returns remote.origin.url' do
+      expected = 'git config --get remote.origin.url'
+      command_line = stub_command_line("#{expected}\n")
+
+      actual = Paperback::Git.origin_url
+
+      expect_git 'config --get remote.origin.url'
+      expect(command_line).to have_received(:run)
+      expect(actual).to eq(expected)
+    end
+  end
+
   describe '.show_example' do
     def example
       <<-EOS.strip_heredoc
@@ -42,11 +55,6 @@ describe Paperback::Git do
           end
         end
       EOS
-    end
-
-    def expect_git(subcommand)
-      expect(Cocaine::CommandLine).to have_received(:new).
-        with("git #{subcommand}", '', expected_outcodes: [0, 1])
     end
 
     context 'without range' do
@@ -72,5 +80,10 @@ describe Paperback::Git do
         expect(actual).to eq(expected)
       end
     end
+  end
+
+  def expect_git(subcommand)
+    expect(Cocaine::CommandLine).to have_received(:new).
+      with("git #{subcommand}", '', expected_outcodes: [0, 1])
   end
 end
