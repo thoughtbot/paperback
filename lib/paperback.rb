@@ -3,6 +3,7 @@ require 'paperback/cover'
 require 'paperback/configuration'
 require 'paperback/git'
 require 'paperback/markdown'
+require 'paperback/package'
 require 'pathname'
 
 module Paperback
@@ -27,7 +28,8 @@ module Paperback
     Pathname.new Dir.pwd
   end
 
-  def self.sources
-    %w(book.md sample.md)
-  end
+  PACKAGES = [
+    Package.new('book'),
+    Package.new('sample', suffix: '-sample')
+  ]
 end
