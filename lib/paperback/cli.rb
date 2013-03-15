@@ -24,7 +24,7 @@ module Paperback
 
     desc 'new [PATH]', 'Create a new Paperback project'
     def new(path)
-      Paperback::Generators::Book.start [path]
+      Generators::Book.start [path]
     end
 
     desc 'preview', 'Build and open book in PDF format'
@@ -36,7 +36,7 @@ module Paperback
 
     desc 'release', 'Create a new release'
     def release
-      if Paperback::Git.dirty?
+      if Git.dirty?
         raise 'You have local changes; not releasing.'
       end
 

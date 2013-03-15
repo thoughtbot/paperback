@@ -8,7 +8,7 @@ module Paperback
   end
 
   def self.configuration
-    @configuration ||= Paperback::Configuration.new
+    @configuration ||= Configuration.new
   end
 
   def self.configure
