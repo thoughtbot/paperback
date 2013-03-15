@@ -27,9 +27,4 @@ module Paperback
   def self.root
     Pathname.new Dir.pwd
   end
-
-  PACKAGES = [
-    Package.new('book'),
-    Package.new('sample', suffix: '-sample')
-  ]
 end

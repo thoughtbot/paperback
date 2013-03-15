@@ -13,12 +13,20 @@ module Paperback
       @suffix = options[:suffix] || ''
     end
 
+    def self.all
+      [book, sample]
+    end
+
+    def self.book
+      new 'book'
+    end
+
     def source
       "#{@name}.#{extension(:markdown)}"
     end
 
     def target(format)
-      "#{book_name}#{@suffix}.#{extension(format)}"
+      "#{git_name}#{@suffix}.#{extension(format)}"
     end
 
     private
@@ -27,8 +35,12 @@ module Paperback
       EXTENSIONS[format]
     end
 
-    def book_name
-      File.basename(Git.origin_url, '.git')
+    def git_name
+      File.basename Git.origin_url, '.git'
+    end
+
+    def self.sample
+      new 'sample', suffix: '-sample'
     end
   end
 end
