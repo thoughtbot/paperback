@@ -7,19 +7,13 @@ module Paperback
   class CLI < Thor
     include Thor::Actions
 
-    desc 'build', 'Build all book formats'
-    option :preview, desc: 'Open PDF format', type: :boolean
+    desc 'build', 'Build all packages and formats'
     def build
       clean
       copy_assets
 
-      Paperback::PACKAGES.each do |package|
-        book = Paperback::Book.new(package)
-        book.generate
-
-        if options[:preview]
-          book.preview
-        end
+      Package.all.each do |package|
+        Book.new(package).generate
       end
     end
 
@@ -31,6 +25,13 @@ module Paperback
     desc 'new [PATH]', 'Create a new Paperback project'
     def new(path)
       Paperback::Generators::Book.start [path]
+    end
+
+    desc 'preview', 'Build and open book in PDF format'
+    def preview
+      truncate
+      copy_assets
+      Book.new(Package.book).preview
     end
 
     desc 'release', 'Create a new release'
@@ -50,6 +51,16 @@ module Paperback
       Paperback.build_root.mkpath
       images_root = Paperback.book_root.join('images')
       FileUtils.cp_r images_root, Paperback.build_root
+    end
+
+    def truncate
+      Package.all.each do |package|
+        target = Paperback.build_root.join(package.target(:markdown))
+
+        if target.exist?
+          target.truncate 0
+        end
+      end
     end
   end
 end

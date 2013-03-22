@@ -19,10 +19,11 @@ module Paperback
     end
 
     def preview
-      pdf = Paperback.build_root.join(@package.target(:pdf))
+      to_markdown
 
-      if pdf.file?
-        Cocaine::CommandLine.new('open', pdf).run
+      Paperback.in_build_dir do
+        to_pdf
+        Cocaine::CommandLine.new('open', @package.target(:pdf)).run
       end
     end
 
