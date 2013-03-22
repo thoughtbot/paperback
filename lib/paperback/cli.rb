@@ -45,6 +45,12 @@ module Paperback
       FileUtils.cp_r Paperback.build_root, Paperback.release_root
     end
 
+    desc 'review', 'Review a pull request'
+    def review(pull_request_id)
+      Hub.checkout pull_request_id
+      preview
+    end
+
     private
 
     def copy_assets

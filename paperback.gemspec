@@ -28,6 +28,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activesupport', '~> 3.2.11'
   gem.add_dependency 'cocaine', '~> 0.5.1'
+  gem.add_dependency 'hub', '~> 1.10.5'
   gem.add_dependency 'kindlegen', '~> 2.7.0'
   gem.add_dependency 'pandoc-ruby', '~> 0.6.0'
   gem.add_dependency 'rmagick', '~> 2.13.1'

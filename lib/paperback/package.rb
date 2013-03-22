@@ -26,17 +26,13 @@ module Paperback
     end
 
     def target(format)
-      "#{git_name}#{@suffix}.#{extension(format)}"
+      "#{Hub.project_name}#{@suffix}.#{extension(format)}"
     end
 
     private
 
     def extension(format)
       EXTENSIONS[format]
-    end
-
-    def git_name
-      File.basename Git.origin_url, '.git'
     end
 
     def self.sample
