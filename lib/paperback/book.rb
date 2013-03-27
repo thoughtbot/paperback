@@ -31,8 +31,9 @@ module Paperback
 
     def pandoc(format, flags, options)
       options.merge! output: @package.target(format)
+      variables = options.delete(:variables) || {}
       PandocRuby.allow_file_paths = true
-      PandocRuby.convert @package.target(:markdown), *flags, options
+      PandocRuby.convert @package.target(:markdown), *flags, options, variables
     end
 
     def to_epub
@@ -59,7 +60,14 @@ module Paperback
 
     def to_pdf
       flags = %w(chapters toc)
-      pandoc :pdf, flags, data_dir: '..', template: 'pdf'
+      pandoc(
+        :pdf,
+        flags,
+        data_dir: '..',
+        latex_engine: 'xelatex',
+        template: 'pdf',
+        variables: PandocVariables::PDF
+      )
     end
   end
 end
