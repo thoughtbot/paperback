@@ -38,6 +38,14 @@ Install Homebrew packages:
     $ brew install gs
     $ brew install imagemagick
 
+Install Proxima Nova:
+
+    https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
+
+Install Inconsolata:
+
+    http://www.levien.com/type/myfonts/inconsolata.html
+
 ## Usage
 
 See help:

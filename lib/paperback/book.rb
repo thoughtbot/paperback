@@ -4,6 +4,12 @@ require 'pandoc-ruby'
 
 module Paperback
   class Book
+    PDF_VARIABLES = {
+      geometry: ['paperwidth=6.0in', 'paperheight=9.0in'],
+      mainfont: 'Proxima Nova',
+      monofont: 'Inconsolata'
+    }
+
     def initialize(package)
       @package = package
     end
@@ -31,8 +37,9 @@ module Paperback
 
     def pandoc(format, flags, options)
       options.merge! output: @package.target(format)
+      variables = PandocConfig.new(options.delete(:variables) || {})
       PandocRuby.allow_file_paths = true
-      PandocRuby.convert @package.target(:markdown), *flags, options
+      PandocRuby.convert @package.target(:markdown), *flags, options, variables
     end
 
     def to_epub
@@ -59,7 +66,14 @@ module Paperback
 
     def to_pdf
       flags = %w(chapters toc)
-      pandoc :pdf, flags, data_dir: '..', template: 'pdf'
+      pandoc(
+        :pdf,
+        flags,
+        data_dir: '..',
+        latex_engine: 'xelatex',
+        template: 'pdf',
+        variables: PDF_VARIABLES
+      )
     end
   end
 end

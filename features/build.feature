@@ -62,3 +62,5 @@ Feature: Build
       | build/a-nice-adventure-sample.html |
       | build/a-nice-adventure-sample.mobi |
       | build/a-nice-adventure-sample.pdf  |
+    And "build/a-nice-adventure.pdf" should use an appropriate page size for an eBook
+    And "build/a-nice-adventure.pdf" should embed appropriate screen fonts
