@@ -26,13 +26,13 @@ Feature: Build
       """
     And a file named "book/code.erb" with:
       """
-      ` foo.rb@a1b2c3
+      ` foo.rb@HEAD
       """
-    And I fake git `show a1b2c3:example_app/foo.rb` with:
+    And a file named "example_app/foo.rb" with:
       """
       foo.bar
       """
-    And I set my origin URL to "git@github.com:thoughtbot/a-nice-adventure.git"
+    And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
     Then the file "build/a-nice-adventure.md" should contain:
       """

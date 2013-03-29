@@ -2,7 +2,7 @@ module Paperback
   class Markdown
     module Regex
       CODE = /\<\<\((.+)\)/
-      EXAMPLE = /^` ([a-z0-9_\/]+\.[a-z\.]+)@([0-9a-f]+)(?::(\d+(?:,\d+)?))?/
+      EXAMPLE = /^` ([a-z0-9_\/]+\.[a-z\.]+)@([\w]+)(?::(\d+(?:,\d+)?))?/
       RAW = /\<\<\[(.+)\]/
     end
 
