@@ -4,12 +4,6 @@ require 'pandoc-ruby'
 
 module Paperback
   class Book
-    PDF_VARIABLES = {
-      geometry: ['paperwidth=6.0in', 'paperheight=9.0in'],
-      mainfont: 'Proxima Nova',
-      monofont: 'Inconsolata'
-    }
-
     def initialize(package)
       @package = package
     end
@@ -72,7 +66,7 @@ module Paperback
         data_dir: '..',
         latex_engine: 'xelatex',
         template: 'pdf',
-        variables: PDF_VARIABLES
+        variables: PandocVariables::PDF
       )
     end
   end
