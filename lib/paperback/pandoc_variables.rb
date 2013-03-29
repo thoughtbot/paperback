@@ -17,17 +17,17 @@ module Paperback
   #   --variable "geometry:paperwidth=6.0in" \
   #   --variable "geometry:paperheight=9.0in"
   class PandocVariables
-    PDF = {
-      geometry: ['paperwidth=6.0in', 'paperheight=9.0in'],
-      mainfont: 'Proxima Nova',
-      monofont: 'Inconsolata'
-    }
-
     include Enumerable
 
     def initialize(variables = {})
       @variables = variables
     end
+
+    PDF = new(
+      geometry: ['paperwidth=6.0in', 'paperheight=9.0in'],
+      mainfont: 'Proxima Nova',
+      monofont: 'Inconsolata'
+    )
 
     def each
       @variables.each do |name, values|

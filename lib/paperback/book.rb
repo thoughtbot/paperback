@@ -31,7 +31,7 @@ module Paperback
 
     def pandoc(format, flags, options)
       options.merge! output: @package.target(format)
-      variables = PandocVariables.new(options.delete(:variables) || {})
+      variables = options.delete(:variables) || {}
       PandocRuby.allow_file_paths = true
       PandocRuby.convert @package.target(:markdown), *flags, options, variables
     end
