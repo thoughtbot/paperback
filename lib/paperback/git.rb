@@ -6,7 +6,7 @@ module Paperback
     attr_accessor :exit_status, :output
 
     def initialize(subcommand)
-      @command = "#{Paperback.configuration.git_command} #{subcommand}"
+      @command = "git #{subcommand}"
     end
 
     def self.dirty?

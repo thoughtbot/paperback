@@ -1,6 +1,5 @@
 require 'paperback/book'
 require 'paperback/cover'
-require 'paperback/configuration'
 require 'paperback/git'
 require 'paperback/markdown'
 require 'paperback/package'

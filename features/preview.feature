@@ -5,7 +5,7 @@ Feature: Preview
 
   Scenario:
     When I successfully run `paperback new .`
-    And I set my origin URL to "git@github.com:thoughtbot/a-nice-adventure.git"
+    And I create a git repo named "a-nice-adventure"
     And I double `open`
     And I successfully run `paperback preview`
     Then the following files should exist:
