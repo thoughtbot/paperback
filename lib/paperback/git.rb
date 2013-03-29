@@ -13,10 +13,6 @@ module Paperback
       run('diff --quiet --ignore-submodules HEAD').exit_status == 1
     end
 
-    def self.origin_url
-      run('config --get remote.origin.url').output.strip
-    end
-
     def run
       options = { expected_outcodes: [0, 1] }
       command_line = Cocaine::CommandLine.new(@command, '', options)

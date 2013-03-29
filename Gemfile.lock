@@ -4,6 +4,7 @@ PATH
     paperback (0.0.1)
       activesupport (~> 3.2.11)
       cocaine (~> 0.5.1)
+      hub (~> 1.10.5)
       kindlegen (~> 2.7.0)
       pandoc-ruby (~> 0.6.0)
       rmagick (~> 2.13.1)
@@ -13,8 +14,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     Ascii85 (1.0.2)
-    activesupport (3.2.11)
-      i18n (~> 0.6)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
     afm (0.2.0)
     aruba (0.5.1)
@@ -43,6 +44,7 @@ GEM
     gherkin (2.11.5)
       json (>= 1.4.6)
     hashery (2.1.0)
+    hub (1.10.5)
     i18n (0.6.1)
     json (1.7.6)
     kindlegen (2.7.0)
@@ -50,7 +52,7 @@ GEM
     metaclass (0.0.1)
     mocha (0.13.0)
       metaclass (~> 0.0.1)
-    multi_json (1.5.0)
+    multi_json (1.7.2)
     pandoc-ruby (0.6.0)
     pdf-reader (1.3.2)
       Ascii85 (~> 1.0.0)
@@ -59,7 +61,7 @@ GEM
       ruby-rc4
       ttfunk
     rake (10.0.3)
-    rmagick (2.13.1)
+    rmagick (2.13.2)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)

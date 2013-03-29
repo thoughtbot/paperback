@@ -1,6 +1,7 @@
 require 'paperback/book'
 require 'paperback/cover'
 require 'paperback/git'
+require 'paperback/hub'
 require 'paperback/markdown'
 require 'paperback/package'
 require 'paperback/pandoc_variables'
