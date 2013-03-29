@@ -4,7 +4,7 @@ require 'paperback/configuration'
 require 'paperback/git'
 require 'paperback/markdown'
 require 'paperback/package'
-require 'paperback/pandoc_config'
+require 'paperback/pandoc_variables'
 require 'pathname'
 
 module Paperback

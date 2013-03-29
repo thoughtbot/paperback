@@ -6,7 +6,7 @@ module Paperback
   #
   # For example:
   #
-  #   PandocConfig.new(
+  #   PandocVariables.new(
   #     monofont: 'Inconsolata',
   #     geometry: ['paperwidth=6.0in', 'paperheight=9.0in']
   #   )
@@ -16,7 +16,7 @@ module Paperback
   #   --variable "monofont:Inconsolata" \
   #   --variable "geometry:paperwidth=6.0in" \
   #   --variable "geometry:paperheight=9.0in"
-  class PandocConfig
+  class PandocVariables
     include Enumerable
 
     def initialize(variables = {})

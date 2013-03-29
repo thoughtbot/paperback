@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Paperback::PandocConfig do
+describe Paperback::PandocVariables do
   it { should be_a(Enumerable) }
 
   describe '#each_pair' do
@@ -28,7 +28,7 @@ describe Paperback::PandocConfig do
   end
 
   def verify_iterator
-    config = Paperback::PandocConfig.new(
+    config = Paperback::PandocVariables.new(
       single: 'only value',
       multi: %w(one two)
     )
