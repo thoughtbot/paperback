@@ -38,7 +38,7 @@ module Paperback
 
     def to_epub
       flags = %w(toc)
-      pandoc :epub, flags, epub_cover_image: Paperback::Cover.generate
+      pandoc :epub, flags, epub_cover_image: Cover.generate
     end
 
     def to_html
@@ -47,7 +47,7 @@ module Paperback
     end
 
     def to_markdown
-      Paperback::Markdown.new(
+      Markdown.new(
         @package.source,
         @package.target(:markdown)
       ).generate
