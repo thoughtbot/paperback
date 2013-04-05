@@ -2,10 +2,7 @@ require 'pdf-reader'
 
 module PdfInfo
   PAGE_SIZE_6_BY_9_INCHES = [0, 0, 432, 648]
-  PDF_INFO_PATH = File.expand_path('../pdf_info.ps', __FILE__)
   SCREEN_FONTS = %w(ProximaNova Inconsolata)
-  SHOW_EMBEDDED_FONTS_FLAG = '-dDumpFontsUsed -dShowEmbeddedFonts'
-  SHOW_PAGE_SIZES_FLAG = '-dDumpMediaSizes'
 
   def embedded_fonts(pdf_path)
     pdf_info(pdf_path).

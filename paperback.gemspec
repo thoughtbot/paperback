@@ -31,13 +31,14 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'hub', '~> 1.10.5'
   gem.add_dependency 'kindlegen', '~> 2.7.0'
   gem.add_dependency 'pandoc-ruby', '~> 0.6.0'
+  gem.add_dependency 'pdf-reader', '~> 1.3.2'
   gem.add_dependency 'rmagick', '~> 2.13.1'
+  gem.add_dependency 'terminal-table', '~> 1.4.5'
   gem.add_dependency 'thor', '~> 0.16.0'
 
   gem.add_development_dependency 'aruba', '~> 0.5.1'
   gem.add_development_dependency 'aruba-doubles', '~> 1.2.1'
   gem.add_development_dependency 'bourne', '~> 1.3.0'
-  gem.add_development_dependency 'pdf-reader', '~> 1.3.2'
   gem.add_development_dependency 'rake', '~> 10.0.3'
   gem.add_development_dependency 'rspec', '~> 2.12.0'
 end
