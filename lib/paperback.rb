@@ -6,6 +6,7 @@ require 'paperback/hub'
 require 'paperback/markdown'
 require 'paperback/package'
 require 'paperback/pandoc_variables'
+require 'paperback/stats'
 require 'paperback/syntax_highlighter'
 require 'pathname'
 

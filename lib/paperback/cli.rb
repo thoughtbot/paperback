@@ -51,6 +51,13 @@ module Paperback
       preview
     end
 
+    desc 'stats', 'Report book statistics'
+    def stats
+      truncate
+      copy_assets
+      puts Book.new(Package.book).stats.to_s
+    end
+
     private
 
     def copy_assets

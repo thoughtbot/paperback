@@ -27,6 +27,15 @@ module Paperback
       end
     end
 
+    def stats
+      to_markdown
+
+      Paperback.in_build_dir do
+        to_pdf
+        Stats.new(@package.target(:pdf))
+      end
+    end
+
     private
 
     def pandoc(format, flags, options)
