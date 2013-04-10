@@ -43,10 +43,15 @@ module Paperback
     end
 
     def language(path)
-      if File.extname(path) == '.erb'
+      case File.extname(path)
+      when '.js'
+        'javascript'
+      when '.rb'
+        'ruby'
+      when '.erb'
         'rhtml'
       else
-        'ruby'
+        ''
       end
     end
 
