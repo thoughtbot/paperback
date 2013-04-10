@@ -1,10 +1,12 @@
 require 'paperback/book'
 require 'paperback/cover'
+require 'paperback/config_parser'
 require 'paperback/git'
 require 'paperback/hub'
 require 'paperback/markdown'
 require 'paperback/package'
 require 'paperback/pandoc_variables'
+require 'paperback/syntax_highlighter'
 require 'pathname'
 
 module Paperback
