@@ -1,8 +1,9 @@
 class SyntaxHighligher
   CODE_FENCE = '```'
 
-  def initialize(file_path)
-    @file_path = file_path
+  def initialize(attrs = {})
+    @config_parser = attrs[:config_parser]
+    @file_path = attrs[:file_path]
   end
 
   def code_start
@@ -19,17 +20,17 @@ class SyntaxHighligher
 
   private
 
-  attr_reader :file_path
-
   def language
     syntax_highlighter_config[file_type]
   end
 
   def syntax_highlighter_config
-    ConfigParser.parse('syntax_highlighter')
+    config_parser.parse('syntax_highlighter')
   end
 
   def file_type
     File.extname(file_path).gsub(/\./, '')
   end
+
+  attr_reader :file_path, :config_parser
 end
