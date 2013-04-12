@@ -24,7 +24,7 @@ describe SyntaxHighligher, '#code_start' do
   end
 
   def stubbed_config_parser
-    stubs(parse: { 'rb' => 'ruby' })
+    stub(parse: { 'rb' => 'ruby' })
   end
 
   def ruby_file
@@ -47,7 +47,7 @@ describe SyntaxHighligher, '#code_end' do
   end
 
   def stubbed_config_parser
-    stubs(parse: { 'rb' => 'ruby' })
+    stub(parse: { 'rb' => 'ruby' })
   end
 
   def ruby_file
