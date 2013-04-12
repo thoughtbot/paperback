@@ -15,7 +15,7 @@ module Paperback
         case line
         when Regex::CODE
           syntax_highligher = SyntaxHighligher.new(
-            file_name: $1,
+            file_path: $1,
             config_parser: ConfigParser
           )
           append syntax_highligher.code_start
