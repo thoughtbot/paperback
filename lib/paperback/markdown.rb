@@ -1,9 +1,8 @@
 module Paperback
   class Markdown
     module Regex
-      CODE = /\<\<\((.+)\)/
-      EXAMPLE = /^` ([a-z0-9_\/]+\.[a-z\.]+)@([\w]+)(?::(\d+(?:,\d+)?))?/
-      RAW = /\<\<\[(.+)\]/
+      CODE = /^` ([a-z0-9_\/]+\.[a-z\.]+)@([\w]+)(?::(\d+(?:,\d+)?))?/
+      FILE = /\<\<\[(.+)\]/
     end
 
     def initialize(source, root = nil)
@@ -15,16 +14,12 @@ module Paperback
       @input.each_line do |line|
         case line
         when Regex::CODE
-          append "```#{language($1)}"
-          append "# #{$1}"
-          import $1
-          append '```'
-        when Regex::EXAMPLE
-          append "```#{language($1)}"
-          append "# #{$1}"
+          syntax_highligher = SyntaxHighligher.new($1)
+          append syntax_highligher.code_start
+          append syntax_highligher.code_path
           append Git.show_example($1, $2, $3)
-          append '```'
-        when Regex::RAW
+          append syntax_highligher.code_end
+        when Regex::FILE
           import $1
         else
           append line
@@ -39,19 +34,6 @@ module Paperback
         File.open(@root, 'a') do |f|
           f.puts line
         end
-      end
-    end
-
-    def language(path)
-      case File.extname(path)
-      when '.js'
-        'javascript'
-      when '.rb'
-        'ruby'
-      when '.erb'
-        'rhtml'
-      else
-        ''
       end
     end
 

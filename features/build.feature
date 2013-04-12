@@ -18,15 +18,11 @@ Feature: Build
     And a file named "book/one.md" with:
       """
       One
-      <<(code.erb)
+      ` foo.rb@HEAD
       """
     And a file named "book/two.md" with:
       """
       Two
-      """
-    And a file named "book/code.erb" with:
-      """
-      ` foo.rb@HEAD
       """
     And a file named "example_app/foo.rb" with:
       """
@@ -38,12 +34,9 @@ Feature: Build
       """
       % Book
       One
-      ```rhtml
-      # code.erb
       ```ruby
       # foo.rb
       foo.bar
-      ```
       ```
       """
     And the file "build/a-nice-adventure-sample.md" should contain:
