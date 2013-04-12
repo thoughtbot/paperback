@@ -6,16 +6,16 @@ class SyntaxHighligher
     @file_path = attrs[:file_path]
   end
 
-  def code_start
-    [CODE_FENCE, language].join('')
+  def code_end
+    CODE_FENCE
   end
 
   def code_path
     ['#', file_path].join(' ')
   end
 
-  def code_end
-    CODE_FENCE
+  def code_start
+    [CODE_FENCE, language].join('')
   end
 
   private
