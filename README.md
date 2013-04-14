@@ -38,13 +38,20 @@ Install Homebrew packages:
     $ brew install gs
     $ brew install imagemagick
 
-Install Proxima Nova:
+Install fonts (Proxima Nova, and Inconsolata):
 
     https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
-
-Install Inconsolata:
-
     http://www.levien.com/type/myfonts/inconsolata.html
+
+Install the LaTeX packages:
+
+    sudo tlmgr update --self
+    sudo tlmgr install upquote
+    sudo tlmgr install cm-super
+
+You may need to add its bin directory to your PATH:
+
+    export PATH=$PATH:/usr/texbin
 
 ## Usage
 
@@ -54,8 +61,22 @@ See help:
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+If you'd like to contribute a feature or bugfix: Thanks! To make sure your
+fix/feature has a high chance of being included, please read the following
+guidelines:
+
+Please see `CONTRIBUTING.md` for more details on contributing.
+
+## Credits
+
+![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
+
+Paperback is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
+and [contributors](/thoughtbot/clearance/contributors) like you. Thank you!
+
+## License
+
+Paperback is copyright © 2012-2013 thoughtbot. It is free software, and may be
+redistributed under the terms specified in the `LICENSE` file.
+
+The names and logos for thoughtbot are trademarks of thoughtbot, inc.
