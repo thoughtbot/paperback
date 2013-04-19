@@ -76,22 +76,4 @@ inside a folder on S3:
 
 ## Contributing
 
-If you'd like to contribute a feature or bugfix: Thanks! To make sure your
-fix/feature has a high chance of being included, please read the following
-guidelines:
-
 Please see `CONTRIBUTING.md` for more details on contributing.
-
-## Credits
-
-![thoughtbot](http://thoughtbot.com/images/tm/logo.png)
-
-Paperback is maintained by [thoughtbot, inc](http://thoughtbot.com/community)
-and [contributors](/thoughtbot/clearance/contributors) like you. Thank you!
-
-## License
-
-Paperback is copyright © 2012-2013 thoughtbot. It is free software, and may be
-redistributed under the terms specified in the `LICENSE` file.
-
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.

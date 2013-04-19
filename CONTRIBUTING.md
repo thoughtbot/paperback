@@ -29,12 +29,6 @@ day). We may suggest some changes or improvements or alternatives.
 
 ## Syntax
 
-* Two spaces, no tabs.
-* No trailing whitespace. Blank lines should not have any space.
-* Prefer &&/|| over and/or.
-* MyClass.my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
-* a = b and not a=b.
-* Follow the conventions you see used in the source already.
+Refer to thoughtbot style guide:
 
-And in case we didn't emphasize it enough: we love tests!
-
+https://github.com/thoughtbot/guides/tree/master/style
