@@ -24,12 +24,12 @@ module Paperback
     end
 
     def to_s
-      Terminal::Table.new do |t|
+      Terminal::Table.new {|t|
         t << ['Pages', pages_count]
         t << ['Pages Completed', pages_completed_count]
         t << ['Chapters Completed', chapters_completed_count]
         t << ['Chapters Remaining', chapters_remaining_count]
-      end
+      }.to_s
     end
 
     private

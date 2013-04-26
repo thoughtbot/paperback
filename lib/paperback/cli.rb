@@ -55,7 +55,7 @@ module Paperback
     def stats
       truncate
       copy_assets
-      puts Book.new(Package.book).stats.to_s
+      puts Book.new(Package.book).stats
     end
 
     private
