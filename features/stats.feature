@@ -30,8 +30,10 @@ Feature: Stats
     When I successfully run `paperback stats`
     Then the output should contain:
       """
+      +--------------------+---+
       | Pages              | 5 |
       | Pages Completed    | 4 |
       | Chapters Completed | 1 |
       | Chapters Remaining | 1 |
+      +--------------------+---+
       """
