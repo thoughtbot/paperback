@@ -15,6 +15,7 @@ module Paperback
         to_html
         to_mobi
         to_pdf
+        to_toc
       end
     end
 
@@ -77,6 +78,10 @@ module Paperback
         template: 'pdf',
         variables: PandocVariables::PDF
       )
+    end
+
+    def to_toc
+      TableOfContents.generate @package
     end
   end
 end
