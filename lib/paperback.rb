@@ -8,6 +8,7 @@ require 'paperback/package'
 require 'paperback/pandoc_variables'
 require 'paperback/stats'
 require 'paperback/syntax_highlighter'
+require 'paperback/table_of_contents'
 require 'pathname'
 
 module Paperback

@@ -8,21 +8,28 @@ Feature: Build
     And a file named "book/book.md" with:
       """
       % Book
-      <<[one.md]
+      # Introduction
+      \part{Part One}
+      <<[chapters.md]
       """
     And a file named "book/sample.md" with:
       """
       % Sample
-      <<[two.md]
+      <<[samples.md]
       """
-    And a file named "book/one.md" with:
+    And a file named "book/chapters.md" with:
       """
-      One
+      # Chapter One
+      ## Subheading
       ` foo.rb@HEAD
+
+      # Chapter Two
+
+      STUB
       """
-    And a file named "book/two.md" with:
+    And a file named "book/samples.md" with:
       """
-      Two
+      # Chapter Three
       """
     And a file named "example_app/foo.rb" with:
       """
@@ -33,16 +40,39 @@ Feature: Build
     Then the file "build/a-nice-adventure.md" should contain:
       """
       % Book
-      One
+      # Introduction
+      \part{Part One}
+      # Chapter One
+      ## Subheading
       ```ruby
       # foo.rb
       foo.bar
       ```
+
+      # Chapter Two
+
+      STUB
+      """
+    And the file "build/a-nice-adventure.toc.html" should contain:
+      """
+      <section id="table-of-contents">
+        <h3>Table of Contents</h3>
+        <ul>
+          <li>Introduction</li>
+          <li>
+            <h3>Part One</h3>
+            <ul>
+              <li>Chapter One</li>
+              <li>Chapter Two*</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
       """
     And the file "build/a-nice-adventure-sample.md" should contain:
       """
       % Sample
-      Two
+      # Chapter Three
       """
     And the following files should exist:
       | build/a-nice-adventure.epub        |

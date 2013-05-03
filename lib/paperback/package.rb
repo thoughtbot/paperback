@@ -5,7 +5,8 @@ module Paperback
       html: 'html',
       markdown: 'md',
       mobi: 'mobi',
-      pdf: 'pdf'
+      pdf: 'pdf',
+      toc: 'toc.html'
     }
 
     def initialize(name, options = {})
