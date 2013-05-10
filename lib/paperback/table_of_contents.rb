@@ -32,12 +32,7 @@ module Paperback
 
     def self.generate(package)
       markdown = IO.read(package.target(:markdown))
-
-      renderer = Redcarpet::Markdown.new(
-        TableOfContents,
-        :fenced_code_blocks => true
-      )
-
+      renderer = Redcarpet::Markdown.new(self, :fenced_code_blocks => true)
       IO.write package.target(:toc), renderer.render(markdown)
     end
 
