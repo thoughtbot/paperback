@@ -1,5 +1,5 @@
 require 'pathname'
-require 'rmagick'
+require 'RMagick'
 
 module Paperback
   class Cover
