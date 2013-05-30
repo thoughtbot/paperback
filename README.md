@@ -52,6 +52,21 @@ See help:
 
     $ paperback
 
+## AWS S3 Integration
+
+You can automatically upload release files to AWS S3 by setting the appropriate
+environment variables, or by placing them in a .env file. The following
+variables *must* be present for S3 integration:
+
+    AWS_BUCKET
+    AWS_ACCESS_KEY_ID
+    AWS_SECRET_KEY_ID
+
+The following environment variable can optionally be set to place the files
+inside a folder on S3:
+
+    AWS_FILE_PATH
+
 ## Contributing
 
 1. Fork it

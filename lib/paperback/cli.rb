@@ -2,6 +2,8 @@ require 'fileutils'
 require 'paperback'
 require 'paperback/generators/book'
 require 'thor'
+require 'dotenv'
+Dotenv.load
 
 module Paperback
   class CLI < Thor
@@ -36,13 +38,8 @@ module Paperback
 
     desc 'release', 'Create a new release'
     def release
-      if Git.dirty?
-        raise 'You have local changes; not releasing.'
-      end
-
-      build
-      FileUtils.rm_rf Paperback.release_root
-      FileUtils.cp_r Paperback.build_root, Paperback.release_root
+      build_for_release
+      upload_to_s3
     end
 
     desc 'review', 'Review a pull request'
@@ -73,6 +70,22 @@ module Paperback
         if target.exist?
           target.truncate 0
         end
+      end
+    end
+
+    def build_for_release
+      if Git.dirty?
+        raise 'You have local changes; not releasing.'
+      end
+
+      build
+      FileUtils.rm_rf Paperback.release_root
+      FileUtils.cp_r Paperback.build_root, Paperback.release_root
+    end
+
+    def upload_to_s3
+      if ENV['AWS_ACCESS_KEY_ID']
+        Storage::S3.new.save_all(Paperback.release_root)
       end
     end
   end
