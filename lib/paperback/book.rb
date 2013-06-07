@@ -1,6 +1,5 @@
 require 'cocaine'
 require 'kindlegen'
-require 'pandoc-ruby'
 
 module Paperback
   class Book
@@ -39,21 +38,16 @@ module Paperback
 
     private
 
-    def pandoc(format, flags, options)
-      options.merge! output: @package.target(format)
-      variables = options.delete(:variables) || {}
-      PandocRuby.allow_file_paths = true
-      PandocRuby.convert @package.target(:markdown), *flags, options, variables
+    def pandoc
+      @pandoc ||= Pandoc.new(@package)
     end
 
     def to_epub
-      flags = %w(toc)
-      pandoc :epub, flags, epub_cover_image: Cover.generate
+      pandoc.to_epub
     end
 
     def to_html
-      flags = %w(section_divs self_contained standalone toc)
-      pandoc :html, flags, to: 'html5'
+      pandoc.to_html
     end
 
     def to_markdown
@@ -69,15 +63,7 @@ module Paperback
     end
 
     def to_pdf
-      flags = %w(chapters toc)
-      pandoc(
-        :pdf,
-        flags,
-        data_dir: '..',
-        latex_engine: 'xelatex',
-        template: 'pdf',
-        variables: PandocVariables::PDF
-      )
+      pandoc.to_pdf
     end
 
     def to_toc
