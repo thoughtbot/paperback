@@ -3,7 +3,19 @@ Feature: Build
   I want a CLI to build my Paperback project
   So that I can generate a book in multiple formats
 
-  Scenario:
+  Scenario: The input is invalid
+    When I successfully run `paperback new .`
+    And a file named "book/book.md" with:
+      """
+      \foo
+      """
+    When I run `paperback build`
+    Then it should fail with:
+      """
+      pandoc: Error
+      """
+
+  Scenario: The input is valid
     When I successfully run `paperback new .`
     And a file named "book/book.md" with:
       """
