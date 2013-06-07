@@ -29,3 +29,4 @@ Feature: Release
       | a-nice-adventure-sample.html         |
       | a-nice-adventure-sample.mobi         |
       | a-nice-adventure-sample.pdf          |
+    And "a-nice-adventure.epub" should have the mime-type "application/epub+zip" on S3

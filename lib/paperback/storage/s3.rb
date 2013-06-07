@@ -1,4 +1,5 @@
 require 'aws-sdk'
+require 'mime-types'
 require 'pathname'
 
 module Paperback
@@ -19,12 +20,20 @@ module Paperback
 
       def upload_files(root_dir, pathname)
         if pathname.file?
-          relative_path = pathname.relative_path_from(root_dir)
-          s3_file = bucket.objects[file_path + relative_path]
-          s3_file.write(pathname)
+          upload_file(root_dir, pathname)
         else
           pathname.children.each { |file| upload_files(root_dir, file) }
         end
+      end
+
+      def upload_file(root_dir, pathname)
+        relative_path = pathname.relative_path_from(root_dir)
+        s3_file = bucket.objects[file_path + relative_path]
+        s3_file.write(pathname, content_type: content_type(pathname))
+      end
+
+      def content_type(pathname)
+        MIME::Types.of(pathname.to_s).first.to_s
       end
 
       def bucket
