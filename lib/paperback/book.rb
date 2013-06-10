@@ -5,7 +5,6 @@ module Paperback
   class Book
     def initialize(package)
       @package = package
-      @pandoc = Pandoc.new(@package)
     end
 
     def generate
@@ -39,12 +38,16 @@ module Paperback
 
     private
 
+    def pandoc
+      @pandoc ||= Pandoc.new(@package)
+    end
+
     def to_epub
-      @pandoc.to_epub
+      pandoc.to_epub
     end
 
     def to_html
-      @pandoc.to_html
+      pandoc.to_html
     end
 
     def to_markdown
@@ -60,7 +63,7 @@ module Paperback
     end
 
     def to_pdf
-      @pandoc.to_pdf
+      pandoc.to_pdf
     end
 
     def to_toc
