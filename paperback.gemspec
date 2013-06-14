@@ -28,6 +28,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'activesupport', '~> 3.2.11'
   gem.add_dependency 'aws-sdk', '~> 1.10.0'
+  gem.add_dependency 'climate_control', '~> 0.0.3'
   gem.add_dependency 'cocaine', '~> 0.5.1'
   gem.add_dependency 'dotenv', '~> 0.7.0'
   gem.add_dependency 'hub', '~> 1.10.5'

@@ -1,73 +1,68 @@
 require 'spec_helper'
+require 'aruba/api'
+require 'pathname'
 
 module Paperback
   module Storage
     describe S3 do
-      subject do
-        described_class.new('test/files', 'paperback_test')
-      end
+      include Aruba::Api
 
-      let(:fixtures_dir) { File.expand_path('../../fixtures/s3', __FILE__) }
-      let(:aws_s3) { AWS::S3.new }
-      let(:bucket) { aws_s3.buckets['paperback_test'] }
-
-      before do
-        FileUtils.mkdir_p fixtures_dir
-        bucket.clear!
-      end
-
-      after do
-        FileUtils.rm_rf fixtures_dir
-      end
-
-      it 'creates the bucket with the given name' do
-        subject.save_all(Pathname.new(fixtures_dir))
-        expect(bucket).to exist
-      end
-
-      context 'uploading files' do
+      describe '#save_all' do
         before do
-          File.write(fixtures_dir + '/file1.txt', 'I AM FILE 1')
-          FileUtils.mkdir_p(fixtures_dir + '/folder')
-          File.write(fixtures_dir + '/folder/file2.txt', 'I AM FILE 2')
+          @s3 = Paperback::Storage::S3.new
+
+          @client = AWS::S3::Client.any_instance
+          @client.stubs :create_bucket
+          @objects = AWS::S3::ObjectCollection.any_instance
+          @objects.stubs :create
+
+          @current_path = Pathname.new(current_dir)
+          FileUtils.rm_rf @current_path
+          @path_one = Pathname.new('file.txt')
+          write_file @path_one, ''
+          @path_two = Pathname.new('folder/file.txt')
+          write_file @path_two, ''
         end
 
-        it 'uploads all the files in a directory' do
-          subject.save_all(Pathname.new(fixtures_dir))
-          expect(bucket.objects['test/files/file1.txt'].read).to eq('I AM FILE 1')
-          expect(bucket.objects['test/files/folder/file2.txt'].read).to eq('I AM FILE 2')
-        end
+        it 'creates the bucket' do
+          ClimateControl.modify(AWS_BUCKET: 'paperback_test') do
+            options = { bucket_name: ENV['AWS_BUCKET'] }
 
-        context 'file path has trailing slash' do
-          subject { described_class.new('test/files/', 'paperback_test') }
+            @s3.save_all @current_path
 
-          it 'uploads all files with the correct directory' do
-            subject.save_all(Pathname.new(fixtures_dir))
-            expect(bucket.objects['test/files/file1.txt'].read).to eq('I AM FILE 1')
+            expect(@client).to have_received(:create_bucket).with(options)
           end
         end
 
-        context 'no file path given' do
-          subject { described_class.new(nil, 'paperback_test') }
+        context 'when AWS_FILE_PATH is nil' do
+          it 'writes to the bucket root' do
+            ClimateControl.modify(AWS_FILE_PATH: nil) do
+              @s3.save_all @current_path
 
-          it 'uploads the files to the root of the bucket' do
-            subject.save_all(Pathname.new(fixtures_dir))
-            expect(bucket.objects['file1.txt'].read).to eq('I AM FILE 1')
+              verify_create @path_one
+              verify_create @path_two
+            end
           end
         end
 
-        # Unfortunately theres not .private? method we can call to test this.
-        # It's a nice test to have, but if it breaks and causes problems,
-        # feel free to delete it.
-        it 'sets the file to private' do
-          File.write(fixtures_dir + '/file1.txt', 'I AM FILE 1')
-          subject.save_all(Pathname.new(fixtures_dir))
-          file_permissions = bucket.objects['test/files/file1.txt'].acl
-          owner_id = file_permissions.owner.id
-          grantee_id = file_permissions.grants.first.grantee.canonical_user_id
+        context 'when AWS_FILE_PATH is present' do
+          it 'writes to a prefix' do
+            ClimateControl.modify(AWS_FILE_PATH: 'foo') do
+              @s3.save_all @current_path
 
-          expect(file_permissions.grants.length).to eq(1)
-          expect(owner_id).to eq(grantee_id)
+              verify_create @path_one
+              verify_create @path_two
+            end
+          end
+        end
+
+        def verify_create(path)
+          aws_file_path = ENV['AWS_FILE_PATH'] || ''
+          key = Pathname.new(aws_file_path) + path
+          data = @current_path + path
+          options = { content_type: 'text/plain' }
+
+          expect(@objects).to have_received(:create).with(key, data, options)
         end
       end
     end

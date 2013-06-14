@@ -4,6 +4,7 @@ PATH
     paperback (0.0.1)
       activesupport (~> 3.2.11)
       aws-sdk (~> 1.10.0)
+      climate_control (~> 0.0.3)
       cocaine (~> 0.5.1)
       dotenv (~> 0.7.0)
       hub (~> 1.10.5)

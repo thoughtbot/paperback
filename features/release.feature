@@ -18,15 +18,3 @@ Feature: Release
       | release/a-nice-adventure-sample.html |
       | release/a-nice-adventure-sample.mobi |
       | release/a-nice-adventure-sample.pdf  |
-    And the following files should exist on S3:
-      | a-nice-adventure.epub                |
-      | a-nice-adventure.html                |
-      | a-nice-adventure.mobi                |
-      | a-nice-adventure.pdf                 |
-      | images/cover.pdf                     |
-      | images/cover.png                     |
-      | a-nice-adventure-sample.epub         |
-      | a-nice-adventure-sample.html         |
-      | a-nice-adventure-sample.mobi         |
-      | a-nice-adventure-sample.pdf          |
-    And "a-nice-adventure.epub" should have the mime-type "application/epub+zip" on S3
