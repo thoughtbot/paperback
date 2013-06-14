@@ -38,13 +38,20 @@ Install Homebrew packages:
     $ brew install gs
     $ brew install imagemagick
 
-Install Proxima Nova:
+Install fonts (Proxima Nova, and Inconsolata):
 
     https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
-
-Install Inconsolata:
-
     http://www.levien.com/type/myfonts/inconsolata.html
+
+Install the LaTeX packages:
+
+    sudo tlmgr update --self
+    sudo tlmgr install upquote
+    sudo tlmgr install cm-super
+
+You may need to add its bin directory to your PATH:
+
+    export PATH=$PATH:/usr/texbin
 
 ## Usage
 
@@ -69,8 +76,4 @@ inside a folder on S3:
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Please see `CONTRIBUTING.md` for more details on contributing.
