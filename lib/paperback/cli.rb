@@ -1,8 +1,9 @@
+require 'dotenv'
 require 'fileutils'
 require 'paperback'
 require 'paperback/generators/book'
 require 'thor'
-require 'dotenv'
+
 Dotenv.load
 
 module Paperback
