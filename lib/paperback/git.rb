@@ -6,16 +6,18 @@ module Paperback
     attr_accessor :exit_status, :output
 
     def initialize(subcommand)
-      @command = "git #{subcommand}"
+      @subcommand = subcommand
     end
 
     def self.dirty?
-      run('diff --quiet --ignore-submodules HEAD').exit_status == 1
+      git = new('diff --quiet --ignore-submodules HEAD')
+      git.run.exit_status == 1
     end
 
     def run
+      full_command = "git #{@subcommand}"
       options = { expected_outcodes: [0, 1] }
-      command_line = Cocaine::CommandLine.new(@command, '', options)
+      command_line = Cocaine::CommandLine.new(full_command, '', options)
       self.output = command_line.run
       self.exit_status = command_line.exit_status
       self
@@ -28,13 +30,8 @@ module Paperback
         subcommand << " | sed -n #{range}p"
       end
 
-      run(subcommand).output.strip_heredoc
-    end
-
-    private
-
-    def self.run(subcommand)
-      Git.new(subcommand).run
+      git = new(subcommand)
+      git.run.output.strip_heredoc
     end
   end
 end
