@@ -14,6 +14,15 @@ module Paperback
       git.run.exit_status == 1
     end
 
+    def self.origin_url
+      git = new('config --get remote.origin.url')
+      git.run.output.strip
+    end
+
+    def self.repository_name
+      File.basename origin_url, '.git'
+    end
+
     def run
       full_command = "git #{@subcommand}"
       options = { expected_outcodes: [0, 1] }

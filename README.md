@@ -36,6 +36,7 @@ Install BasicTeX:
 Install Homebrew packages:
 
     $ brew install gs
+    $ brew install hub
     $ brew install imagemagick
 
 Install fonts (Proxima Nova, and Inconsolata):

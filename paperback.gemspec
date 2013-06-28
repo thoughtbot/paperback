@@ -31,7 +31,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'climate_control', '~> 0.0.3'
   gem.add_dependency 'cocaine', '~> 0.5.1'
   gem.add_dependency 'dotenv', '~> 0.7.0'
-  gem.add_dependency 'hub', '~> 1.10.5'
   gem.add_dependency 'kindlegen', '~> 2.7.0'
   gem.add_dependency 'mime-types', '~> 1.23'
   gem.add_dependency 'nokogiri', '~> 1.5.9'

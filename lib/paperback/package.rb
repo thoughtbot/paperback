@@ -27,7 +27,7 @@ module Paperback
     end
 
     def target(format)
-      "#{Hub.project_name}#{@suffix}.#{extension(format)}"
+      "#{Git.repository_name}#{@suffix}.#{extension(format)}"
     end
 
     private
