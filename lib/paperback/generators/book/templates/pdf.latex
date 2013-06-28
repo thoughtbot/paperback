@@ -93,7 +93,10 @@ $if(graphics)$
 \else\Gin@nat@width\fi}
 \makeatother
 \let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
+{%
+ \catcode`\@=11\relax%
+ \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\maxwidth]}}%
+}%
 $endif$
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex

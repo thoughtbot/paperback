@@ -42,11 +42,13 @@ Feature: Build
     And a file named "book/samples.md" with:
       """
       # Chapter Three
+      ![Alt text](images/image.png)
       """
     And a file named "example_app/foo.rb" with:
       """
       foo.bar
       """
+    And a fixture file named "book/images/image.png"
     And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
     Then the file "build/a-nice-adventure.md" should contain:
