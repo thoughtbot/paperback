@@ -25,6 +25,31 @@ describe Paperback::Git do
     end
   end
 
+  describe '.origin_url' do
+    it 'returns the origin url' do
+      expected = 'http://example.com/foo/bar.git'
+      command_line = stub_command_line("#{expected}\n")
+
+      actual = Paperback::Git.origin_url
+
+      expect_git 'config --get remote.origin.url'
+      expect(command_line).to have_received(:run)
+      expect(actual).to eq(expected)
+    end
+  end
+
+  describe '.repository_name' do
+    it 'returns the repository name' do
+      expected = 'bar'
+      origin_url = "http://example.com/foo/#{expected}.git"
+      stub_command_line "#{origin_url}\n"
+
+      actual = Paperback::Git.repository_name
+
+      expect(actual).to eq(expected)
+    end
+  end
+
   describe '.show_example' do
     def example
       <<-EOS.strip_heredoc

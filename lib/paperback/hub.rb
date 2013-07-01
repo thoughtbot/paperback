@@ -1,24 +1,20 @@
 require 'cocaine'
-require 'hub'
 
 module Paperback
   class Hub
-    extend ::Hub::Context
-
     def self.checkout(pull_request_id)
-      hub 'checkout', "#{current_project.web_url}/pull/#{pull_request_id}"
-    end
-
-    def self.project_name
-      current_project.name
+      pull_request_url = "#{repository_url}/pull/#{pull_request_id}"
+      Cocaine::CommandLine.new('hub checkout', pull_request_url).run
     end
 
     private
 
-    def self.hub(*args)
-      ::Hub::Runner.new(*args).args.commands.each do |command|
-        Cocaine::CommandLine.new(command).run
-      end
+    def self.repository_url
+      "https://github.com/#{username}/#{Git.repository_name}"
+    end
+
+    def self.username
+      Git.origin_url.split(/[:\/]/)[-2]
     end
   end
 end
