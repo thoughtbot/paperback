@@ -13,7 +13,6 @@ Feature: New
       | book/images/cover.pdf |
       | book/sample.md        |
       | example_app/.gitkeep  |
-      | templates/pdf.latex   |
 
   Scenario: The path is a single directory
     When I successfully run `paperback new foo`
@@ -25,7 +24,6 @@ Feature: New
       | foo/book/images/cover.pdf |
       | foo/book/sample.md        |
       | foo/example_app/.gitkeep  |
-      | foo/templates/pdf.latex   |
 
   Scenario: The path is a nested directory
     When I successfully run `paperback new foo/bar`
@@ -37,4 +35,3 @@ Feature: New
       | foo/bar/book/images/cover.pdf |
       | foo/bar/book/sample.md        |
       | foo/bar/example_app/.gitkeep  |
-      | foo/bar/templates/pdf.latex   |

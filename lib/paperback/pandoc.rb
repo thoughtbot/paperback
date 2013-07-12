@@ -28,7 +28,7 @@ module Paperback
         :pdf,
         '--chapters',
         '--latex-engine=xelatex',
-        '--template=pdf',
+        "--template=#{pdf_latex_template_path}",
         '--variable=geometry:paperheight=9.0in',
         '--variable=geometry:paperwidth=6.0in',
         '--variable=mainfont:"Proxima Nova"',
@@ -40,7 +40,6 @@ module Paperback
 
     def pandoc(format, *args)
       args += [
-        '--data-dir=..',
         "--output=#{@package.target(format)}",
         '--toc'
       ]
@@ -49,6 +48,10 @@ module Paperback
         'pandoc',
         "#{args.join(' ')} #{@package.target(:markdown)}"
       ).run
+    end
+
+    def pdf_latex_template_path
+      File.expand_path '../templates/pdf.latex', __FILE__
     end
   end
 end
