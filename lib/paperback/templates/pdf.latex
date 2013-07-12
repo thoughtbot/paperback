@@ -3,14 +3,15 @@
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifxetex
-  \usepackage{fontspec,xltxtra,xunicode}
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \usepackage{fontspec,xltxtra,xunicode,tikz,color}
+  \defaultfontfeatures{Scale=MatchLowercase}
   \newcommand{\euro}{€}
+  \newfontfamily\quotefont[Ligatures=TeX]{$mainfont$}
 $if(mainfont)$
-  \setmainfont{$mainfont$}
+  \setmainfont[Ligatures=TeX]{$mainfont$}
 $endif$
 $if(sansfont)$
-  \setsansfont{$sansfont$}
+  \setsansfont[Ligatures=TeX]{$sansfont$}
 $endif$
 $if(monofont)$
   \setmonofont[Scale=0.8]{$monofont$}
@@ -144,6 +145,17 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% Customize quote blocks
+\newcommand*{\openquote}{\tikz[remember picture,overlay,xshift=-15pt,yshift=-10pt]
+     \node (OQ) {\quotefont\fontsize{60}{60}\selectfont``};\kern0pt}
+\expandafter\def\expandafter\quote\expandafter{\quote\openquote}
+
+% Add background color to inline verbatim blocks
+\definecolor{Light}{gray}{.92}
+\let\oldtexttt\texttt
+\newcommand{\reducedstrut}{\vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
+\renewcommand{\texttt}[1]{\begingroup\setlength{\fboxsep}{0pt}\oldtexttt{\colorbox{Light}{\reducedstrut#1}}\endgroup}
 
 $if(title)$
 \title{$title$}
