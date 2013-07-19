@@ -1,36 +1,47 @@
-class SyntaxHighligher
-  CODE_FENCE = '```'
+module Paperback
+  class SyntaxHighlighter
+    CODE_FENCE = '```'
 
-  def initialize(attrs = {})
-    @config_parser = attrs[:config_parser]
-    @file_path = attrs[:file_path]
+    FILE_TYPES = {
+      coffee: 'javascript',
+      erb: 'rhtml',
+      js: 'javascript',
+      rb: 'ruby'
+    }
+
+    def initialize(file_path, git_ref, line_range)
+      @file_path = file_path
+      @git_ref = git_ref
+      @line_range = line_range
+    end
+
+    def to_ary
+      [
+        code_start,
+        code_path,
+        Git.show_example(file_path, git_ref, line_range),
+        CODE_FENCE
+      ]
+    end
+
+    private
+
+    attr_reader :file_path, :git_ref, :line_range
+
+    def code_path
+      "# #{file_path}"
+    end
+
+    def code_start
+      "#{CODE_FENCE}#{language}"
+    end
+
+    def file_type
+      File.extname(file_path).delete('.')
+    end
+
+    def language
+      FILE_TYPES[file_type.to_sym]
+    end
   end
-
-  def code_end
-    CODE_FENCE
-  end
-
-  def code_path
-    ['#', file_path].join(' ')
-  end
-
-  def code_start
-    [CODE_FENCE, language].join('')
-  end
-
-  private
-
-  def language
-    syntax_highlighter_config[file_type]
-  end
-
-  def syntax_highlighter_config
-    config_parser.parse('syntax_highlighter')
-  end
-
-  def file_type
-    File.extname(file_path).gsub(/\./, '')
-  end
-
-  attr_reader :file_path, :config_parser
 end

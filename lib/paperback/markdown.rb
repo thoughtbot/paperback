@@ -14,14 +14,7 @@ module Paperback
       @input.each_line do |line|
         case line
         when Regex::CODE
-          syntax_highligher = SyntaxHighligher.new(
-            file_path: $1,
-            config_parser: ConfigParser
-          )
-          append syntax_highligher.code_start
-          append syntax_highligher.code_path
-          append Git.show_example($1, $2, $3)
-          append syntax_highligher.code_end
+          append SyntaxHighlighter.new($1, $2, $3)
         when Regex::FILE
           import $1
         else
