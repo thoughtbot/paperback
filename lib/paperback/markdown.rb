@@ -1,8 +1,22 @@
 module Paperback
   class Markdown
     module Regex
-      CODE = /^` ([a-z0-9_\/]+\.[a-z\.]+)@([\w]+)(?::(\d+(?:,\d+)?))?/
-      FILE = /\<\<\[(.+)\]/
+      CODE = /
+        ^`\s
+        (?<file_path>[a-z0-9_\/]+\.[a-z\.]+)
+        @
+        (?<git_ref>[\w]+)
+        (?::
+          (?<line_range>\d+(?:,\d+)?)
+        )?
+      /x
+
+      FILE = /
+        \<\<
+        \[
+        (?<file_path>.+)
+        \]
+      /x
     end
 
     def initialize(source, root = nil)
@@ -14,9 +28,13 @@ module Paperback
       @input.each_line do |line|
         case line
         when Regex::CODE
-          append SyntaxHighlighter.new($1, $2, $3)
+          append SyntaxHighlighter.new(
+            $~[:file_path],
+            $~[:git_ref],
+            $~[:line_range]
+          )
         when Regex::FILE
-          import $1
+          import $~[:file_path]
         else
           append line
         end
@@ -33,8 +51,8 @@ module Paperback
       end
     end
 
-    def import(path)
-      self.class.new(path, @root).generate
+    def import(file_path)
+      self.class.new(file_path, @root).generate
     end
   end
 end
