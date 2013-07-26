@@ -2,6 +2,7 @@ require 'dotenv'
 require 'fileutils'
 require 'paperback'
 require 'paperback/generators/book'
+require 'stringio'
 require 'thor'
 
 Dotenv.load
@@ -58,10 +59,26 @@ module Paperback
 
     private
 
+    def build_for_release
+      if Git.dirty?
+        raise 'You have local changes; not releasing.'
+      end
+
+      build
+      FileUtils.rm_rf Paperback.release_root
+      FileUtils.cp_r Paperback.build_root, Paperback.release_root
+    end
+
     def copy_assets
       Paperback.build_root.mkpath
       images_root = Paperback.book_root.join('images')
       FileUtils.cp_r images_root, Paperback.build_root
+    end
+
+    def self.start(args = ARGV, config = {})
+      with_progress do
+        super
+      end
     end
 
     def truncate
@@ -74,19 +91,29 @@ module Paperback
       end
     end
 
-    def build_for_release
-      if Git.dirty?
-        raise 'You have local changes; not releasing.'
-      end
-
-      build
-      FileUtils.rm_rf Paperback.release_root
-      FileUtils.cp_r Paperback.build_root, Paperback.release_root
-    end
-
     def upload_to_s3
       if ENV['AWS_ACCESS_KEY_ID']
         Storage::S3.new.save_all(Paperback.release_root)
+      end
+    end
+
+    def self.with_progress(&block)
+      begin
+        original_stdout = $stdout
+        buffer = StringIO.new
+        $stdout = buffer
+        block_thread = Thread.new { block.call }
+
+        while block_thread.alive?
+          original_stdout.print '.'
+          sleep 1
+        end
+
+        block_thread.join
+        buffer.rewind
+        original_stdout.print "\n#{buffer.read}"
+      ensure
+        $stdout = original_stdout
       end
     end
   end
