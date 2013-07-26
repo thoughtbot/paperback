@@ -1,5 +1,6 @@
 require 'cocaine'
 require 'kindlegen'
+require 'thor'
 
 module Paperback
   class Book
@@ -42,15 +43,24 @@ module Paperback
       @pandoc ||= Pandoc.new(@package)
     end
 
+    def say_progress(format)
+      @shell ||= Thor::Base.shell.new
+      @shell.say_status 'create', @package.target(format)
+    end
+
     def to_epub
+      say_progress :epub
       pandoc.to_epub
     end
 
     def to_html
+      say_progress :html
       pandoc.to_html
     end
 
     def to_markdown
+      say_progress :markdown
+
       Markdown.new(
         @package.source,
         @package.target(:markdown)
@@ -59,14 +69,17 @@ module Paperback
 
     def to_mobi
       to_epub
+      say_progress :mobi
       Kindlegen.run "#{@package.target(:epub)} -o #{@package.target(:mobi)}"
     end
 
     def to_pdf
+      say_progress :pdf
       pandoc.to_pdf
     end
 
     def to_toc
+      say_progress :toc
       TableOfContents.generate @package
     end
   end
