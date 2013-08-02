@@ -6,6 +6,7 @@ module Paperback
       coffee: 'javascript',
       erb: 'rhtml',
       js: 'javascript',
+      rake: 'ruby',
       rb: 'ruby'
     }
 
