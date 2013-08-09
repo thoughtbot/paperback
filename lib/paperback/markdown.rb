@@ -2,7 +2,7 @@ module Paperback
   class Markdown
     module Regex
       CODE = /
-        ^`\s
+        (?<indentation>\s*)`\s
         (?<file_path>[a-z0-9_\/]+\.[a-z\.]+)
         @
         (?<git_ref>[\w]+)
@@ -29,6 +29,7 @@ module Paperback
         case line
         when Regex::CODE
           append SyntaxHighlighter.new(
+            $~[:indentation],
             $~[:file_path],
             $~[:git_ref],
             $~[:line_range]

@@ -26,7 +26,7 @@ Gem::Specification.new do |gem|
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'activesupport', '~> 3.2.11'
+  gem.add_dependency 'activesupport', '~> 4.0.0'
   gem.add_dependency 'aws-sdk', '~> 1.10.0'
   gem.add_dependency 'climate_control', '~> 0.0.3'
   gem.add_dependency 'cocaine', '~> 0.5.1'

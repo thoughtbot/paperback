@@ -34,6 +34,7 @@ Feature: Build
       # Chapter One
       ## Subheading
       ` foo.rb@HEAD
+          ` foo.rb@HEAD
 
       # Chapter Two
 
@@ -62,6 +63,10 @@ Feature: Build
       # foo.rb
       foo.bar
       ```
+          ```ruby
+          # foo.rb
+          foo.bar
+          ```
 
       # Chapter Two
 

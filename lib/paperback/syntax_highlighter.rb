@@ -1,3 +1,5 @@
+require 'active_support/core_ext/string/indent'
+
 module Paperback
   class SyntaxHighlighter
     CODE_FENCE = '```'
@@ -10,7 +12,8 @@ module Paperback
       rb: 'ruby'
     }
 
-    def initialize(file_path, git_ref, line_range)
+    def initialize(indentation, file_path, git_ref, line_range)
+      @indentation = indentation
       @file_path = file_path
       @git_ref = git_ref
       @line_range = line_range
@@ -22,7 +25,9 @@ module Paperback
         code_path,
         Git.show_example(file_path, git_ref, line_range),
         CODE_FENCE
-      ]
+      ].map do |text|
+        text.indent(@indentation.size)
+      end
     end
 
     private
