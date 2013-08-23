@@ -3,7 +3,7 @@ module Paperback
     module Regex
       CODE = /
         (?<indentation>\s*)`\s
-        (?<file_path>[a-z0-9_\/]+\.[a-z\.]+)
+        (?<file_path>[\w\/\.]+)
         @
         (?<git_ref>[\w]+)
         (?::

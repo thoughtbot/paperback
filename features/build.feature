@@ -33,8 +33,8 @@ Feature: Build
       """
       # Chapter One
       ## Subheading
-      ` foo.rb@HEAD
           ` foo.rb@HEAD
+      ` UnknownFileType@HEAD
 
       # Chapter Two
 
@@ -49,6 +49,7 @@ Feature: Build
       """
       foo.bar
       """
+    And an empty file named "example_app/UnknownFileType"
     And a fixture file named "book/images/image.png"
     And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
@@ -60,14 +61,14 @@ Feature: Build
       \part{Part One}
       # Chapter One
       ## Subheading
-      ```ruby
-      # foo.rb
-      foo.bar
-      ```
           ```ruby
           # foo.rb
           foo.bar
           ```
+      ```
+      # UnknownFileType
+
+      ```
 
       # Chapter Two
 

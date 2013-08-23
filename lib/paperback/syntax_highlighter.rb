@@ -1,16 +1,9 @@
 require 'active_support/core_ext/string/indent'
+require 'coderay'
 
 module Paperback
   class SyntaxHighlighter
     CODE_FENCE = '```'
-
-    FILE_TYPES = {
-      coffee: 'javascript',
-      erb: 'rhtml',
-      js: 'javascript',
-      rake: 'ruby',
-      rb: 'ruby'
-    }
 
     def initialize(indentation, file_path, git_ref, line_range)
       @indentation = indentation
@@ -42,12 +35,8 @@ module Paperback
       "#{CODE_FENCE}#{language}"
     end
 
-    def file_type
-      File.extname(file_path).delete('.')
-    end
-
     def language
-      FILE_TYPES[file_type.to_sym]
+      CodeRay::FileType[file_path, true]
     end
   end
 end
