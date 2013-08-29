@@ -11,6 +11,8 @@ module Paperback
         )?
       /x
 
+      DOT_GRAPH = /```dot\s([^`]+)```/
+
       FILE = /
         \<\<
         \[
@@ -25,6 +27,8 @@ module Paperback
     end
 
     def generate
+      generate_dot_graphs
+
       @input.each_line do |line|
         case line
         when Regex::CODE
@@ -40,6 +44,8 @@ module Paperback
           append line
         end
       end
+
+      replace_graphs_with_links
     end
 
     private
@@ -52,8 +58,27 @@ module Paperback
       end
     end
 
+    def dot_code_blocks
+      @input.read.scan(Regex::DOT_GRAPH).flatten
+    end
+
+    def generate_dot_graphs
+       dot_code_blocks.each do |graph|
+         DotGraph.new(graph).generate_png
+       end
+    end
+
     def import(file_path)
       self.class.new(file_path, @root).generate
+    end
+
+    def replace_graphs_with_links
+      Paperback.in_build_dir do
+        lines = File.open(@root).readlines
+        File.open(@root, 'w') do |f|
+          f.puts lines.join.gsub(Regex::DOT_GRAPH, '![Alt text](images/test-graph.png)')
+        end
+      end
     end
   end
 end
