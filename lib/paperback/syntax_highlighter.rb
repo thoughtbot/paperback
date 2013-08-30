@@ -36,6 +36,7 @@ module Paperback
     end
 
     def language
+      CodeRay::FileType::TypeFromExt['coffee'] ||= :coffeescript
       CodeRay::FileType[file_path, true]
     end
   end
