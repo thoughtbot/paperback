@@ -104,7 +104,7 @@ Feature: Build
       # Chapter Three
       ![Alt text](images/image.png)
 
-      ![Alt text](images/graph-test.png)
+      ![graph test](images/graph-test.png)
       """
     And the following files should exist:
       | build/a-nice-adventure.epub        |

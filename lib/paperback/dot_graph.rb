@@ -3,7 +3,7 @@ require 'pathname'
 module Paperback
   class DotGraph
     module Regex
-      GRAPH_TITLE = /(?<graph_title>graph\s\w+)\s\{/
+      GRAPH_TITLE = /(?<title>graph\s\w+)\s\{/
     end
 
     def initialize(graph)
@@ -12,19 +12,19 @@ module Paperback
     end
 
     def filename
-      graph_title.sub(' ', '-') << '.png'
+      title.sub(' ', '-') << '.png'
+    end
+
+    def title
+      @title ||= dot_graph_code_block.match(
+        Regex::GRAPH_TITLE
+      )[:title]
     end
 
     private
 
     def dot_graph_code_block
       @dot_graph_code_block
-    end
-
-    def graph_title
-      @graph_title ||= dot_graph_code_block.match(
-        Regex::GRAPH_TITLE
-      )[:graph_title]
     end
 
     def build_png

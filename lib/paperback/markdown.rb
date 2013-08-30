@@ -36,7 +36,7 @@ module Paperback
         when Regex::CLOSE_DOT_BLOCK
           graph = DotGraph.new(@buffer.join)
           close_buffer
-          append link_to_image(graph.filename)
+          append link_to_image(graph.title, graph.filename)
         when Regex::CODE
           append SyntaxHighlighter.new(
             $~[:indentation],
@@ -78,8 +78,8 @@ module Paperback
       self.class.new(file_path, @root).generate
     end
 
-    def link_to_image(filename)
-      "![Alt text](images/#{filename})"
+    def link_to_image(alt_text, filename)
+      "![#{alt_text}](images/#{filename})"
     end
 
     def open_buffer
