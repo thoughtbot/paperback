@@ -36,6 +36,7 @@ Feature: Build
           ` foo.rb@HEAD
       ` UnknownFileType@HEAD
       ` foo.coffee@HEAD
+      ` index.html.erb@HEAD
 
       # Chapter Two
 
@@ -52,6 +53,7 @@ Feature: Build
       """
     And an empty file named "example_app/UnknownFileType"
     And an empty file named "example_app/foo.coffee"
+    And an empty file named "example_app/index.html.erb"
     And a fixture file named "book/images/image.png"
     And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
@@ -73,6 +75,10 @@ Feature: Build
       ```
       ```coffee
       # foo.coffee
+
+      ```
+      ```rhtml
+      # index.html.erb
 
       ```
 

@@ -37,6 +37,7 @@ module Paperback
 
     def language
       CodeRay::FileType::TypeFromExt['coffee'] ||= :coffee
+      CodeRay::FileType::TypeFromExt['erb'] = :rhtml
       CodeRay::FileType[file_path, true]
     end
   end
