@@ -71,7 +71,7 @@ Feature: Build
       # UnknownFileType
 
       ```
-      ```coffeescript
+      ```coffee
       # foo.coffee
 
       ```
