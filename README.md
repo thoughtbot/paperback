@@ -25,10 +25,6 @@ Or install it yourself as:
 
 ## Dependencies
 
-Install Pandoc:
-
-    http://johnmacfarlane.net/pandoc/installing.html
-
 Install BasicTeX:
 
     http://www.tug.org/mactex/morepackages.html
@@ -38,6 +34,9 @@ Install Homebrew packages:
     $ brew install gs
     $ brew install hub
     $ brew install imagemagick
+    $ brew tap phinze/homebrew-cask
+    $ brew install brew-cask
+    $ brew cask install pandoc
 
 Install fonts (Proxima Nova, and Inconsolata):
 
