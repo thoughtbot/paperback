@@ -22,7 +22,8 @@ Gem::Specification.new do |gem|
   gem.license = 'MIT'
 
   gem.files = `git ls-files`.split($/)
-  gem.executables = gem.files.grep(%r{^bin/}) {|f| File.basename(f) }
+  gem.bindir = 'exe'
+  gem.executables = gem.files.grep(%r{^exe/}) {|f| File.basename(f) }
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
