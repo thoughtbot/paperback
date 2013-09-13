@@ -2,6 +2,8 @@ require 'cocaine'
 
 module Paperback
   class Pandoc
+    CLI_DEPENDENCY = Gem::Dependency.new('pandoc', '>= 1.11.1')
+
     def initialize(package)
       @package = package
     end
@@ -38,16 +40,22 @@ module Paperback
 
     private
 
-    def pandoc(format, *args)
-      args += [
-        "--output=#{@package.target(format)}",
-        '--toc'
-      ]
+    def cli(args)
+      Cocaine::CommandLine.new(CLI_DEPENDENCY.name, args).run
+    end
 
-      Cocaine::CommandLine.new(
-        'pandoc',
-        "#{args.join(' ')} #{@package.target(:markdown)}"
-      ).run
+    def cli_dependency_match?
+      version = cli('--version').lines.first.split.last
+      CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, version
+    end
+
+    def pandoc(format, *args)
+      unless cli_dependency_match?
+        raise "Please install #{CLI_DEPENDENCY}"
+      end
+
+      args += ["--output=#{@package.target(format)}", '--toc']
+      cli "#{args.join(' ')} #{@package.target(:markdown)}"
     end
 
     def pdf_latex_template_path
