@@ -25,10 +25,6 @@ Or install it yourself as:
 
 ## Dependencies
 
-Install BasicTeX:
-
-    http://www.tug.org/mactex/morepackages.html
-
 Install Homebrew packages:
 
     $ brew install gs
@@ -38,10 +34,9 @@ Install Homebrew packages:
     $ brew install brew-cask
     $ brew cask install pandoc
 
-Install fonts (Proxima Nova, and Inconsolata):
+Install BasicTeX:
 
-    https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
-    http://www.levien.com/type/myfonts/inconsolata.html
+    http://www.tug.org/mactex/morepackages.html
 
 Install the LaTeX packages:
 
@@ -49,9 +44,10 @@ Install the LaTeX packages:
     sudo tlmgr install upquote
     sudo tlmgr install cm-super
 
-You may need to add its bin directory to your PATH:
+Install fonts (Proxima Nova and Inconsolata):
 
-    export PATH=$PATH:/usr/texbin
+    https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
+    http://www.levien.com/type/myfonts/inconsolata.html
 
 ## Usage
 
