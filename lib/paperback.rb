@@ -1,5 +1,6 @@
 require 'paperback/book'
 require 'paperback/cover'
+require 'paperback/dot_graph'
 require 'paperback/git'
 require 'paperback/hub'
 require 'paperback/markdown'

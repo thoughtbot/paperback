@@ -46,6 +46,14 @@ Feature: Build
       """
       # Chapter Three
       ![Alt text](images/image.png)
+
+      ```dot
+      graph test {
+        a -- b;
+        a -- c;
+        b -- c;
+      }
+      ```tod
       """
     And a file named "example_app/foo.rb" with:
       """
@@ -106,6 +114,9 @@ Feature: Build
       """
       % Sample
       # Chapter Three
+      ![Alt text](images/image.png)
+
+      ![graph test](images/graph-test.png)
       """
     And the following files should exist:
       | build/a-nice-adventure.epub        |
@@ -114,6 +125,7 @@ Feature: Build
       | build/a-nice-adventure.pdf         |
       | build/images/cover.pdf             |
       | build/images/cover.png             |
+      | build/images/graph-test.png        |
       | build/a-nice-adventure-sample.epub |
       | build/a-nice-adventure-sample.html |
       | build/a-nice-adventure-sample.mobi |
