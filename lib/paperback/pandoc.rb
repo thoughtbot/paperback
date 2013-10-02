@@ -4,6 +4,10 @@ module Paperback
   class Pandoc
     CLI_DEPENDENCY = Gem::Dependency.new('pandoc', '>= 1.11.1')
 
+    module Regex
+      CLI_VERSION = /pandoc (?<version>.*)/
+    end
+
     def initialize(package)
       @package = package
     end
@@ -45,8 +49,8 @@ module Paperback
     end
 
     def cli_dependency_match?
-      version = cli('--version').lines.first.split.last
-      CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, version
+      match_data = cli('--version').match(Regex::CLI_VERSION)
+      CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
     end
 
     def pandoc(format, *args)
