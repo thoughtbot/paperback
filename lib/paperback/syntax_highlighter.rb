@@ -19,7 +19,7 @@ module Paperback
         Git.show_example(file_path, git_ref, line_range),
         CODE_FENCE
       ].map do |text|
-        text.indent(@indentation.size)
+        text.indent @indentation.size
       end
     end
 
@@ -36,7 +36,7 @@ module Paperback
     end
 
     def language
-      CodeRay::FileType::TypeFromExt['coffee'] ||= :coffee
+      CodeRay::FileType::TypeFromExt['coffee'] = :coffee
       CodeRay::FileType::TypeFromExt['erb'] = :rhtml
       CodeRay::FileType[file_path, true]
     end

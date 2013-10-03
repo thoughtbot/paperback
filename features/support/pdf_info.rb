@@ -31,12 +31,11 @@ module PdfInfo
     media_object[:MediaBox]
   end
 
-  def pdf_info(pdf_path)#, flags)
+  def pdf_info(pdf_path)
     in_current_dir do
-      PDF::Reader.new(pdf_path)
+      PDF::Reader.new pdf_path
     end
   end
 end
 
-World(PdfInfo)
-
+World PdfInfo

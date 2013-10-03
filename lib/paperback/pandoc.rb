@@ -49,7 +49,7 @@ module Paperback
     end
 
     def cli_dependency_match?
-      match_data = cli('--version').match(Regex::CLI_VERSION)
+      match_data = Regex::CLI_VERSION.match(cli('--version'))
       CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
     end
 
