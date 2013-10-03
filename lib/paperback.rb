@@ -1,3 +1,4 @@
+require 'English'
 require 'paperback/book'
 require 'paperback/cover'
 require 'paperback/git'
@@ -9,6 +10,7 @@ require 'paperback/stats'
 require 'paperback/storage'
 require 'paperback/syntax_highlighter'
 require 'paperback/table_of_contents'
+require 'paperback/version'
 require 'pathname'
 
 module Paperback

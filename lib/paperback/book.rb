@@ -33,7 +33,7 @@ module Paperback
 
       Paperback.in_build_dir do
         to_pdf
-        Stats.new(@package.target(:pdf))
+        Stats.new @package.target(:pdf)
       end
     end
 

@@ -86,7 +86,7 @@ module Paperback
 
     def upload_to_s3
       if ENV['AWS_ACCESS_KEY_ID']
-        Storage::S3.new.save_all(Paperback.release_root)
+        Storage::S3.new.save_all Paperback.release_root
       end
     end
   end

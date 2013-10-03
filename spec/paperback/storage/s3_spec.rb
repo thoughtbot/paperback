@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'aruba/api'
-require 'pathname'
 
 module Paperback
   module Storage
@@ -25,7 +24,7 @@ module Paperback
         end
 
         it 'creates the bucket' do
-          ClimateControl.modify(AWS_BUCKET: 'paperback_test') do
+          ClimateControl.modify('AWS_BUCKET' => 'paperback_test') do
             options = { bucket_name: ENV['AWS_BUCKET'] }
 
             @s3.save_all @current_path
@@ -36,7 +35,7 @@ module Paperback
 
         context 'when AWS_FILE_PATH is nil' do
           it 'writes to the bucket root' do
-            ClimateControl.modify(AWS_FILE_PATH: nil) do
+            ClimateControl.modify('AWS_FILE_PATH' => nil) do
               @s3.save_all @current_path
 
               verify_create @path_one
@@ -47,7 +46,7 @@ module Paperback
 
         context 'when AWS_FILE_PATH is present' do
           it 'writes to a prefix' do
-            ClimateControl.modify(AWS_FILE_PATH: 'foo') do
+            ClimateControl.modify('AWS_FILE_PATH' => 'foo') do
               @s3.save_all @current_path
 
               verify_create @path_one

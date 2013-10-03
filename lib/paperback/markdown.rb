@@ -29,13 +29,13 @@ module Paperback
         case line
         when Regex::CODE
           append SyntaxHighlighter.new(
-            $~[:indentation],
-            $~[:file_path],
-            $~[:git_ref],
-            $~[:line_range]
+            $LAST_MATCH_INFO[:indentation],
+            $LAST_MATCH_INFO[:file_path],
+            $LAST_MATCH_INFO[:git_ref],
+            $LAST_MATCH_INFO[:line_range]
           )
         when Regex::FILE
-          import $~[:file_path]
+          import $LAST_MATCH_INFO[:file_path]
         else
           append line
         end

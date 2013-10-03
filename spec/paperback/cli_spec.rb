@@ -12,7 +12,7 @@ describe Paperback::CLI do
 
     context 'when S3 is not configured' do
       it 'does not save to S3' do
-        ClimateControl.modify(AWS_ACCESS_KEY_ID: nil) do
+        ClimateControl.modify('AWS_ACCESS_KEY_ID' => nil) do
           @cli.release
         end
 
@@ -22,7 +22,7 @@ describe Paperback::CLI do
 
     context 'when S3 is configured' do
       it 'saves to S3' do
-        ClimateControl.modify(AWS_ACCESS_KEY_ID: 'foo') do
+        ClimateControl.modify('AWS_ACCESS_KEY_ID' => 'foo') do
           @cli.release
         end
 

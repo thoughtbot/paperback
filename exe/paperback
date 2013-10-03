@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 
 lib = File.expand_path('../../lib', __FILE__)
-$:.unshift(lib) unless $:.include?(lib)
+
+unless $LOAD_PATH.include?(lib)
+  $LOAD_PATH.unshift(lib)
+end
 
 require 'paperback/cli'
 

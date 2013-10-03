@@ -6,7 +6,7 @@ module Paperback
       include Thor::Actions
 
       # Arguments
-      argument :path, :type => :string
+      argument :path, type: :string
 
       def create
         directory 'book', path

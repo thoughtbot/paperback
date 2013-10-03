@@ -1,0 +1,19 @@
+CollectionMethods:
+  PreferredMethods:
+    collect!: 'map!'
+    collect: 'map'
+    find: 'detect'
+    find_all: 'select'
+    reduce: 'inject'
+
+Documentation:
+  Enabled: false
+
+DotPosition:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+MethodLength:
+  Enabled: false

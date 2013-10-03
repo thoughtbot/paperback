@@ -1,5 +1,5 @@
-require 'redcarpet'
 require 'nokogiri'
+require 'redcarpet'
 
 module Paperback
   class TableOfContents < Redcarpet::Render::Base
@@ -11,7 +11,7 @@ module Paperback
       /x
 
       PART = /
-        \\part{(.+)}  # Capture text inside LaTeX part commands
+        \\part{(?<text>.+)}  # Capture text inside LaTeX part commands
       /x
     end
 
@@ -32,7 +32,7 @@ module Paperback
 
     def self.generate(package)
       markdown = IO.read(package.target(:markdown))
-      renderer = Redcarpet::Markdown.new(self, :fenced_code_blocks => true)
+      renderer = Redcarpet::Markdown.new(self, fenced_code_blocks: true)
       IO.write package.target(:toc), renderer.render(markdown)
     end
 
@@ -43,8 +43,10 @@ module Paperback
     end
 
     def paragraph(text)
-      if text =~ Regex::PART
-        render_part $1
+      match_data = Regex::PART.match(text)
+
+      if match_data
+        render_part match_data[:text]
       end
     end
 
