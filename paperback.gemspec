@@ -24,8 +24,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency 'activesupport', '~> 4.0.0'
-  gem.add_dependency 'aws-sdk', '~> 1.10.0'
-  gem.add_dependency 'climate_control', '~> 0.0.3'
+  gem.add_dependency 'asset_sync', '~> 1.0.0'
   gem.add_dependency 'cocaine', '~> 0.5.1'
   gem.add_dependency 'coderay', '~> 1.0.9'
   gem.add_dependency 'dotenv', '~> 0.7.0'

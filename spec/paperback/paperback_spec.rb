@@ -13,15 +13,20 @@ describe Paperback do
     end
   end
 
-  describe '#release_root' do
-    it do
-      expect(Paperback.release_root).to be_an_expanded_pathname('release')
-    end
-  end
-
   describe '#root' do
     it do
       expect(Paperback.root).to be_an_expanded_pathname('.')
+    end
+  end
+
+  describe '#target_root' do
+    it do
+      repository = 'a-nice-adventure'
+      origin_url = "https://github.com/thoughtbot/#{repository}.git"
+      Paperback::Git.stubs(:origin_url).returns origin_url
+      expected = "build/#{repository}"
+
+      expect(Paperback.target_root).to be_an_expanded_pathname(expected)
     end
   end
 end

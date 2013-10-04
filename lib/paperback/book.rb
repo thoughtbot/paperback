@@ -11,7 +11,7 @@ module Paperback
     def generate
       to_markdown
 
-      Paperback.in_build_dir do
+      Paperback.in_target_dir do
         to_html
         to_mobi
         to_pdf
@@ -22,7 +22,7 @@ module Paperback
     def preview
       to_markdown
 
-      Paperback.in_build_dir do
+      Paperback.in_target_dir do
         to_pdf
         Cocaine::CommandLine.new('open', @package.target(:pdf)).run
       end
@@ -31,7 +31,7 @@ module Paperback
     def stats
       to_markdown
 
-      Paperback.in_build_dir do
+      Paperback.in_target_dir do
         to_pdf
         Stats.new @package.target(:pdf)
       end

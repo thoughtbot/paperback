@@ -9,11 +9,6 @@ module Paperback
       @subcommand = subcommand
     end
 
-    def self.dirty?
-      git = new('diff --quiet --ignore-submodules HEAD')
-      git.run.exit_status == 1
-    end
-
     def self.origin_url
       git = new('config --get remote.origin.url')
       git.run.output.strip
