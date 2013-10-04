@@ -1,30 +1,6 @@
 require 'spec_helper'
 
 describe Paperback::Git do
-  describe '.dirty?' do
-    context 'when changes are not present' do
-      it 'returns false' do
-        command_line = stub_command_line('')
-
-        actual = Paperback::Git.dirty?
-
-        expect(command_line).to have_received(:run)
-        expect(actual).to be_false
-      end
-    end
-
-    context 'when changes are present' do
-      it 'returns true' do
-        command_line = stub_command_line('', 1)
-
-        actual = Paperback::Git.dirty?
-
-        expect(command_line).to have_received(:run)
-        expect(actual).to be_true
-      end
-    end
-  end
-
   describe '.origin_url' do
     it 'returns the origin url' do
       expected = 'http://example.com/foo/bar.git'

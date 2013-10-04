@@ -58,7 +58,7 @@ Feature: Build
     And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
     Then the output should contain "create  a-nice-adventure.md"
-    And the file "build/a-nice-adventure.md" should contain:
+    And the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
       """
       % Book
       # Introduction
@@ -86,7 +86,7 @@ Feature: Build
 
       STUB
       """
-    And the file "build/a-nice-adventure.toc.html" should contain:
+    And the file "build/a-nice-adventure/a-nice-adventure.toc.html" should contain:
       """
       <section id="table-of-contents">
         <h3>Table of Contents</h3>
@@ -102,21 +102,21 @@ Feature: Build
         </ul>
       </section>
       """
-    And the file "build/a-nice-adventure-sample.md" should contain:
+    And the file "build/a-nice-adventure/a-nice-adventure-sample.md" should contain:
       """
       % Sample
       # Chapter Three
       """
     And the following files should exist:
-      | build/a-nice-adventure.epub        |
-      | build/a-nice-adventure.html        |
-      | build/a-nice-adventure.mobi        |
-      | build/a-nice-adventure.pdf         |
-      | build/images/cover.pdf             |
-      | build/images/cover.png             |
-      | build/a-nice-adventure-sample.epub |
-      | build/a-nice-adventure-sample.html |
-      | build/a-nice-adventure-sample.mobi |
-      | build/a-nice-adventure-sample.pdf  |
-    And "build/a-nice-adventure.pdf" should have page sizes for a book
-    And "build/a-nice-adventure.pdf" should embed appropriate screen fonts
+      | build/a-nice-adventure/a-nice-adventure.epub        |
+      | build/a-nice-adventure/a-nice-adventure.html        |
+      | build/a-nice-adventure/a-nice-adventure.mobi        |
+      | build/a-nice-adventure/a-nice-adventure.pdf         |
+      | build/a-nice-adventure/images/cover.pdf             |
+      | build/a-nice-adventure/images/cover.png             |
+      | build/a-nice-adventure/a-nice-adventure-sample.epub |
+      | build/a-nice-adventure/a-nice-adventure-sample.html |
+      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
+      | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
+    And "build/a-nice-adventure/a-nice-adventure.pdf" should have page sizes for a book
+    And "build/a-nice-adventure/a-nice-adventure.pdf" should embed appropriate screen fonts

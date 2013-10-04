@@ -1,10 +1,8 @@
-require 'dotenv'
 require 'fileutils'
 require 'paperback'
+require 'paperback/asset_sync'
 require 'paperback/generators/book'
 require 'thor'
-
-Dotenv.load
 
 module Paperback
   class CLI < Thor
@@ -37,10 +35,10 @@ module Paperback
       Book.new(Package.book).preview
     end
 
-    desc 'release', 'Create a new release'
+    desc 'release', 'Push build artifacts to S3'
     def release
-      build_for_release
-      upload_to_s3
+      build
+      AssetSync.sync
     end
 
     desc 'review', 'Review a pull request'
@@ -59,34 +57,18 @@ module Paperback
     private
 
     def copy_assets
-      Paperback.build_root.mkpath
+      Paperback.target_root.mkpath
       images_root = Paperback.book_root.join('images')
-      FileUtils.cp_r images_root, Paperback.build_root
+      FileUtils.cp_r images_root, Paperback.target_root
     end
 
     def truncate
       Package.all.each do |package|
-        target = Paperback.build_root.join(package.target(:markdown))
+        target = Paperback.target_root.join(package.target(:markdown))
 
         if target.exist?
           target.truncate 0
         end
-      end
-    end
-
-    def build_for_release
-      if Git.dirty?
-        raise 'You have local changes; not releasing.'
-      end
-
-      build
-      FileUtils.rm_rf Paperback.release_root
-      FileUtils.cp_r Paperback.build_root, Paperback.release_root
-    end
-
-    def upload_to_s3
-      if ENV['AWS_ACCESS_KEY_ID']
-        Storage::S3.new.save_all Paperback.release_root
       end
     end
   end

@@ -7,7 +7,6 @@ require 'paperback/markdown'
 require 'paperback/package'
 require 'paperback/pandoc'
 require 'paperback/stats'
-require 'paperback/storage'
 require 'paperback/syntax_highlighter'
 require 'paperback/table_of_contents'
 require 'paperback/version'
@@ -22,16 +21,16 @@ module Paperback
     root.join 'build'
   end
 
-  def self.in_build_dir(&block)
-    build_root.mkpath
-    Dir.chdir build_root, &block
-  end
-
-  def self.release_root
-    root.join 'release'
+  def self.in_target_dir(&block)
+    target_root.mkpath
+    Dir.chdir target_root, &block
   end
 
   def self.root
     Pathname.new Dir.pwd
+  end
+
+  def self.target_root
+    build_root.join Git.repository_name
   end
 end
