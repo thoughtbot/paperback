@@ -56,6 +56,14 @@ See help:
 
     $ paperback
 
+## Formatting
+
+### Cover
+
+* Dimensions: 6"x9"
+* File type: PDF
+* Graphics type: Vector (if possible)
+
 ## AWS S3 Integration
 
 You can automatically upload release files to AWS S3 by setting the appropriate
