@@ -1,15 +1,15 @@
 module Paperback
   class Markdown
     module Regex
-      CODE = /
+      CODE = %r{
         (?<indentation>\s*)`\s
-        (?<file_path>[\w\/\.]+)
+        (?<file_path>[\w/\.]+)
         @
         (?<git_ref>[\w]+)
         (?::
           (?<line_range>\d+(?:,\d+)?)
         )?
-      /x
+      }x
 
       FILE = /
         \<\<

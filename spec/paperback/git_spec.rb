@@ -95,7 +95,7 @@ describe Paperback::Git do
   end
 
   def expect_git(subcommand)
-    expect(Cocaine::CommandLine).to have_received(:new).
-      with("git #{subcommand}", '', expected_outcodes: [0, 1])
+    expect(Cocaine::CommandLine).to have_received(:new)
+      .with("git #{subcommand}", '', expected_outcodes: [0, 1])
   end
 end

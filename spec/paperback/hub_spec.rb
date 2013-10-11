@@ -34,8 +34,8 @@ describe Paperback::Hub do
     def verify_command_line(command_line)
       pull_request_url = "https://github.com/a/b/pull/#{@pull_request_id}"
 
-      expect(Cocaine::CommandLine).to have_received(:new).
-        with('hub checkout', pull_request_url)
+      expect(Cocaine::CommandLine).to have_received(:new)
+        .with('hub checkout', pull_request_url)
       expect(command_line).to have_received(:run)
     end
   end

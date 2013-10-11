@@ -14,7 +14,7 @@ module Paperback
     end
 
     def self.username
-      Git.origin_url.split(/[:\/]/)[-2]
+      Git.origin_url.split(%r{[:/]})[-2]
     end
   end
 end

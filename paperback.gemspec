@@ -17,9 +17,9 @@ Gem::Specification.new do |gem|
   gem.homepage = 'http://github.com/thoughtbot/paperback'
   gem.license = 'MIT'
 
-  gem.files = `git ls-files`.split($/)
+  gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.bindir = 'exe'
-  gem.executables = gem.files.grep(%r{^exe/}) {|f| File.basename(f) }
+  gem.executables = gem.files.grep(%r{^exe/}) { |f| File.basename(f) }
   gem.test_files = gem.files.grep(%r{^(spec|features)/})
   gem.require_paths = ['lib']
 
@@ -43,5 +43,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'bourne', '~> 1.3.0'
   gem.add_development_dependency 'rake', '~> 10.0.3'
   gem.add_development_dependency 'rspec', '~> 2.12.0'
-  gem.add_development_dependency 'rubocop', '~> 0.13.1'
+  gem.add_development_dependency 'rubocop', '0.14.1'
 end
