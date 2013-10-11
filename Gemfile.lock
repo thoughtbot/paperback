@@ -8,7 +8,6 @@ PATH
       coderay (~> 1.0.9)
       dotenv (~> 0.7.0)
       kindlegen (~> 2.7.0)
-      mime-types (~> 1.23)
       nokogiri (~> 1.5.9)
       pdf-reader (~> 1.3.2)
       redcarpet (~> 2.2.2)
@@ -79,7 +78,7 @@ GEM
       systemu
     mime-types (1.25)
     minitest (4.7.5)
-    multi_json (1.8.0)
+    multi_json (1.8.1)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -119,7 +118,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     ttfunk (1.0.3)
-    tzinfo (0.3.37)
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
