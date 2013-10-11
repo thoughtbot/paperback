@@ -6,7 +6,7 @@ describe Paperback::SyntaxHighlighter do
       Paperback::Git.stubs(:show_example).returns 'example'
     end
 
-    context 'known file type' do
+    context 'with a known file type' do
       it 'includes a code fence with a language' do
         syntax_highlighter = Paperback::SyntaxHighlighter.new(
           '', 'user.rb', 'abc123', nil
@@ -18,7 +18,19 @@ describe Paperback::SyntaxHighlighter do
       end
     end
 
-    context 'unknown file type' do
+    context 'with a line range' do
+      it 'includes an anchored code path' do
+        syntax_highlighter = Paperback::SyntaxHighlighter.new(
+          '', 'user.xyz', 'abc123', '1,2'
+        )
+
+        actual = syntax_highlighter.to_ary
+
+        expect(actual).to eq(['```', '# user.xyz#L1-2', 'example', '```'])
+      end
+    end
+
+    context 'with an unknown file type' do
       it 'includes a code fence with no language' do
         syntax_highlighter = Paperback::SyntaxHighlighter.new(
           '', 'user.xyz', 'abc123', nil

@@ -28,7 +28,7 @@ module Paperback
     attr_reader :file_path, :git_ref, :line_range
 
     def code_path
-      "# #{file_path}"
+      "# #{file_path}#{line_range_anchor}"
     end
 
     def code_start
@@ -39,6 +39,13 @@ module Paperback
       CodeRay::FileType::TypeFromExt['coffee'] = :coffee
       CodeRay::FileType::TypeFromExt['erb'] = :rhtml
       CodeRay::FileType[file_path, true]
+    end
+
+    def line_range_anchor
+      if line_range
+        hyphenated_line_range = line_range.sub(/,/, '-')
+        "#L#{hyphenated_line_range}"
+      end
     end
   end
 end
