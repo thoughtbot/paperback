@@ -29,7 +29,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'coderay', '~> 1.0.9'
   gem.add_dependency 'dotenv', '~> 0.7.0'
   gem.add_dependency 'kindlegen', '~> 2.7.0'
-  gem.add_dependency 'mime-types', '~> 1.23'
   gem.add_dependency 'nokogiri', '~> 1.5.9'
   gem.add_dependency 'pdf-reader', '~> 1.3.2'
   gem.add_dependency 'redcarpet', '~> 2.2.2'
