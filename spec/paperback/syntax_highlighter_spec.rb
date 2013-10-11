@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Paperback::SyntaxHighlighter do
   describe '#to_ary' do
     before do
-      Paperback::Git.stubs(:show_example).returns 'example'
+      allow(Paperback::Git).to receive(:show_example) { 'example' }
     end
 
     context 'known file type' do

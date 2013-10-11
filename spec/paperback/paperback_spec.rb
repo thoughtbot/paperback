@@ -23,7 +23,7 @@ describe Paperback do
     it do
       repository = 'a-nice-adventure'
       origin_url = "https://github.com/thoughtbot/#{repository}.git"
-      Paperback::Git.stubs(:origin_url).returns origin_url
+      allow(Paperback::Git).to receive(:origin_url) { origin_url }
       expected = "build/#{repository}"
 
       expect(Paperback.target_root).to be_an_expanded_pathname(expected)

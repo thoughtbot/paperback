@@ -27,7 +27,7 @@ describe Paperback::Hub do
     end
 
     def stub_hub_checkout(origin_url)
-      Paperback::Git.stubs(:origin_url).returns origin_url
+      allow(Paperback::Git).to receive(:origin_url) { origin_url }
       stub_command_line ''
     end
 
