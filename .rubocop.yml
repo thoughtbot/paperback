@@ -1,3 +1,9 @@
+AllCops:
+  Includes:
+    - '*.gemspec'
+    - Gemfile
+    - Rakefile
+
 CollectionMethods:
   PreferredMethods:
     collect!: 'map!'
@@ -9,11 +15,14 @@ CollectionMethods:
 Documentation:
   Enabled: false
 
-DotPosition:
-  Enabled: false
-
 IfUnlessModifier:
   Enabled: false
 
+MethodCalledOnDoEndBlock:
+  Enabled: true
+
 MethodLength:
   Enabled: false
+
+RegexpLiteral:
+  MaxSlashes: 0

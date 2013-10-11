@@ -55,7 +55,7 @@ module Paperback
 
     def pandoc(format, *args)
       unless cli_dependency_match?
-        raise "Please install #{CLI_DEPENDENCY}"
+        fail "Please install #{CLI_DEPENDENCY}"
       end
 
       args += ["--output=#{@package.target(format)}", '--toc']

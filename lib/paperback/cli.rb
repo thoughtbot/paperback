@@ -76,7 +76,7 @@ module Paperback
 
     def build_for_release
       if Git.dirty?
-        raise 'You have local changes; not releasing.'
+        fail 'You have local changes; not releasing.'
       end
 
       build
