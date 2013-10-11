@@ -25,7 +25,7 @@ describe Paperback::Package do
     end
 
     def stub_repository_name(name)
-      Paperback::Git.stubs repository_name: name
+      allow(Paperback::Git).to receive(:repository_name) { name }
     end
   end
 end

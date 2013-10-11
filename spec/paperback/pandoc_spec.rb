@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Paperback::Pandoc do
   describe '#to_html' do
     before do
-      @pandoc = Paperback::Pandoc.new(stub_everything)
+      package = double(Paperback::Package).as_null_object
+      @pandoc = Paperback::Pandoc.new(package)
     end
 
     context 'with an unsupported version of pandoc' do

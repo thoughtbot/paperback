@@ -39,8 +39,7 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'aruba', '~> 0.5.1'
   gem.add_development_dependency 'aruba-doubles', '~> 1.2.1'
-  gem.add_development_dependency 'bourne', '~> 1.3.0'
   gem.add_development_dependency 'rake', '~> 10.0.3'
-  gem.add_development_dependency 'rspec', '~> 2.12.0'
+  gem.add_development_dependency 'rspec', '~> 2.14.1'
   gem.add_development_dependency 'rubocop', '0.14.1'
 end

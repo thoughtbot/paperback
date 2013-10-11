@@ -5,8 +5,8 @@ describe Paperback::CLI do
   describe '#release' do
     it 'builds and syncs with S3' do
       @cli = Paperback::CLI.new
-      @cli.stubs :build
-      AssetSync.stubs :sync
+      allow(@cli).to receive(:build)
+      allow(AssetSync).to receive(:sync)
 
       @cli.release
 
