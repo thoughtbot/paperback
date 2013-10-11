@@ -1,30 +1,26 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+unless $LOAD_PATH.include?(lib)
+  $LOAD_PATH.unshift lib
+end
+
 require 'paperback/version'
 
 Gem::Specification.new do |gem|
   gem.name = 'paperback'
   gem.version = Paperback::VERSION
   gem.authors = ['thoughtbot']
-  gem.email = ['support@thoughtbot.com']
-  gem.description = %q{
-    Paperback makes it easy to generate ebooks in many formats (pdf, html, epub
-    and mobi) from Markdown files.
-
-    It combines Pandoc with some custom Markdown extensions which make it easy
-    to pull in code samples from a bundled example application.
-  }
-
-  gem.summary = %q{Standardize and streamline ebook production.}
-
+  gem.email = 'support@thoughtbot.com'
+  gem.description = 'Standardize and streamline ebook production.'
+  gem.summary = "paperback-#{Paperback::VERSION}"
   gem.homepage = 'http://github.com/thoughtbot/paperback'
   gem.license = 'MIT'
 
   gem.files = `git ls-files`.split($/)
   gem.bindir = 'exe'
   gem.executables = gem.files.grep(%r{^exe/}) {|f| File.basename(f) }
-  gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files = gem.files.grep(%r{^(spec|features)/})
   gem.require_paths = ['lib']
 
   gem.add_dependency 'activesupport', '~> 4.0.0'
