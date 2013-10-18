@@ -5,11 +5,11 @@ module Paperback
   class SyntaxHighlighter
     CODE_FENCE = '```'
 
-    def initialize(indentation, file_path, git_ref, line_range)
-      @indentation = indentation
-      @file_path = file_path
-      @git_ref = git_ref
-      @line_range = line_range
+    def initialize(options)
+      @file_path = options[:file_path]
+      @git_ref = options[:git_ref]
+      @indentation = options[:indentation]
+      @line_range = options[:line_range]
     end
 
     def to_ary

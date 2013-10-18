@@ -29,10 +29,10 @@ module Paperback
         case line
         when Regex::CODE
           append SyntaxHighlighter.new(
-            $LAST_MATCH_INFO[:indentation],
-            $LAST_MATCH_INFO[:file_path],
-            $LAST_MATCH_INFO[:git_ref],
-            $LAST_MATCH_INFO[:line_range]
+            file_path: $LAST_MATCH_INFO[:file_path],
+            git_ref: $LAST_MATCH_INFO[:git_ref],
+            indentation: $LAST_MATCH_INFO[:indentation],
+            line_range: $LAST_MATCH_INFO[:line_range]
           )
         when Regex::FILE
           import $LAST_MATCH_INFO[:file_path]
