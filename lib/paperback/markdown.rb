@@ -1,16 +1,6 @@
 module Paperback
   class Markdown
     module Regex
-      CODE = %r{
-        (?<indentation>\s*)`\s
-        (?<file_path>[\w/\.]+)
-        @
-        (?<git_ref>[\w]+)
-        (?::
-          (?<line_range>\d+(?:,\d+)?)
-        )?
-      }x
-
       FILE = /
         \<\<
         \[
@@ -27,13 +17,8 @@ module Paperback
     def generate
       @input.each_line do |line|
         case line
-        when Regex::CODE
-          append SyntaxHighlighter.new(
-            $LAST_MATCH_INFO[:indentation],
-            $LAST_MATCH_INFO[:file_path],
-            $LAST_MATCH_INFO[:git_ref],
-            $LAST_MATCH_INFO[:line_range]
-          )
+        when SyntaxHighlighter::Regex::CODE
+          append SyntaxHighlighter.new($LAST_MATCH_INFO)
         when Regex::FILE
           import $LAST_MATCH_INFO[:file_path]
         else
