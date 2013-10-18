@@ -17,11 +17,11 @@ module Paperback
       }x
     end
 
-    def initialize(options)
-      @file_path = options[:file_path]
-      @git_ref = options[:git_ref]
-      @indentation = options[:indentation]
-      @line_range = options[:line_range]
+    def initialize(config)
+      @file_path = config[:file_path]
+      @git_ref = config[:git_ref]
+      @indentation = config[:indentation]
+      @line_range = config[:line_range]
     end
 
     def to_ary
