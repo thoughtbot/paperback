@@ -8,7 +8,7 @@ Feature: Review
     Then the output should contain:
       """
       Usage:
-        paperback review
+        paperback review [PULL_REQUEST_URL]
 
       Review a pull request
       """
