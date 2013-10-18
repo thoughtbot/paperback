@@ -6,33 +6,35 @@ describe Paperback::SyntaxHighlighter do
       allow(Paperback::Git).to receive(:show_example) { 'example' }
     end
 
-    context 'known file type' do
-      it 'includes a code fence with a language' do
-        syntax_highlighter = Paperback::SyntaxHighlighter.new(
-          file_path: 'user.rb',
-          git_ref: 'abc123',
-          indentation: '',
-          line_range: nil
-        )
+    context 'with a file_path that is a' do
+      context 'known file type' do
+        it 'includes a code fence with a language' do
+          syntax_highlighter = Paperback::SyntaxHighlighter.new(
+            file_path: 'user.rb',
+            git_ref: 'abc123',
+            indentation: '',
+            line_range: nil
+          )
 
-        actual = syntax_highlighter.to_ary
+          actual = syntax_highlighter.to_ary
 
-        expect(actual).to eq(['```ruby', '# user.rb', 'example', '```'])
+          expect(actual).to eq(['```ruby', '# user.rb', 'example', '```'])
+        end
       end
-    end
 
-    context 'unknown file type' do
-      it 'includes a code fence with no language' do
-        syntax_highlighter = Paperback::SyntaxHighlighter.new(
-          file_path: 'user.xyz',
-          git_ref: 'abc123',
-          indentation: '',
-          line_range: nil
-        )
+      context 'unknown file type' do
+        it 'includes a code fence with no language' do
+          syntax_highlighter = Paperback::SyntaxHighlighter.new(
+            file_path: 'user.xyz',
+            git_ref: 'abc123',
+            indentation: '',
+            line_range: nil
+          )
 
-        actual = syntax_highlighter.to_ary
+          actual = syntax_highlighter.to_ary
 
-        expect(actual).to eq(['```', '# user.xyz', 'example', '```'])
+          expect(actual).to eq(['```', '# user.xyz', 'example', '```'])
+        end
       end
     end
   end
