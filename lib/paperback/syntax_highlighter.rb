@@ -5,6 +5,18 @@ module Paperback
   class SyntaxHighlighter
     CODE_FENCE = '```'
 
+    module Regex
+      CODE = %r{
+        (?<indentation>\s*)`\s
+        (?<file_path>[\w/\.]+)
+        @
+        (?<git_ref>[\w]+)
+        (?::
+          (?<line_range>\d+(?:,\d+)?)
+        )?
+      }x
+    end
+
     def initialize(options)
       @file_path = options[:file_path]
       @git_ref = options[:git_ref]
