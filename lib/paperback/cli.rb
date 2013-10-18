@@ -41,9 +41,9 @@ module Paperback
       AssetSync.sync
     end
 
-    desc 'review', 'Review a pull request'
-    def review(pull_request_id)
-      Hub.checkout pull_request_id
+    desc 'review [PULL_REQUEST_URL]', 'Review a pull request'
+    def review(pull_request_url)
+      Hub.checkout pull_request_url
       preview
     end
 
