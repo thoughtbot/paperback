@@ -39,6 +39,10 @@ Install BasicTeX:
 
     http://www.tug.org/mactex/morepackages.html
 
+Add `/usr/texbin` to your path:
+
+    export PATH="/usr/texbin:$PATH"
+
 Install the LaTeX packages:
 
     sudo tlmgr update --self
