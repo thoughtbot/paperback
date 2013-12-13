@@ -33,13 +33,10 @@ Install Homebrew packages:
     $ brew install imagemagick
     $ brew tap phinze/homebrew-cask
     $ brew install brew-cask
+    $ brew cask install basictex
     $ brew cask install pandoc
 
-Install BasicTeX:
-
-    http://www.tug.org/mactex/morepackages.html
-
-Install the LaTeX packages:
+Install LaTeX packages:
 
     sudo tlmgr update --self
     sudo tlmgr install upquote
@@ -60,7 +57,7 @@ See help:
 
 ### Cover
 
-* Dimensions: 6"x9"
+* Dimensions: 6 x 9 inches
 * File type: PDF
 * Graphics type: Vector (if possible)
 
