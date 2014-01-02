@@ -57,7 +57,7 @@ See help:
 
 ### Cover
 
-* Dimensions: 6x9
+* Dimensions: 6 x 9 inches
 * File type: PDF
 * Graphics type: Vector (if possible)
 
