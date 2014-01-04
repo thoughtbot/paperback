@@ -69,7 +69,7 @@ S3 integration:
 
     AWS_ACCESS_KEY_ID
     AWS_BUCKET
-    AWS_SECRET_KEY_ID
+    AWS_SECRET_ACCESS_KEY
 
 ## Contributing
 
