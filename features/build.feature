@@ -32,7 +32,10 @@ Feature: Build
     And a file named "book/chapters.md" with:
       """
       # Chapter One
+
       ## Subheading
+
+      ### Subsubheading
           ` foo.rb@HEAD
       ` UnknownFileType@HEAD
       ` foo.coffee@HEAD
@@ -55,16 +58,19 @@ Feature: Build
     And an empty file named "example_app/foo.coffee"
     And an empty file named "example_app/index.html.erb"
     And a fixture file named "book/images/image.png"
-    And I create a git repo named "a-nice-adventure"
+    And I create a git repo named "a-book"
     When I successfully run `paperback build`
-    Then the output should contain "create  a-nice-adventure.md"
-    And the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
+    Then the output should contain "create  a-book.md"
+    And the file "build/a-book/a-book.md" should contain:
       """
       % Book
       # Introduction
       \part{Part One}
       # Chapter One
+
       ## Subheading
+
+      ### Subsubheading
           ```ruby
           # foo.rb
           foo.bar
@@ -86,7 +92,9 @@ Feature: Build
 
       STUB
       """
-    And the file "build/a-nice-adventure/a-nice-adventure.toc.html" should contain:
+    And the TOC from "build/a-book/a-book.html" should reference "subheading"
+    But the TOC from "build/a-book/a-book.html" should not reference "subsubheading"
+    And the file "build/a-book/a-book.toc.html" should contain:
       """
       <section id="table-of-contents">
         <h3>Table of Contents</h3>
@@ -102,21 +110,21 @@ Feature: Build
         </ul>
       </section>
       """
-    And the file "build/a-nice-adventure/a-nice-adventure-sample.md" should contain:
+    And the file "build/a-book/a-book-sample.md" should contain:
       """
       % Sample
       # Chapter Three
       """
     And the following files should exist:
-      | build/a-nice-adventure/a-nice-adventure.epub        |
-      | build/a-nice-adventure/a-nice-adventure.html        |
-      | build/a-nice-adventure/a-nice-adventure.mobi        |
-      | build/a-nice-adventure/a-nice-adventure.pdf         |
-      | build/a-nice-adventure/images/cover.pdf             |
-      | build/a-nice-adventure/images/cover.png             |
-      | build/a-nice-adventure/a-nice-adventure-sample.epub |
-      | build/a-nice-adventure/a-nice-adventure-sample.html |
-      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
-      | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
-    And "build/a-nice-adventure/a-nice-adventure.pdf" should have page sizes for a book
-    And "build/a-nice-adventure/a-nice-adventure.pdf" should embed appropriate screen fonts
+      | build/a-book/a-book.epub        |
+      | build/a-book/a-book.html        |
+      | build/a-book/a-book.mobi        |
+      | build/a-book/a-book.pdf         |
+      | build/a-book/images/cover.pdf   |
+      | build/a-book/images/cover.png   |
+      | build/a-book/a-book-sample.epub |
+      | build/a-book/a-book-sample.html |
+      | build/a-book/a-book-sample.mobi |
+      | build/a-book/a-book-sample.pdf  |
+    And "build/a-book/a-book.pdf" should have page sizes for a book
+    And "build/a-book/a-book.pdf" should embed appropriate screen fonts
