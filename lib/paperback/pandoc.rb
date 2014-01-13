@@ -18,7 +18,8 @@ module Paperback
         '--section-divs',
         '--self-contained',
         '--standalone',
-        '--to=html5'
+        '--to=html5',
+        '--toc-depth=2'
       )
     end
 
