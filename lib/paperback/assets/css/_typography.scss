@@ -1,0 +1,141 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  color: $body-font-color;
+  font-family: $base-font-family;
+  line-height: $base-line-height;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $header-font-color;
+  font-family: $header-font-family;
+  line-height: 1.25em;
+  margin: $base-line-height 0 $base-line-height  * .25;
+  text-rendering: optimizeLegibility;
+
+  > a {
+    color: $header-font-color;
+  }
+}
+
+h1 {
+  margin: $base-line-height * 2 0 $base-line-height * .25;
+  font-size: 1.75em;
+
+  > a {
+    color: $thoughtbot;
+
+    &:hover, &:focus {
+      color: $header-font-color;
+    }
+  }
+
+  &.title {
+    font-size: 3em;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0 0 .125em;
+
+    @media screen and (min-width: 600px) {
+      font-size: 4em;
+    }
+  }
+}
+
+h2 {
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  &.author {
+    color: $light-font-color;
+    float: left;
+    font-size: 1em;
+    font-weight: 200;
+    margin: 0;
+    text-transform: none;
+
+    @media screen and (min-width: 600px) {
+      font-size: 1.25em;
+    }
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.25em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+p {
+  margin: 0 0 ($base-line-height * .5);
+}
+
+a {
+  -moz-transition: all 0.15s ease-out 0;
+  -webkit-transition: all 0.15s ease-out 0;
+  color: $base-link-color;
+  text-decoration: none;
+  transition: all 0.15s ease-out 0;
+
+  &:hover {
+    color: $hover-link-color;
+  }
+
+  &:active, &:focus {
+    color: $hover-link-color;
+    outline: none;
+  }
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid $base-border-color;
+  margin: $base-line-height 0;
+}
+
+img {
+  margin: 0;
+  max-width: 100%;
+}
+
+code {
+  font-family: $monospace;
+  font-size: .875em;
+  white-space: pre;
+  word-wrap: break-word;
+}
+
+pre {
+  background: $lighter-gray;
+  border: 1px solid $base-border-color;
+  line-height: 1.35;
+  overflow-x: scroll;
+  padding: .5rem 1rem;
+  white-space: pre;
+  word-wrap: normal;
+
+  code {
+    word-wrap: normal;
+  }
+}
+
+blockquote {
+  border-left: 2px solid $base-border-color;
+  color: lighten($body-font-color, 15);
+  margin: $base-line-height 0;
+  padding-left: $base-line-height * .5;
+}
