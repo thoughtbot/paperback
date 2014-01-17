@@ -55,6 +55,11 @@ See help:
 
 ## Formatting
 
+You can modify the styling by compiling the Sass:
+
+    $ cd lib/paperback/assets/css
+    $ sass --watch application.scss
+
 ### Cover
 
 * Dimensions: 6 x 9 inches

@@ -17,8 +17,9 @@ module Paperback
         :html,
         '--section-divs',
         '--self-contained',
-        '--standalone',
-        '--to=html5'
+        '--to=html5',
+        "--css=#{css_path}",
+        "--include-in-header=#{typekit_path}"
       )
     end
 
@@ -65,5 +66,14 @@ module Paperback
     def pdf_latex_template_path
       File.expand_path '../templates/pdf.latex', __FILE__
     end
+
+    def css_path
+      File.expand_path '../assets/css/application.css', __FILE__
+    end
+
+    def typekit_path
+      File.expand_path '../assets/typekit', __FILE__
+    end
+
   end
 end
