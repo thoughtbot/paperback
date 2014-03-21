@@ -20,13 +20,17 @@ Feature: Build
     And a file named "book/book.md" with:
       """
       % Book
+
       # Introduction
+
       \part{Part One}
+
       <<[chapters.md]
       """
     And a file named "book/sample.md" with:
       """
       % Sample
+
       <<[samples.md]
       """
     And a file named "book/chapters.md" with:
@@ -61,8 +65,11 @@ Feature: Build
     And the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
       """
       % Book
+
       # Introduction
+
       \part{Part One}
+
       # Chapter One
       ## Subheading
           ```ruby
@@ -105,18 +112,27 @@ Feature: Build
     And the file "build/a-nice-adventure/a-nice-adventure-sample.md" should contain:
       """
       % Sample
+
       # Chapter Three
       """
+    And the file "build/a-nice-adventure/chapters/chapter-one.html" should contain:
+      """
+      <title>Book: Chapter One</title>
+      """
     And the following files should exist:
-      | build/a-nice-adventure/a-nice-adventure.epub        |
-      | build/a-nice-adventure/a-nice-adventure.html        |
-      | build/a-nice-adventure/a-nice-adventure.mobi        |
-      | build/a-nice-adventure/a-nice-adventure.pdf         |
-      | build/a-nice-adventure/images/cover.pdf             |
-      | build/a-nice-adventure/images/cover.png             |
       | build/a-nice-adventure/a-nice-adventure-sample.epub |
       | build/a-nice-adventure/a-nice-adventure-sample.html |
       | build/a-nice-adventure/a-nice-adventure-sample.mobi |
       | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
+      | build/a-nice-adventure/a-nice-adventure.epub        |
+      | build/a-nice-adventure/a-nice-adventure.html        |
+      | build/a-nice-adventure/a-nice-adventure.mobi        |
+      | build/a-nice-adventure/a-nice-adventure.pdf         |
+      | build/a-nice-adventure/chapters/chapter-one.html    |
+      | build/a-nice-adventure/chapters/chapter-three.html  |
+      | build/a-nice-adventure/chapters/chapter-two.html    |
+      | build/a-nice-adventure/chapters/introduction.html   |
+      | build/a-nice-adventure/images/cover.pdf             |
+      | build/a-nice-adventure/images/cover.png             |
     And "build/a-nice-adventure/a-nice-adventure.pdf" should have page sizes for a book
     And "build/a-nice-adventure/a-nice-adventure.pdf" should embed appropriate screen fonts
