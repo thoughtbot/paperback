@@ -34,11 +34,11 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'redcarpet', '~> 2.2.2'
   gem.add_dependency 'rmagick', '~> 2.13.1'
   gem.add_dependency 'terminal-table', '~> 1.4.5'
-  gem.add_dependency 'thor', '~> 0.16.0'
+  gem.add_dependency 'thor', '~> 0.18.1'
 
   gem.add_development_dependency 'aruba', '~> 0.5.1'
   gem.add_development_dependency 'aruba-doubles', '~> 1.2.1'
-  gem.add_development_dependency 'rake', '~> 10.0.3'
+  gem.add_development_dependency 'rake', '~> 10.1.0'
   gem.add_development_dependency 'rspec', '~> 2.14.1'
   gem.add_development_dependency 'rubocop', '0.19.1'
 end
