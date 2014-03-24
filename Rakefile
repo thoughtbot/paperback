@@ -8,4 +8,4 @@ Cucumber::Rake::Task.new
 RSpec::Core::RakeTask.new
 Rubocop::RakeTask.new
 
-task default: %w(spec cucumber rubocop)
+task default: %w(rubocop spec cucumber)

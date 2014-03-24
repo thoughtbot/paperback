@@ -1,8 +1,13 @@
 AllCops:
+  Excludes:
+    - tmp/**
   Includes:
     - '*.gemspec'
     - Gemfile
     - Rakefile
+
+AmbiguousRegexpLiteral:
+  Enabled: false
 
 CollectionMethods:
   PreferredMethods:
@@ -26,3 +31,6 @@ MethodLength:
 
 RegexpLiteral:
   MaxSlashes: 0
+
+SymbolArray:
+  Enabled: true

@@ -74,6 +74,5 @@ module Paperback
     def typekit_path
       File.expand_path '../assets/typekit', __FILE__
     end
-
   end
 end
