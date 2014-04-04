@@ -44,7 +44,7 @@ Install LaTeX packages:
 
 Install fonts (Proxima Nova and Inconsolata):
 
-    https://www.dropbox.com/sh/ntxu99zcm28agp8/Cqiwu9ORA5
+    https://www.dropbox.com/s/sptt0ii6cdi9w6e/Proxima%20Nova.zip
     http://www.levien.com/type/myfonts/inconsolata.html
 
 ## Usage
