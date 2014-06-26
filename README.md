@@ -28,13 +28,7 @@ Or install it yourself as:
 
 Install Homebrew packages:
 
-    $ brew install gs
-    $ brew install hub
-    $ brew install imagemagick
-    $ brew tap phinze/homebrew-cask
-    $ brew install brew-cask
-    $ brew cask install basictex
-    $ brew cask install pandoc
+    $ brew bundle
 
 Install LaTeX packages:
 
@@ -42,10 +36,10 @@ Install LaTeX packages:
     sudo tlmgr install upquote
     sudo tlmgr install cm-super
 
-Install fonts (Proxima Nova and Inconsolata):
+Install fonts
 
-    https://www.dropbox.com/s/sptt0ii6cdi9w6e/Proxima%20Nova.zip
-    http://www.levien.com/type/myfonts/inconsolata.html
+* [Proxima Nova](https://www.dropbox.com/s/sptt0ii6cdi9w6e/Proxima%20Nova.zip)
+* [Inconsolata](http://www.levien.com/type/myfonts/inconsolata.html)
 
 ## Usage
 
