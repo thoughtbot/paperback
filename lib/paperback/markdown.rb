@@ -22,7 +22,7 @@ module Paperback
         when Regex::FILE
           import $LAST_MATCH_INFO[:file_path]
         else
-          append line
+          append MarkdownImageFilter.new(line)
         end
       end
     end

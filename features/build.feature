@@ -31,7 +31,7 @@ Feature: Build
       """
       % Sample
 
-      <<[samples.md]
+      <<[sample/introduction.md]
       """
     And a file named "book/chapters.md" with:
       """
@@ -46,10 +46,10 @@ Feature: Build
 
       STUB
       """
-    And a file named "book/samples.md" with:
+    And a file named "book/sample/introduction.md" with:
       """
       # Chapter Three
-      ![Alt text](images/image.png)
+      ![Alt text](../images/image.png)
       """
     And a file named "example_app/foo.rb" with:
       """
@@ -114,6 +114,7 @@ Feature: Build
       % Sample
 
       # Chapter Three
+      ![Alt text](images/image.png)
       """
     And the file "build/a-nice-adventure/chapters/chapter-one.html" should contain:
       """
