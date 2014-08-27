@@ -12,8 +12,6 @@ module Paperback
         directory 'book', path
       end
 
-      private
-
       def self.source_root
         File.dirname __FILE__
       end

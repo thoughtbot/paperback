@@ -7,7 +7,7 @@ require 'rubocop/rake_task'
 
 Cucumber::Rake::Task.new
 RSpec::Core::RakeTask.new
-Rubocop::RakeTask.new
+RuboCop::RakeTask.new
 
 namespace :bundler do
   task :audit do

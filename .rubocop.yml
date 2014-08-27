@@ -1,36 +1,33 @@
 AllCops:
-  Excludes:
-    - tmp/**
-  Includes:
-    - '*.gemspec'
-    - Gemfile
-    - Rakefile
+  Exclude:
+    - 'tmp/**/*'
 
-AmbiguousRegexpLiteral:
+Lint/AmbiguousRegexpLiteral:
+  Exclude:
+    - 'features/step_definitions/**/*'
+
+Metrics/MethodLength:
   Enabled: false
 
-CollectionMethods:
+Style/CollectionMethods:
   PreferredMethods:
-    collect!: 'map!'
-    collect: 'map'
     find: 'detect'
-    find_all: 'select'
     reduce: 'inject'
 
-Documentation:
+Style/Documentation:
   Enabled: false
 
-IfUnlessModifier:
+Style/GuardClause:
   Enabled: false
 
-MethodCalledOnDoEndBlock:
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
   Enabled: true
 
-MethodLength:
-  Enabled: false
-
-RegexpLiteral:
+Style/RegexpLiteral:
   MaxSlashes: 0
 
-SymbolArray:
+Style/SymbolArray:
   Enabled: true

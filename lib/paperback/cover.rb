@@ -11,8 +11,6 @@ module Paperback
       png
     end
 
-    private
-
     def self.source(extension)
       Pathname.new('images').join "cover.#{extension}"
     end
