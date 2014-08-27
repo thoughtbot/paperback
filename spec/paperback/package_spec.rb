@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Paperback::Package do
   describe '#source' do
     it 'returns its markdown source' do

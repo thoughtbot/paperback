@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Paperback::Hub do
   describe '.checkout' do
     it 'runs hub checkout' do

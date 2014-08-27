@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Paperback::Git do
   describe '.origin_url' do
     it 'returns the origin url' do

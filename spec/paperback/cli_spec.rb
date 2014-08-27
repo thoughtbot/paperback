@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'paperback/cli'
 
 describe Paperback::CLI do
