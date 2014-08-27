@@ -72,4 +72,4 @@ S3 integration:
 
 ## Contributing
 
-Please see `CONTRIBUTING.md` for more details on contributing.
+Please see our [contributing guidelines](CONTRIBUTING.md) for details.
