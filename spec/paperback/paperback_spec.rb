@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Paperback do
   describe '#book_root' do
     it do

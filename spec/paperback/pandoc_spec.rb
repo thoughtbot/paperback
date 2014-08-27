@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Paperback::Pandoc do
   describe '#to_html' do
     before do
