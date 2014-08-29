@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.summary = "paperback-#{Paperback::VERSION}"
   gem.homepage = 'http://github.com/thoughtbot/paperback'
   gem.license = 'MIT'
+  gem.required_ruby_version = '2.1.2'
 
   gem.files = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.bindir = 'exe'
