@@ -31,7 +31,7 @@ module Paperback
 
     def append(line)
       Paperback.in_target_dir do
-        File.open(@root, 'a') do |f|
+        File.open(@root, "a") do |f|
           f.puts line
         end
       end

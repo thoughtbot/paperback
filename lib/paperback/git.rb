@@ -1,5 +1,5 @@
-require 'active_support/core_ext/string/strip'
-require 'cocaine'
+require "active_support/core_ext/string/strip"
+require "cocaine"
 
 module Paperback
   class Git
@@ -10,18 +10,18 @@ module Paperback
     end
 
     def self.origin_url
-      git = new('config --get remote.origin.url')
+      git = new("config --get remote.origin.url")
       git.run.output.strip
     end
 
     def self.repository_name
-      File.basename origin_url, '.git'
+      File.basename origin_url, ".git"
     end
 
     def run
       full_command = "git #{@subcommand}"
       options = { expected_outcodes: [0, 1] }
-      command_line = Cocaine::CommandLine.new(full_command, '', options)
+      command_line = Cocaine::CommandLine.new(full_command, "", options)
       self.output = command_line.run
       self.exit_status = command_line.exit_status
       self

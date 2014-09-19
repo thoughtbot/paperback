@@ -1,9 +1,9 @@
-require 'active_support/core_ext/string/indent'
-require 'coderay'
+require "active_support/core_ext/string/indent"
+require "coderay"
 
 module Paperback
   class SyntaxHighlighter
-    CODE_FENCE = '```'
+    CODE_FENCE = "```"
 
     module Regex
       CODE = %r{
@@ -48,8 +48,8 @@ module Paperback
     end
 
     def language
-      CodeRay::FileType::TypeFromExt['coffee'] = :coffee
-      CodeRay::FileType::TypeFromExt['erb'] = :rhtml
+      CodeRay::FileType::TypeFromExt["coffee"] = :coffee
+      CodeRay::FileType::TypeFromExt["erb"] = :rhtml
       CodeRay::FileType[file_path, true]
     end
   end

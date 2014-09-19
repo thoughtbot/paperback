@@ -1,4 +1,4 @@
-require 'pdf-reader'
+require "pdf-reader"
 
 module PdfInfo
   PAGE_SIZE_6_BY_9_INCHES = [0, 0, 432, 648]

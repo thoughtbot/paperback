@@ -1,8 +1,8 @@
-require 'nokogiri'
+require "nokogiri"
 
 module Paperback
   class SplitHtml
-    CHAPTERS_SELECTOR = '.level1'
+    CHAPTERS_SELECTOR = ".level1"
 
     def initialize(package)
       @package = package
@@ -12,7 +12,7 @@ module Paperback
       target_subdir.mkpath
 
       chapters.each do |chapter|
-        write chapter['id'], wrap(chapter, chapter.at_css('h1').text)
+        write chapter["id"], wrap(chapter, chapter.at_css("h1").text)
       end
     end
 
@@ -35,24 +35,24 @@ module Paperback
     end
 
     def rewrite_fragments_to_relative_urls(node)
-      node.css('a').each do |a|
-        a['href'] = a['href'].gsub(/#(.+)/, '\1.html')
+      node.css("a").each do |a|
+        a["href"] = a["href"].gsub(/#(.+)/, '\1.html')
       end
     end
 
     def target_subdir
-      @target_subdir ||= Pathname.new('chapters')
+      @target_subdir ||= Pathname.new("chapters")
     end
 
     def wrap(node, subtitle)
       html.dup.tap do |wrapper|
         wrapper.title = "#{html.title}: #{subtitle}"
-        wrapper.at_css('body').inner_html = node
+        wrapper.at_css("body").inner_html = node
       end
     end
 
     def write(filename, node)
-      target_subdir.join("#{filename}.html").open('w') do |io|
+      target_subdir.join("#{filename}.html").open("w") do |io|
         node.write_xhtml_to io
       end
     end

@@ -1,5 +1,5 @@
-require 'nokogiri'
-require 'redcarpet'
+require "nokogiri"
+require "redcarpet"
 
 module Paperback
   class TableOfContents < Redcarpet::Render::Base
@@ -69,7 +69,7 @@ module Paperback
           </li>
         EOS
       else
-        ''
+        ""
       end
     end
 

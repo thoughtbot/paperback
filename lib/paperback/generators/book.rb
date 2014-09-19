@@ -1,4 +1,4 @@
-require 'thor/group'
+require "thor/group"
 
 module Paperback
   module Generators
@@ -9,7 +9,7 @@ module Paperback
       argument :path, type: :string
 
       def create
-        directory 'book', path
+        directory "book", path
       end
 
       def self.source_root

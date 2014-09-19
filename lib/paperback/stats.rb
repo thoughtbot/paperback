@@ -1,5 +1,5 @@
-require 'pdf-reader'
-require 'terminal-table'
+require "pdf-reader"
+require "terminal-table"
 
 module Paperback
   class Stats
@@ -39,10 +39,10 @@ module Paperback
 
     def to_terminal_table
       Terminal::Table.new do |t|
-        t << ['Pages', pages_count]
-        t << ['Pages Completed', pages_completed_count]
-        t << ['Chapters Completed', chapters_completed_count]
-        t << ['Chapters Remaining', chapters_remaining_count]
+        t << ["Pages", pages_count]
+        t << ["Pages Completed", pages_completed_count]
+        t << ["Chapters Completed", chapters_completed_count]
+        t << ["Chapters Remaining", chapters_remaining_count]
       end
     end
   end

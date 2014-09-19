@@ -1,17 +1,17 @@
 module Paperback
   class Package
     EXTENSIONS = {
-      epub: 'epub',
-      html: 'html',
-      markdown: 'md',
-      mobi: 'mobi',
-      pdf: 'pdf',
-      toc: 'toc.html'
+      epub: "epub",
+      html: "html",
+      markdown: "md",
+      mobi: "mobi",
+      pdf: "pdf",
+      toc: "toc.html"
     }
 
     def initialize(name, options = {})
       @name = name
-      @suffix = options[:suffix] || ''
+      @suffix = options[:suffix] || ""
     end
 
     def self.all
@@ -19,7 +19,7 @@ module Paperback
     end
 
     def self.book
-      new 'book'
+      new "book"
     end
 
     def source
@@ -37,7 +37,7 @@ module Paperback
     end
 
     def self.sample
-      new 'sample', suffix: '-sample'
+      new "sample", suffix: "-sample"
     end
   end
 end

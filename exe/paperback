@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-lib = File.expand_path('../../lib', __FILE__)
+lib = File.expand_path("../../lib", __FILE__)
 
 unless $LOAD_PATH.include?(lib)
   $LOAD_PATH.unshift(lib)
 end
 
-require 'paperback/cli'
+require "paperback/cli"
 
 Paperback::CLI.start

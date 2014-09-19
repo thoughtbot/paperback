@@ -1,5 +1,5 @@
 module CocaineMacros
-  def stub_command_line(output = '', exit_status = 0)
+  def stub_command_line(output = "", exit_status = 0)
     command_line = double(
       Cocaine::CommandLine,
       exit_status: exit_status,

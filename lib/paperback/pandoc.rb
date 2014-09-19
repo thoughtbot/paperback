@@ -1,8 +1,8 @@
-require 'cocaine'
+require "cocaine"
 
 module Paperback
   class Pandoc
-    CLI_DEPENDENCY = Gem::Dependency.new('pandoc', '>= 1.11.1')
+    CLI_DEPENDENCY = Gem::Dependency.new("pandoc", ">= 1.11.1")
 
     module Regex
       CLI_VERSION = /pandoc (?<version>.*)/
@@ -15,9 +15,9 @@ module Paperback
     def to_html
       pandoc(
         :html,
-        '--section-divs',
-        '--self-contained',
-        '--to=html5',
+        "--section-divs",
+        "--self-contained",
+        "--to=html5",
         "--css=#{css_path}",
         "--include-in-header=#{typekit_path}"
       )
@@ -33,13 +33,13 @@ module Paperback
     def to_pdf
       pandoc(
         :pdf,
-        '--chapters',
-        '--latex-engine=xelatex',
+        "--chapters",
+        "--latex-engine=xelatex",
         "--template=#{pdf_latex_template_path}",
-        '--variable=geometry:paperheight=9.0in',
-        '--variable=geometry:paperwidth=6.0in',
+        "--variable=geometry:paperheight=9.0in",
+        "--variable=geometry:paperwidth=6.0in",
         '--variable=mainfont:"Proxima Nova"',
-        '--variable=monofont:Inconsolata'
+        "--variable=monofont:Inconsolata"
       )
     end
 
@@ -50,7 +50,7 @@ module Paperback
     end
 
     def cli_dependency_match?
-      match_data = Regex::CLI_VERSION.match(cli('--version'))
+      match_data = Regex::CLI_VERSION.match(cli("--version"))
       CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
     end
 
@@ -59,20 +59,20 @@ module Paperback
         fail "Please install #{CLI_DEPENDENCY}"
       end
 
-      args += ["--output=#{@package.target(format)}", '--toc']
-      cli "#{args.join(' ')} #{@package.target(:markdown)}"
+      args += ["--output=#{@package.target(format)}", "--toc"]
+      cli "#{args.join(" ")} #{@package.target(:markdown)}"
     end
 
     def pdf_latex_template_path
-      File.expand_path '../templates/pdf.latex', __FILE__
+      File.expand_path "../templates/pdf.latex", __FILE__
     end
 
     def css_path
-      File.expand_path '../assets/css/application.css', __FILE__
+      File.expand_path "../assets/css/application.css", __FILE__
     end
 
     def typekit_path
-      File.expand_path '../assets/typekit', __FILE__
+      File.expand_path "../assets/typekit", __FILE__
     end
   end
 end

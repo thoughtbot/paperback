@@ -1,25 +1,25 @@
 describe Paperback do
-  describe '#book_root' do
+  describe "#book_root" do
     it do
-      expect(Paperback.book_root).to be_an_expanded_pathname('book')
+      expect(Paperback.book_root).to be_an_expanded_pathname("book")
     end
   end
 
-  describe '#build_root' do
+  describe "#build_root" do
     it do
-      expect(Paperback.build_root).to be_an_expanded_pathname('build')
+      expect(Paperback.build_root).to be_an_expanded_pathname("build")
     end
   end
 
-  describe '#root' do
+  describe "#root" do
     it do
-      expect(Paperback.root).to be_an_expanded_pathname('.')
+      expect(Paperback.root).to be_an_expanded_pathname(".")
     end
   end
 
-  describe '#target_root' do
+  describe "#target_root" do
     it do
-      repository = 'a-nice-adventure'
+      repository = "a-nice-adventure"
       origin_url = "https://github.com/thoughtbot/#{repository}.git"
       allow(Paperback::Git).to receive(:origin_url) { origin_url }
       expected = "build/#{repository}"

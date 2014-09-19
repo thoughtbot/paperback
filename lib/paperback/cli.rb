@@ -1,14 +1,14 @@
-require 'fileutils'
-require 'paperback'
-require 'paperback/asset_sync'
-require 'paperback/generators/book'
-require 'thor'
+require "fileutils"
+require "paperback"
+require "paperback/asset_sync"
+require "paperback/generators/book"
+require "thor"
 
 module Paperback
   class CLI < Thor
     include Thor::Actions
 
-    desc 'build', 'Build all packages and formats'
+    desc "build", "Build all packages and formats"
     def build
       clean
       copy_assets
@@ -18,36 +18,36 @@ module Paperback
       end
     end
 
-    desc 'clean', 'Remove build artifacts'
+    desc "clean", "Remove build artifacts"
     def clean
       FileUtils.rm_rf Paperback.build_root
     end
 
-    desc 'new [PATH]', 'Create a new Paperback project'
+    desc "new [PATH]", "Create a new Paperback project"
     def new(path)
       Generators::Book.start [path]
     end
 
-    desc 'preview', 'Build and open book in PDF format'
+    desc "preview", "Build and open book in PDF format"
     def preview
       truncate
       copy_assets
       Book.new(Package.book).preview
     end
 
-    desc 'release', 'Push build artifacts to S3'
+    desc "release", "Push build artifacts to S3"
     def release
       build
       AssetSync.sync
     end
 
-    desc 'review [PULL_REQUEST_URL]', 'Review a pull request'
+    desc "review [PULL_REQUEST_URL]", "Review a pull request"
     def review(pull_request_url)
       Hub.checkout pull_request_url
       preview
     end
 
-    desc 'stats', 'Report book statistics'
+    desc "stats", "Report book statistics"
     def stats
       truncate
       copy_assets
@@ -58,7 +58,7 @@ module Paperback
 
     def copy_assets
       Paperback.target_root.mkpath
-      images_root = Paperback.book_root.join('images')
+      images_root = Paperback.book_root.join("images")
       FileUtils.cp_r images_root, Paperback.target_root
     end
 

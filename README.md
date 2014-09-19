@@ -13,7 +13,7 @@ bundled example application.
 
 Add this line to your application's Gemfile:
 
-    gem 'paperback'
+    gem "paperback"
 
 And then execute:
 

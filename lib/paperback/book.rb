@@ -1,6 +1,6 @@
-require 'cocaine'
-require 'kindlegen'
-require 'thor'
+require "cocaine"
+require "kindlegen"
+require "thor"
 
 module Paperback
   class Book
@@ -24,7 +24,7 @@ module Paperback
 
       Paperback.in_target_dir do
         to_pdf
-        Cocaine::CommandLine.new('open', @package.target(:pdf)).run
+        Cocaine::CommandLine.new("open", @package.target(:pdf)).run
       end
     end
 
@@ -45,7 +45,7 @@ module Paperback
 
     def say_progress(format)
       @shell ||= Thor::Base.shell.new
-      @shell.say_status 'create', @package.target(format)
+      @shell.say_status "create", @package.target(format)
     end
 
     def to_epub
