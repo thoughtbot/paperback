@@ -15,7 +15,7 @@ module Paperback
     end
 
     def generate
-      @input.each_line do |line|
+      input_after_running_scripts.each_line do |line|
         case line
         when SyntaxHighlighter::Regex::CODE
           append SyntaxHighlighter.new($LAST_MATCH_INFO)
@@ -28,6 +28,12 @@ module Paperback
     end
 
     private
+
+    attr_reader :input
+
+    def input_after_running_scripts
+      ScriptRunner.new(input.read).output
+    end
 
     def append(line)
       Paperback.in_target_dir do
