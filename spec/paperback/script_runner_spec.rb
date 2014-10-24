@@ -13,22 +13,55 @@ describe Paperback::ScriptRunner do
 
     context "with an embedded script" do
       it "returns the input with the embedded script replaced by its output" do
-        input = "Hello world\n\n`$ echo Scripted\n"
+        input = strip_indentation(<<-INPUT)
+          Hello world
+
+          `$ echo Scripted
+        INPUT
         runner = described_class.new(input)
 
-        expect(runner.output).
-          to eq "Hello world\n\n```\n$ echo Scripted\nScripted\n```\n"
+        expect(runner.output).to eq strip_indentation(<<-OUTPUT)
+          Hello world
+
+          ```
+          $ echo Scripted
+          Scripted
+          ```
+        OUTPUT
       end
     end
 
     context "with multiple embedded scripts" do
       it "returns the input with all the scripts replaced by their output" do
-        input = "Hello\n\n`! echo First\n\nGoodbye\n\n`! echo Second"
+        input = strip_indentation(<<-INPUT)
+          Hello
+
+          `! echo First
+
+          Goodbye
+
+          `! echo Second
+        INPUT
         runner = described_class.new(input)
 
-        expect(runner.output).
-          to eq "Hello\n\n```\nFirst\n```\n\nGoodbye\n\n```\nSecond\n```\n"
+        expect(runner.output).to eq strip_indentation(<<-OUTPUT)
+          Hello
+
+          ```
+          First
+          ```
+
+          Goodbye
+
+          ```
+          Second
+          ```
+        OUTPUT
       end
     end
+  end
+
+  def strip_indentation(string)
+    string.gsub(/\n\s+/, "\n")
   end
 end
