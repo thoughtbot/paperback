@@ -38,7 +38,7 @@ Install LaTeX packages:
 
 Install fonts
 
-* [Proxima Nova](https://www.dropbox.com/s/sptt0ii6cdi9w6e/Proxima%20Nova.zip)
+* [Open Sans](https://www.google.com/fonts/specimen/Open+Sans)
 * [Inconsolata](http://www.levien.com/type/myfonts/inconsolata.html)
 
 ## Usage

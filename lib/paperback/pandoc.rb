@@ -38,7 +38,7 @@ module Paperback
         "--template=#{pdf_latex_template_path}",
         "--variable=geometry:paperheight=9.0in",
         "--variable=geometry:paperwidth=6.0in",
-        '--variable=mainfont:"Proxima Nova"',
+        '--variable=mainfont:"Open Sans"',
         "--variable=monofont:Inconsolata"
       )
     end
