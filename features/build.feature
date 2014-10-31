@@ -116,10 +116,6 @@ Feature: Build
       # Chapter Three
       ![Alt text](images/image.png)
       """
-    And the file "build/a-nice-adventure/chapters/chapter-one.html" should contain:
-      """
-      <title>Book: Chapter One</title>
-      """
     And the following files should exist:
       | build/a-nice-adventure/a-nice-adventure-sample.epub |
       | build/a-nice-adventure/a-nice-adventure-sample.html |
@@ -129,10 +125,6 @@ Feature: Build
       | build/a-nice-adventure/a-nice-adventure.html        |
       | build/a-nice-adventure/a-nice-adventure.mobi        |
       | build/a-nice-adventure/a-nice-adventure.pdf         |
-      | build/a-nice-adventure/chapters/chapter-one.html    |
-      | build/a-nice-adventure/chapters/chapter-three.html  |
-      | build/a-nice-adventure/chapters/chapter-two.html    |
-      | build/a-nice-adventure/chapters/introduction.html   |
       | build/a-nice-adventure/images/cover.pdf             |
       | build/a-nice-adventure/images/cover.png             |
     And "build/a-nice-adventure/a-nice-adventure.pdf" should have page sizes for a book

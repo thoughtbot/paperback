@@ -56,7 +56,6 @@ module Paperback
     def to_html
       say_progress :html
       pandoc.to_html
-      SplitHtml.new(@package).generate
     end
 
     def to_markdown
