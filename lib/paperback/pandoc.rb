@@ -19,7 +19,7 @@ module Paperback
         "--self-contained",
         "--to=html5",
         "--css=#{css_path}",
-        "--include-in-header=#{typekit_path}"
+        "--include-in-header=#{google_fonts_path}"
       )
     end
 
@@ -45,6 +45,10 @@ module Paperback
 
     private
 
+    def css_path
+      File.expand_path "../assets/css/application.css", __FILE__
+    end
+
     def cli(args)
       Cocaine::CommandLine.new(CLI_DEPENDENCY.name, args).run
     end
@@ -52,6 +56,10 @@ module Paperback
     def cli_dependency_match?
       match_data = Regex::CLI_VERSION.match(cli("--version"))
       CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
+    end
+
+    def google_fonts_path
+      File.expand_path "../assets/google_fonts.html", __FILE__
     end
 
     def pandoc(format, *args)
@@ -65,14 +73,6 @@ module Paperback
 
     def pdf_latex_template_path
       File.expand_path "../templates/pdf.latex", __FILE__
-    end
-
-    def css_path
-      File.expand_path "../assets/css/application.css", __FILE__
-    end
-
-    def typekit_path
-      File.expand_path "../assets/typekit", __FILE__
     end
   end
 end
