@@ -25,10 +25,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "activesupport", "~> 4.1.5"
-  gem.add_dependency "asset_sync", "~> 1.0.0"
   gem.add_dependency "cocaine", "~> 0.5.4"
   gem.add_dependency "coderay", "~> 1.1.0"
-  gem.add_dependency "dotenv", "~> 0.11.1"
   gem.add_dependency "kindlegen", "~> 2.9.1"
   gem.add_dependency "nokogiri", "~> 1.6.3.1"
   gem.add_dependency "pdf-reader", "~> 1.3.3"

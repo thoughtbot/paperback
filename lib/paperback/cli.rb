@@ -1,6 +1,5 @@
 require "fileutils"
 require "paperback"
-require "paperback/asset_sync"
 require "paperback/generators/book"
 require "thor"
 
@@ -33,12 +32,6 @@ module Paperback
       truncate
       copy_assets
       Book.new(Package.book).preview
-    end
-
-    desc "release", "Push build artifacts to S3"
-    def release
-      build
-      AssetSync.sync
     end
 
     desc "review [PULL_REQUEST_URL]", "Review a pull request"

@@ -60,16 +60,6 @@ You can modify the styling by compiling the Sass:
 * File type: PDF
 * Graphics type: Vector (if possible)
 
-## AWS S3 Integration
-
-You can release to AWS S3 by setting the appropriate environment variables or
-by placing them in a `.env` file. The following variables must be present for
-S3 integration:
-
-    AWS_ACCESS_KEY_ID
-    AWS_BUCKET
-    AWS_SECRET_ACCESS_KEY
-
 ## Contributing
 
 Please see our [contributing guidelines](CONTRIBUTING.md) for details.
