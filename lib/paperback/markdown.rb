@@ -9,9 +9,9 @@ module Paperback
       /x
     end
 
-    def initialize(source, root = nil)
+    def initialize(source, output)
       @input = Paperback.book_root.join(source)
-      @root = root || source
+      @output = output
     end
 
     def generate
@@ -30,15 +30,13 @@ module Paperback
     private
 
     def append(line)
-      Paperback.in_target_dir do
-        File.open(@root, "a") do |f|
-          f.puts line
-        end
+      @output.open("a") do |f|
+        f.puts line
       end
     end
 
     def import(file_path)
-      self.class.new(file_path, @root).generate
+      self.class.new(file_path, @output).generate
     end
   end
 end

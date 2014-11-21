@@ -63,7 +63,7 @@ module Paperback
 
       Markdown.new(
         @package.source,
-        @package.target(:markdown)
+        Paperback.target_root.join(@package.target(:markdown))
       ).generate
     end
 

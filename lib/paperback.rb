@@ -23,7 +23,6 @@ module Paperback
   end
 
   def self.in_target_dir(&block)
-    target_root.mkpath
     Dir.chdir target_root, &block
   end
 
