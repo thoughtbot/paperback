@@ -26,15 +26,9 @@ Or install it yourself as:
 
 ## Dependencies
 
-Install Homebrew packages:
+This repository comes equipped with a self-setup script:
 
-    $ brew bundle
-
-Install LaTeX packages:
-
-    sudo tlmgr update --self
-    sudo tlmgr install upquote
-    sudo tlmgr install cm-super
+    $ ./bin/setup
 
 Install fonts
 

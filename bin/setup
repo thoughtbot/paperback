@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+# Install Homebrew formulae
+gem install --conservative brewdler
+brewdle install
+
+# Install LaTeX packages
+sudo tlmgr update --self
+sudo tlmgr install upquote
+sudo tlmgr install cm-super
+
+# Set up Ruby dependencies
+gem install --conservative bundler
+bundle install
