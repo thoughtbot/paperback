@@ -1,6 +1,8 @@
 require "fileutils"
+require "launchy"
 require "paperback"
 require "paperback/generators/book"
+require "paperback/server"
 require "thor"
 
 module Paperback
@@ -9,7 +11,6 @@ module Paperback
 
     desc "build", "Build all packages and formats"
     def build
-      clean
       copy_assets
 
       Package.all.each do |package|
@@ -27,9 +28,8 @@ module Paperback
       Generators::Book.start [path]
     end
 
-    desc "preview", "Build and open book in PDF format"
+    desc "preview", "Build the book in HTML format"
     def preview
-      truncate
       copy_assets
       Book.new(Package.book).preview
     end
@@ -40,9 +40,19 @@ module Paperback
       preview
     end
 
+    desc "server", "Start the Paperback server"
+    def server
+      preview
+
+      Paperback::Server.run! do |server|
+        host = server.config[:BindAddress]
+        port = server.config[:Port]
+        Launchy.open "http://#{host}:#{port}"
+      end
+    end
+
     desc "stats", "Report book statistics"
     def stats
-      truncate
       copy_assets
       puts Book.new(Package.book).stats
     end
@@ -50,19 +60,10 @@ module Paperback
     private
 
     def copy_assets
+      clean
       Paperback.target_root.mkpath
       images_root = Paperback.book_root.join("images")
       FileUtils.cp_r images_root, Paperback.target_root
-    end
-
-    def truncate
-      Package.all.each do |package|
-        target = Paperback.target_root.join(package.target(:markdown))
-
-        if target.exist?
-          target.truncate 0
-        end
-      end
     end
   end
 end

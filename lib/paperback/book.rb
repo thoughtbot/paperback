@@ -1,4 +1,3 @@
-require "cocaine"
 require "kindlegen"
 require "thor"
 
@@ -23,8 +22,7 @@ module Paperback
       to_markdown
 
       Paperback.in_target_dir do
-        to_pdf
-        Cocaine::CommandLine.new("open", @package.target(:pdf)).run
+        to_html
       end
     end
 
