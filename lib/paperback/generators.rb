@@ -1,0 +1,1 @@
+require "paperback/generators/book"
