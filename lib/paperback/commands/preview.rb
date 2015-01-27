@@ -9,7 +9,13 @@ module Paperback
 
       def call
         Paperback::Commands::CopyAssets.call
-        Paperback::Book.new(Paperback::Package.book).preview
+        Paperback::Formats::HTML.new(package).generate
+      end
+
+      private
+
+      def package
+        Paperback::Package.book
       end
     end
   end

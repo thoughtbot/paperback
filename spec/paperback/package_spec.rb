@@ -12,14 +12,18 @@ describe Paperback::Package do
       stub_repository_name "adventure"
       package = Paperback::Package.new("franklin")
 
-      expect(package.target(:pdf)).to eq("adventure.pdf")
+      basename = package.target(:pdf).basename.to_s
+
+      expect(basename).to eq("adventure.pdf")
     end
 
     it "includes the suffix when given" do
       stub_repository_name "adventure"
       package = Paperback::Package.new("franklin", suffix: "-junior")
 
-      expect(package.target(:pdf)).to eq("adventure-junior.pdf")
+      basename = package.target(:pdf).basename.to_s
+
+      expect(basename).to eq("adventure-junior.pdf")
     end
 
     def stub_repository_name(name)

@@ -11,7 +11,7 @@ module Paperback
         Paperback::Commands::CopyAssets.call
 
         Paperback::Package.all.each do |package|
-          Paperback::Book.new(package).generate
+          Paperback::Formats.all(package).each(&:generate)
         end
       end
     end

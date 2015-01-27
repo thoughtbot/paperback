@@ -1,7 +1,7 @@
 require "English"
-require "paperback/book"
 require "paperback/commands"
 require "paperback/cover"
+require "paperback/formats"
 require "paperback/generators"
 require "paperback/git"
 require "paperback/hub"
@@ -12,7 +12,6 @@ require "paperback/pandoc"
 require "paperback/server"
 require "paperback/stats"
 require "paperback/syntax_highlighter"
-require "paperback/table_of_contents"
 require "paperback/version"
 require "pathname"
 
@@ -23,10 +22,6 @@ module Paperback
 
   def self.build_root
     root.join "build"
-  end
-
-  def self.in_target_dir(&block)
-    Dir.chdir target_root, &block
   end
 
   def self.root

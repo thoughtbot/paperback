@@ -61,7 +61,6 @@ Feature: Build
     And a fixture file named "book/images/image.png"
     And I create a git repo named "a-nice-adventure"
     When I successfully run `paperback build`
-    Then the output should contain "create  a-nice-adventure.md"
     And the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
       """
       % Book

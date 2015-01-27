@@ -9,13 +9,21 @@ module Paperback
       /x
     end
 
-    def initialize(source, output)
-      @input = Paperback.book_root.join(source)
-      @output = output
+    def initialize(source, target)
+      @source = Paperback.book_root.join(source)
+      @target = target
+    end
+
+    def self.generate(package)
+      target = package.target(:md)
+
+      unless target.exist?
+        new("#{package.source}", target).generate
+      end
     end
 
     def generate
-      @input.each_line do |line|
+      source.each_line do |line|
         case line
         when SyntaxHighlighter::Regex::CODE
           append SyntaxHighlighter.new($LAST_MATCH_INFO)
@@ -29,14 +37,17 @@ module Paperback
 
     private
 
+    attr_reader :source
+    attr_reader :target
+
     def append(line)
-      @output.open("a") do |f|
+      target.open("a") do |f|
         f.puts line
       end
     end
 
     def import(file_path)
-      self.class.new(file_path, @output).generate
+      self.class.new(file_path, target).generate
     end
   end
 end

@@ -8,8 +8,15 @@ module Paperback
       end
 
       def call
-        Paperback::Commands::CopyAssets.new.call
-        puts Paperback::Book.new(Paperback::Package.book).stats
+        Paperback::Commands::CopyAssets.call
+        Paperback::Formats::PDF.new(package).generate
+        puts Paperback::Stats.new(package)
+      end
+
+      private
+
+      def package
+        Paperback::Package.book
       end
     end
   end

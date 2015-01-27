@@ -12,7 +12,7 @@ module Paperback
     end
 
     def self.source(extension)
-      Pathname.new("images").join "cover.#{extension}"
+      Paperback.target_root.join "images", "cover.#{extension}"
     end
   end
 end

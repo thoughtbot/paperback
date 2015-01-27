@@ -12,67 +12,32 @@ module Paperback
       @package = package
     end
 
-    def to_html
-      pandoc(
-        :html,
-        "--section-divs",
-        "--self-contained",
-        "--to=html5",
-        "--css=#{css_path}",
-        "--include-in-header=#{google_fonts_path}"
-      )
-    end
-
-    def to_epub
-      pandoc(
-        :epub,
-        "--epub-cover-image=#{Cover.generate}"
-      )
-    end
-
-    def to_pdf
-      pandoc(
-        :pdf,
-        "--chapters",
-        "--latex-engine=xelatex",
-        "--template=#{pdf_latex_template_path}",
-        "--variable=geometry:paperheight=9.0in",
-        "--variable=geometry:paperwidth=6.0in",
-        '--variable=mainfont:"Open Sans"',
-        "--variable=monofont:Inconsolata"
-      )
-    end
-
-    private
-
-    def css_path
-      File.expand_path "../assets/css/application.css", __FILE__
-    end
-
-    def cli(args)
-      Cocaine::CommandLine.new(CLI_DEPENDENCY.name, args).run
-    end
-
-    def cli_dependency_match?
-      match_data = Regex::CLI_VERSION.match(cli("--version"))
-      CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
-    end
-
-    def google_fonts_path
-      File.expand_path "../assets/google_fonts.html", __FILE__
-    end
-
-    def pandoc(format, *args)
+    def generate(format, args)
       unless cli_dependency_match?
         fail "Please install #{CLI_DEPENDENCY}"
       end
 
-      args += ["--output=#{@package.target(format)}", "--toc"]
-      cli "#{args.join(" ")} #{@package.target(:markdown)}"
+      args.push(
+        "--output=#{package.target(format)}",
+        package.target(:md)
+      )
+
+      Dir.chdir Paperback.target_root do
+        run args.join(" ")
+      end
     end
 
-    def pdf_latex_template_path
-      File.expand_path "../templates/pdf.latex", __FILE__
+    private
+
+    attr_reader :package
+
+    def cli_dependency_match?
+      match_data = Regex::CLI_VERSION.match(run("--version"))
+      CLI_DEPENDENCY.match? CLI_DEPENDENCY.name, match_data[:version]
+    end
+
+    def run(params)
+      Cocaine::CommandLine.new(CLI_DEPENDENCY.name, params).run
     end
   end
 end

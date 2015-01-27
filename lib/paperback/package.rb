@@ -1,17 +1,10 @@
 module Paperback
   class Package
-    EXTENSIONS = {
-      epub: "epub",
-      html: "html",
-      markdown: "md",
-      mobi: "mobi",
-      pdf: "pdf",
-      toc: "toc.html"
-    }
+    attr_reader :name
 
     def initialize(name, options = {})
       @name = name
-      @suffix = options[:suffix] || ""
+      @suffix = options[:suffix]
     end
 
     def self.all
@@ -23,18 +16,19 @@ module Paperback
     end
 
     def source
-      "#{@name}.#{extension(:markdown)}"
+      "#{name}.md"
     end
 
-    def target(format)
-      "#{Git.repository_name}#{@suffix}.#{extension(format)}"
+    def target(extension)
+      Paperback
+        .target_root
+        .join("#{Git.repository_name}#{suffix}")
+        .sub_ext ".#{extension}"
     end
 
     private
 
-    def extension(format)
-      EXTENSIONS[format]
-    end
+    attr_reader :suffix
 
     def self.sample
       new "sample", suffix: "-sample"

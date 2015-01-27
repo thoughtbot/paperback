@@ -3,8 +3,8 @@ require "terminal-table"
 
 module Paperback
   class Stats
-    def initialize(pdf_path)
-      @pdf_reader = PDF::Reader.new(pdf_path)
+    def initialize(package)
+      @pdf_reader = PDF::Reader.new(package.target(:pdf))
     end
 
     def chapters_completed_count
