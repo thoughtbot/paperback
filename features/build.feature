@@ -3,20 +3,8 @@ Feature: Build
   I want a CLI to build my Paperback project
   So that I can generate a book in multiple formats
 
-  Scenario: The input is invalid
-    When I successfully run `paperback new`
-    And a file named "book/book.md" with:
-      """
-      \foo
-      """
-    When I run `paperback build`
-    Then it should fail with:
-      """
-      pandoc: Error
-      """
-
-  Scenario: The input is valid
-    When I successfully run `paperback new`
+  Background:
+    Given I successfully run `paperback new`
     And a file named "book/book.md" with:
       """
       % Book
@@ -60,8 +48,21 @@ Feature: Build
     And an empty file named "example_app/index.html.erb"
     And a fixture file named "book/images/image.png"
     And I create a git repo named "a-nice-adventure"
-    When I successfully run `paperback build`
-    And the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
+
+  Scenario: Invalid input
+    Given a file named "book/book.md" with:
+      """
+      \foo
+      """
+    When I run `paperback build`
+    Then it should fail with:
+      """
+      pandoc: Error
+      """
+
+  Scenario: All packages
+    Given I successfully run `paperback build`
+    Then the file "build/a-nice-adventure/a-nice-adventure.md" should contain:
       """
       % Book
 
@@ -128,3 +129,29 @@ Feature: Build
       | build/a-nice-adventure/images/cover.png             |
     And "build/a-nice-adventure/a-nice-adventure.pdf" should have page sizes for a book
     And "build/a-nice-adventure/a-nice-adventure.pdf" should embed appropriate screen fonts
+
+  Scenario: A single package
+    When I successfully run `paperback build --package=book`
+    Then the following files should exist:
+      | build/a-nice-adventure/a-nice-adventure.epub        |
+      | build/a-nice-adventure/a-nice-adventure.html        |
+      | build/a-nice-adventure/a-nice-adventure.mobi        |
+      | build/a-nice-adventure/a-nice-adventure.pdf         |
+    And the following files should not exist:
+      | build/a-nice-adventure/a-nice-adventure-sample.epub |
+      | build/a-nice-adventure/a-nice-adventure-sample.html |
+      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
+      | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
+
+  Scenario: A single format
+    When I successfully run `paperback build --format=html`
+    Then the following files should exist:
+      | build/a-nice-adventure/a-nice-adventure-sample.html |
+      | build/a-nice-adventure/a-nice-adventure.html        |
+    And the following files should not exist:
+      | build/a-nice-adventure/a-nice-adventure-sample.epub |
+      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
+      | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
+      | build/a-nice-adventure/a-nice-adventure.epub        |
+      | build/a-nice-adventure/a-nice-adventure.mobi        |
+      | build/a-nice-adventure/a-nice-adventure.pdf         |

@@ -7,6 +7,10 @@ module Paperback
         @package = package
       end
 
+      def extension
+        fail NotImplementedError
+      end
+
       def generate
         Paperback::Markdown.generate package
         prepare
@@ -19,10 +23,6 @@ module Paperback
       attr_reader :package
 
       private
-
-      def extension
-        fail NotImplementedError
-      end
 
       def prepare
       end

@@ -3,9 +3,11 @@ require "thor"
 
 module Paperback
   class CLI < Thor
-    desc "build", "Build all packages and formats"
+    desc "build", "Build packages and formats"
+    option :format
+    option :package
     def build
-      Paperback::Commands::Build.call
+      Paperback::Commands::Build.call options[:package], options[:format]
     end
 
     desc "clean", "Remove build artifacts"

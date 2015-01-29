@@ -4,6 +4,10 @@ require "thor"
 module Paperback
   module Formats
     class PDF < PandocBase
+      def extension
+        "pdf"
+      end
+
       private
 
       def args
@@ -17,10 +21,6 @@ module Paperback
           '--variable=mainfont:"Open Sans"',
           "--variable=monofont:Inconsolata"
         ]
-      end
-
-      def extension
-        "pdf"
       end
 
       def pdf_latex_template_path

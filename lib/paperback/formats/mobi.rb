@@ -4,11 +4,11 @@ require "paperback/formats/base"
 module Paperback
   module Formats
     class MOBI < Base
-      private
-
       def extension
         "mobi"
       end
+
+      private
 
       def prepare
         Paperback::Formats::EPUB.new(package).generate

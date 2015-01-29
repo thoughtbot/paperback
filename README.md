@@ -29,9 +29,10 @@ extensions to pull in code samples from a bundled example application.
 
 1. [Push it to GitHub](http://git.io/bxAu).
 
-1. Build all packages and formats.
+1. Build all packages and formats or a subset.
 
         $ docker run -v $PWD:/source thoughtbot/paperback build
+        $ docker run -v $PWD:/source thoughtbot/paperback build --format pdf --package book
 
 ## Formatting
 

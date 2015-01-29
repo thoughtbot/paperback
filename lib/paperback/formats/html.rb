@@ -3,6 +3,10 @@ require "paperback/formats/pandoc_base"
 module Paperback
   module Formats
     class HTML < PandocBase
+      def extension
+        "html"
+      end
+
       private
 
       def args
@@ -18,10 +22,6 @@ module Paperback
 
       def css_path
         File.expand_path "../../assets/css/application.css", __FILE__
-      end
-
-      def extension
-        "html"
       end
 
       def google_fonts_path

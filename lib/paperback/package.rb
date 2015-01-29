@@ -7,12 +7,14 @@ module Paperback
       @suffix = options[:suffix]
     end
 
-    def self.all
-      [book, sample]
-    end
-
     def self.book
       new "book"
+    end
+
+    def self.select(name = nil)
+      all.select do |package|
+        name.nil? || package.name == name
+      end
     end
 
     def source
@@ -29,6 +31,10 @@ module Paperback
     private
 
     attr_reader :suffix
+
+    def self.all
+      [book, sample]
+    end
 
     def self.sample
       new "sample", suffix: "-sample"
