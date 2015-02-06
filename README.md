@@ -1,49 +1,43 @@
 # Paperback
 
-Standardize and streamline ebook production.
+*Standardize and streamline eBook production.*
 
-Paperback makes it easy to generate ebooks in many formats (pdf, html, epub and
-mobi) from Markdown files.
-
-It combines [Pandoc](http://johnmacfarlane.net/pandoc/index.html) with some
-custom Markdown extensions which make it easy to pull in code samples from a
-bundled example application.
+Paperback generates eBooks in many formats from Markdown files. It combines
+[Pandoc](http://johnmacfarlane.net/pandoc/index.html) with custom Markdown
+extensions to pull in code samples from a bundled example application.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. [Setup Docker](https://docs.docker.com/installation).
 
-    gem "paperback"
+1. Build the image.
 
-And then execute:
+        $ git clone git@github.com:thoughtbot/paperback.git
+        $ cd paperback
+        $ docker build -t thoughtbot/paperback .
 
-    $ bundle
-    $ bundle binstubs paperback
+## Getting Started
 
-Or install it yourself as:
+1. Generate a new book.
 
-    $ gem install paperback
+        $ docker run -v $PWD:/source thoughtbot/paperback new [PATH]
+        $ cd [PATH]
 
-## Dependencies
+1. [Push it to GitHub](http://git.io/bxAu).
 
-This repository comes equipped with a self-setup script:
+1. Build all packages and formats.
 
-    $ ./bin/setup
+        $ docker run -v $PWD:/source thoughtbot/paperback build
 
-Install fonts
+1. Get an overview of available commands.
 
-* [Open Sans](https://www.google.com/fonts/specimen/Open+Sans)
-* [Inconsolata](http://www.levien.com/type/myfonts/inconsolata.html)
-
-## Usage
-
-See help:
-
-    $ paperback
+        $ docker run thoughtbot/paperback help
 
 ## Formatting
 
-You can modify the styling by compiling the Sass:
+### HTML
+
+You can modify the styling by compiling the Sass.
 
     $ cd lib/paperback/assets/css
     $ sass --watch application.scss

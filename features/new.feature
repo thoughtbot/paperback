@@ -7,7 +7,6 @@ Feature: New
     When I successfully run `paperback new .`
     Then the following files should exist:
       | .gitignore            |
-      | Gemfile               |
       | LICENSE               |
       | book/book.md          |
       | book/images/cover.pdf |
@@ -18,7 +17,6 @@ Feature: New
     When I successfully run `paperback new foo`
     Then the following files should exist:
       | foo/.gitignore            |
-      | foo/Gemfile               |
       | foo/LICENSE               |
       | foo/book/book.md          |
       | foo/book/images/cover.pdf |
@@ -29,7 +27,6 @@ Feature: New
     When I successfully run `paperback new foo/bar`
     Then the following files should exist:
       | foo/bar/.gitignore            |
-      | foo/bar/Gemfile               |
       | foo/bar/LICENSE               |
       | foo/bar/book/book.md          |
       | foo/bar/book/images/cover.pdf |

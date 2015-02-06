@@ -28,11 +28,6 @@ module Paperback
       Paperback::Commands::Review.call pull_request_url
     end
 
-    desc "server", "Start the Paperback server"
-    def server
-      Paperback::Commands::Server.call
-    end
-
     desc "stats", "Report book statistics"
     def stats
       Paperback::Commands::Stats.call

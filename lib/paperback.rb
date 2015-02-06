@@ -9,10 +9,8 @@ require "paperback/markdown"
 require "paperback/markdown_image_filter"
 require "paperback/package"
 require "paperback/pandoc"
-require "paperback/server"
 require "paperback/stats"
 require "paperback/syntax_highlighter"
-require "paperback/version"
 require "pathname"
 
 module Paperback

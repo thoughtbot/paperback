@@ -1,6 +1,0 @@
-brew 'caskroom/cask/brew-cask'
-brew 'gs'
-brew 'hub'
-brew 'imagemagick'
-brew 'pandoc'
-cask 'mactex'
