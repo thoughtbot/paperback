@@ -4,7 +4,7 @@ Feature: Build
   So that I can generate a book in multiple formats
 
   Scenario: The input is invalid
-    When I successfully run `paperback new .`
+    When I successfully run `paperback new`
     And a file named "book/book.md" with:
       """
       \foo
@@ -16,7 +16,7 @@ Feature: Build
       """
 
   Scenario: The input is valid
-    When I successfully run `paperback new .`
+    When I successfully run `paperback new`
     And a file named "book/book.md" with:
       """
       % Book

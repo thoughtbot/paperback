@@ -4,7 +4,7 @@ Feature: Stats
   So that I can provide status updates to potential customers
 
   Scenario:
-    When I successfully run `paperback new .`
+    When I successfully run `paperback new`
     And a file named "book/book.md" with:
       """
       % Book

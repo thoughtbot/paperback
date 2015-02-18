@@ -13,9 +13,9 @@ module Paperback
       Paperback::Commands::Clean.call
     end
 
-    desc "new [PATH]", "Create a new Paperback project"
-    def new(path)
-      Paperback::Commands::New.call path
+    desc "new", "Create a new Paperback project in the current directory"
+    def new
+      Paperback::Commands::New.call
     end
 
     desc "preview", "Build the book in HTML format"

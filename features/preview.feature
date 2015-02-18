@@ -4,7 +4,7 @@ Feature: Preview
   So that I can quickly view a book in HTML format
 
   Scenario:
-    When I successfully run `paperback new .`
+    When I successfully run `paperback new`
     And I create a git repo named "a-nice-adventure"
     And I successfully run `paperback preview`
     Then the following files should exist:

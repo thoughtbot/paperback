@@ -5,11 +5,8 @@ module Paperback
     class Book < Thor::Group
       include Thor::Actions
 
-      # Arguments
-      argument :path, type: :string
-
       def create
-        directory "book", path
+        directory "book", "."
       end
 
       def self.source_root

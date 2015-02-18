@@ -18,20 +18,20 @@ extensions to pull in code samples from a bundled example application.
 
 ## Getting Started
 
+1. Get an overview of available commands.
+
+        $ docker run thoughtbot/paperback help
+
 1. Generate a new book.
 
-        $ docker run -v $PWD:/source thoughtbot/paperback new [PATH]
-        $ cd [PATH]
+        $ mkdir DIRECTORY && cd DIRECTORY
+        $ docker run -v $PWD:/source thoughtbot/paperback new
 
 1. [Push it to GitHub](http://git.io/bxAu).
 
 1. Build all packages and formats.
 
         $ docker run -v $PWD:/source thoughtbot/paperback build
-
-1. Get an overview of available commands.
-
-        $ docker run thoughtbot/paperback help
 
 ## Formatting
 
