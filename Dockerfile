@@ -29,14 +29,15 @@ ENV PAPERBACK_HOME /usr/local/paperback
 RUN mkdir -p $PAPERBACK_HOME
 WORKDIR $PAPERBACK_HOME
 COPY Gemfile* $PAPERBACK_HOME/
-RUN bundle install --without development test
+RUN bundle install
+COPY lib/paperback/assets/fonts /usr/local/share/fonts
+RUN fc-cache -fv
 COPY . $PAPERBACK_HOME
-RUN mv lib/paperback/assets/fonts/* /usr/local/share/fonts/ && fc-cache -fv
 ENV PATH $PAPERBACK_HOME/exe:$PATH
 
 # Create directory to be mounted as data volume
-RUN mkdir -p /source
-WORKDIR /source
+RUN mkdir -p /book
+WORKDIR /book
 
 ENTRYPOINT ["paperback"]
 CMD ["help"]

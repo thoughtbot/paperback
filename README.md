@@ -8,13 +8,13 @@ extensions to pull in code samples from a bundled example application.
 
 ## Installation
 
-1. [Setup Docker](https://docs.docker.com/installation).
+1. [Set up Docker](https://docs.docker.com/installation).
 
 1. Build the image.
 
         $ git clone git@github.com:thoughtbot/paperback.git
         $ cd paperback
-        $ docker build -t thoughtbot/paperback .
+        $ docker build --tag thoughtbot/paperback .
 
 ## Getting Started
 
@@ -25,14 +25,14 @@ extensions to pull in code samples from a bundled example application.
 1. Generate a new book.
 
         $ mkdir DIRECTORY && cd DIRECTORY
-        $ docker run -v $PWD:/source thoughtbot/paperback new
+        $ docker run --volume $PWD:/book thoughtbot/paperback new
 
 1. [Push it to GitHub](http://git.io/bxAu).
 
 1. Build all packages and formats or a subset.
 
-        $ docker run -v $PWD:/source thoughtbot/paperback build
-        $ docker run -v $PWD:/source thoughtbot/paperback build --format pdf --package book
+        $ docker run --volume $PWD:/book thoughtbot/paperback build
+        $ docker run --volume $PWD:/book thoughtbot/paperback build --format pdf --package book
 
 ## Formatting
 
@@ -48,6 +48,21 @@ You can modify the styling by compiling the Sass.
 * Dimensions: 6 x 9 inches
 * File type: PDF
 * Graphics type: Vector (if possible)
+
+## Development
+
+1. Follow [installation](#installation) instructions.
+
+1. Open an interactive Docker shell.
+
+        $ ./bin/docker-shell
+
+1. Edit files as normal on your local host.
+
+1. Run build commands on the container.
+
+        $ bundle install
+        $ rake
 
 ## Contributing
 

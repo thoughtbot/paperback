@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+PAPERBACK_HOME="/usr/local/paperback"
+
+docker run \
+    --entrypoint /bin/bash \
+    --interactive \
+    --tty \
+    --volume "${PWD}:${PAPERBACK_HOME}" \
+    --workdir "${PAPERBACK_HOME}" \
+    thoughtbot/paperback
