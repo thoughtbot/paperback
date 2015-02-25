@@ -9,17 +9,6 @@ module Paperback
       @subcommand = subcommand
     end
 
-    def self.origin_url
-      git = new("config --get remote.origin.url")
-      output = git.run.output.strip
-
-      if output.empty?
-        fail "No origin remote present."
-      end
-
-      output
-    end
-
     def self.repository_name
       File.basename(Dir.pwd)
     end

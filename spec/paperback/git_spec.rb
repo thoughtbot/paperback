@@ -1,23 +1,4 @@
 describe Paperback::Git do
-  describe ".origin_url" do
-    it "returns the origin url" do
-      expected = "http://example.com/foo/bar.git"
-      command_line = stub_command_line("#{expected}\n")
-
-      actual = Paperback::Git.origin_url
-
-      expect_git "config --get remote.origin.url"
-      expect(command_line).to have_received(:run)
-      expect(actual).to eq(expected)
-    end
-
-    it "raises if there is no origin remote configured" do
-      stub_command_line("\n")
-
-      expect { Paperback::Git.origin_url }.to raise_error(/no origin remote/i)
-    end
-  end
-
   describe ".repository_name" do
     it "returns the repository name" do
       expected = "bar"
