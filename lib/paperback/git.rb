@@ -21,7 +21,7 @@ module Paperback
     end
 
     def self.repository_name
-      File.basename origin_url, ".git"
+      File.basename(Dir.pwd)
     end
 
     def run
