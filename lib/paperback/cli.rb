@@ -25,11 +25,6 @@ module Paperback
       Paperback::Commands::Preview.call
     end
 
-    desc "review [PULL_REQUEST_URL]", "Review a pull request"
-    def review(pull_request_url)
-      Paperback::Commands::Review.call pull_request_url
-    end
-
     desc "stats", "Report book statistics"
     def stats
       Paperback::Commands::Stats.call
