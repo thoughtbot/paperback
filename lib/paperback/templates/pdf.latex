@@ -155,7 +155,7 @@ $endfor$
 \definecolor{Light}{gray}{.92}
 \let\oldtexttt\texttt
 \newcommand{\reducedstrut}{\vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
-\renewcommand{\texttt}[1]{\begingroup\setlength{\fboxsep}{0pt}\oldtexttt{\colorbox{Light}{\reducedstrut#1}}\endgroup}
+\renewcommand{\texttt}[1]{\setlength{\fboxsep}{0pt}\oldtexttt{\colorbox{Light}{\reducedstrut#1}}}
 
 $if(title)$
 \title{$title$}
