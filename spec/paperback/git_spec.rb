@@ -11,10 +11,10 @@ describe Paperback::Git do
       expect(actual).to eq(expected)
     end
 
-    it "raises if there is no origin remote configured" do
+    it "is empty if there is no origin remote configured" do
       stub_command_line("\n")
 
-      expect { Paperback::Git.origin_url }.to raise_error(/no origin remote/i)
+      expect(Paperback::Git.origin_url).to eq ""
     end
   end
 

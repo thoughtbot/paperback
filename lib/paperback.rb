@@ -4,6 +4,7 @@ require "paperback/cover"
 require "paperback/formats"
 require "paperback/generators"
 require "paperback/git"
+require "paperback/metadata"
 require "paperback/hub"
 require "paperback/markdown"
 require "paperback/markdown_image_filter"
@@ -27,6 +28,6 @@ module Paperback
   end
 
   def self.target_root
-    build_root.join Git.repository_name
+    build_root.join Metadata.book_name
   end
 end

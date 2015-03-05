@@ -24,7 +24,7 @@ module Paperback
     def target(extension)
       Paperback
         .target_root
-        .join("#{Git.repository_name}#{suffix}")
+        .join("#{Metadata.book_name}#{suffix}")
         .sub_ext ".#{extension}"
     end
 

@@ -11,13 +11,7 @@ module Paperback
 
     def self.origin_url
       git = new("config --get remote.origin.url")
-      output = git.run.output.strip
-
-      if output.empty?
-        fail "No origin remote present."
-      end
-
-      output
+      git.run.output.strip
     end
 
     def self.repository_name
