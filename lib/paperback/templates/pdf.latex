@@ -107,16 +107,16 @@ $endif$
               pdfauthor={$author-meta$},
               pdftitle={$title-meta$},
               colorlinks=true,
-              urlcolor=cyan,
-              linkcolor=cyan]{hyperref}
+              urlcolor=blue,
+              linkcolor=blue]{hyperref}
 \else
   \usepackage[unicode=true,
               bookmarks=true,
               pdfauthor={$author-meta$},
               pdftitle={$title-meta$},
               colorlinks=true,
-              urlcolor=cyan,
-              linkcolor=cyan]{hyperref}
+              urlcolor=blue,
+              linkcolor=blue]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 $if(strikeout)$
