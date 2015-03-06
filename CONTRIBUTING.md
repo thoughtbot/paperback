@@ -1,6 +1,6 @@
 # Contributing
 
-We love pull requests. Please follow our [git protocol][git] and
+We love pull requests. Please follow our [Git protocol][git] and
 [style guides][style].
 
 By participating in this project, you agree to abide by

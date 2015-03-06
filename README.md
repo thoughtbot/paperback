@@ -10,11 +10,10 @@ extensions to pull in code samples from a bundled example application.
 
 1. [Set up Docker](https://docs.docker.com/installation).
 
-1. Build the image.
+1. Get the [latest release](https://github.com/thoughtbot/paperback/releases)
+   and load the image.
 
-        $ git clone git@github.com:thoughtbot/paperback.git
-        $ cd paperback
-        $ docker build --tag thoughtbot/paperback .
+        $ gunzip --to-stdout thoughtbot-paperback-X.Y.Z.tar.gz | docker load
 
 ## Getting Started
 
@@ -55,7 +54,7 @@ You can modify the styling by compiling the Sass.
 
 1. Open an interactive Docker shell.
 
-        $ ./bin/docker-shell
+        $ bin/docker-shell
 
 1. Edit files as normal on your local host.
 
@@ -63,6 +62,10 @@ You can modify the styling by compiling the Sass.
 
         $ bundle install
         $ rake
+
+## Releasing
+
+Please see our [releasing guidelines](RELEASING.md) for details.
 
 ## Contributing
 
