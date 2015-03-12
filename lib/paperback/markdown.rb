@@ -1,3 +1,4 @@
+#encoding: utf-8
 module Paperback
   class Markdown
     module Regex
