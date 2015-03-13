@@ -6,7 +6,7 @@ module Paperback
       include Thor::Actions
 
       def create
-        directory "book", "."
+        directory "book", Dir.pwd
       end
 
       def self.source_root
