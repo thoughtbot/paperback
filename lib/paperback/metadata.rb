@@ -1,11 +1,12 @@
 module Paperback
   class Metadata
     def self.book_name
-      origin_url = Git.origin_url
-      if origin_url.empty?
+      repository_name = Git.repository_name
+
+      if repository_name.empty?
         File.basename(Dir.pwd)
       else
-        origin_url
+        repository_name
       end
     end
   end

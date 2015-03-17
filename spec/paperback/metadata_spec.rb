@@ -1,8 +1,8 @@
 describe Paperback::Metadata do
   describe ".book_name" do
-    it "tries Git.origin_url first" do
-      expected = "http://example.com/foo/bar.git"
-      allow(Paperback::Git).to receive(:origin_url).and_return(expected)
+    it "tries Git.repository_name first" do
+      expected = "foo"
+      allow(Paperback::Git).to receive(:repository_name).and_return(expected)
 
       actual = Paperback::Metadata.book_name
 
@@ -10,7 +10,7 @@ describe Paperback::Metadata do
     end
 
     it "falls back to the current directory name" do
-      allow(Paperback::Git).to receive(:origin_url).and_return("")
+      allow(Paperback::Git).to receive(:repository_name).and_return("")
 
       actual = Paperback::Metadata.book_name
 
