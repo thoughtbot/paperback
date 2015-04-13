@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
         cm-super=0.3.4-9 \
         fonts-inconsolata=001.010-5 \
-        locales=2.19-15 \
+        locales=2.19-17 \
         texlive-latex-extra=2014.20141024-1 \
         texlive-xetex=2014.20141024-2 && \
     rm -rf /var/lib/apt/lists/*
