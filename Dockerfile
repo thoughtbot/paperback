@@ -3,10 +3,12 @@ MAINTAINER thoughtbot <support@thoughtbot.com>
 
 # Install packages
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         cm-super=0.3.4-9 \
         fonts-inconsolata=001.010-5 \
+        fonts-lmodern=2.004.4-5 \
         locales=2.19-18 \
+        texlive-fonts-recommended=2014.20141024-2 \
         texlive-latex-extra=2014.20141024-1 \
         texlive-xetex=2014.20141024-2 && \
     rm -rf /var/lib/apt/lists/*
@@ -17,7 +19,7 @@ ENV LANGUAGE $LANG
 ENV LC_ALL $LANG
 RUN echo "$LANG UTF-8" >> /etc/locale.gen && locale-gen
 
-# Install latest Pandoc
+# Install Pandoc
 ENV PANDOC_VERSION 1.13.2
 ENV PANDOC_PACKAGE pandoc-$PANDOC_VERSION-1-amd64.deb
 RUN wget https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/$PANDOC_PACKAGE && \
