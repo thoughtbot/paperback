@@ -24,14 +24,14 @@ extensions to pull in code samples from a bundled example application.
 1. Generate a new book.
 
         $ mkdir DIRECTORY && cd DIRECTORY
-        $ docker run --volume $PWD:/book thoughtbot/paperback new
+        $ docker run --volume $PWD:/src thoughtbot/paperback new
 
 1. [Push it to GitHub](http://git.io/bxAu).
 
 1. Build all packages and formats or a subset.
 
-        $ docker run --volume $PWD:/book thoughtbot/paperback build
-        $ docker run --volume $PWD:/book thoughtbot/paperback build --format pdf --package book
+        $ docker run --volume $PWD:/src thoughtbot/paperback build
+        $ docker run --volume $PWD:/src thoughtbot/paperback build --format pdf --package book
 
 ## Formatting
 

@@ -38,8 +38,8 @@ COPY . $PAPERBACK_HOME
 ENV PATH $PAPERBACK_HOME/exe:$PATH
 
 # Create directory to be mounted as data volume
-RUN mkdir -p /book
-WORKDIR /book
+RUN mkdir -p /src
+WORKDIR /src
 
 ENTRYPOINT ["paperback"]
 CMD ["help"]
