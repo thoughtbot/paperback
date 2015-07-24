@@ -25,6 +25,10 @@ the thoughtbot [code of conduct].
         $ bundle install
         $ rake
 
+1. You can also run arbitrary commands like `rake` with `bin/docker-run`:
+
+        $ ./bin/docker-run rake
+
 ## Releasing
 
 Please see our [releasing guidelines](RELEASING.md) for details.

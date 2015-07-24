@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Run an arbitrary command inside the paperback Docker container
+# e.g. `./bin/docker-run rake`
+
+PAPERBACK_HOME="/usr/local/paperback"
+
+docker run \
+    --entrypoint echo \
+    --tty \
+    --volume "${PWD}:${PAPERBACK_HOME}" \
+    --workdir "${PAPERBACK_HOME}" \
+    thoughtbot/paperback
+    $@
