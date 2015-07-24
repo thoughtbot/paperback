@@ -10,7 +10,7 @@ module Paperback
       end
 
       def pandoc
-        Paperback::Pandoc.new package
+        Paperback::PandocGenerator.new package
       end
 
       def run
