@@ -35,7 +35,7 @@ module Paperback
       Paperback::Commands::Stats.call
     end
 
-    desc "pandoc", "Run arbitrary pandoc commands"
+    desc "pandoc", "Run pandoc with the provided arguments"
     def pandoc(*arguments)
       puts Paperback::Commands::Pandoc.call(arguments.join(" "))
     end
