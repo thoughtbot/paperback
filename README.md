@@ -50,23 +50,5 @@ You can modify the styling by compiling the Sass.
 
 ## Development
 
-1. Follow [installation](#installation) instructions.
-
-1. Open an interactive Docker shell.
-
-        $ bin/docker-shell
-
-1. Edit files as normal on your local host.
-
-1. Run build commands on the container.
-
-        $ bundle install
-        $ rake
-
-## Releasing
-
-Please see our [releasing guidelines](RELEASING.md) for details.
-
-## Contributing
-
-Please see our [contributing guidelines](CONTRIBUTING.md) for details.
+For information about local development,
+see the [contributing guidelines](CONTRIBUTING.md).
