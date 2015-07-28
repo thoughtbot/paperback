@@ -17,4 +17,5 @@ group :development, :test do
   gem "rake", "~> 10.3.2"
   gem "rspec", "~> 3.0.0"
   gem "rubocop", "0.25.0"
+  gem "docker-api"
 end
