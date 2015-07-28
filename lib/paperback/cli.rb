@@ -15,6 +15,11 @@ module Paperback
       Paperback::Commands::Clean.call
     end
 
+    desc "check", "Check Paperback dependencies"
+    def check
+      Paperback::Commands::Check.call
+    end
+
     desc "new", "Create a new Paperback project in the current directory"
     def new
       Paperback::Commands::New.call
