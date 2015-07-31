@@ -155,3 +155,9 @@ Feature: Build
       | build/a-nice-adventure/a-nice-adventure.epub        |
       | build/a-nice-adventure/a-nice-adventure.mobi        |
       | build/a-nice-adventure/a-nice-adventure.pdf         |
+
+  Scenario: Successive runs
+    When I successfully run `paperback build`
+    And I successfully run `cp -r build/ public/`
+    And I successfully run `paperback build`
+    Then I successfully run `diff --recursive build/a-nice-adventure/images/ public/a-nice-adventure/images/`

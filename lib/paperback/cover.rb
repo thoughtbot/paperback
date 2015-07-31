@@ -7,7 +7,7 @@ module Paperback
       png = source("png")
       image = Magick::Image.read(pdf) { self.density = 400 }.first
       image.resize 1000, 1000
-      image.write png
+      image.write(png) { self["png", "exclude-chunk"] = "date,time" }
       png
     end
 
