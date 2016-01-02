@@ -8,7 +8,7 @@ extensions to pull in code samples from a bundled example application.
 
 ## Installation
 
-1. [Set up Docker](https://docs.docker.com/installation).
+1. [Set up Docker](https://docs.docker.com/engine/installation/).
 
 1. Get the [latest release](https://github.com/thoughtbot/paperback/releases)
    and load the image.
