@@ -7,7 +7,7 @@ RUN apt-get update && \
         cm-super=0.3.4-9 \
         fonts-inconsolata=001.010-5 \
         fonts-lmodern=2.004.4-5 \
-        locales=2.19-18 \
+        locales=2.19-18+deb8u3 \
         texlive-fonts-recommended=2014.20141024-2 \
         texlive-latex-extra=2014.20141024-1 \
         texlive-xetex=2014.20141024-2 && \
