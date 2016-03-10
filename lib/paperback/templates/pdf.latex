@@ -195,7 +195,7 @@ $endfor$
 $if(toc)$
 {
 \hypersetup{linkcolor=black}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{$if(tocdepth)$$tocdepth$$else$1$endif$}
 \def\numberline#1{}
 \tableofcontents
 }
