@@ -45,6 +45,8 @@ $endif$
 \fi
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$else$
+\usepackage[paperwidth=6in, paperheight=9in]{geometry}
 $endif$
 $if(natbib)$
 \usepackage{natbib}

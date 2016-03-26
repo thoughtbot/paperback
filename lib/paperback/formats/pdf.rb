@@ -16,8 +16,6 @@ module Paperback
           "--latex-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
-          "--variable=geometry:paperheight=9.0in",
-          "--variable=geometry:paperwidth=6.0in",
           '--variable=mainfont:"Open Sans"',
           "--variable=monofont:Inconsolata"
         ]
