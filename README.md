@@ -10,7 +10,9 @@ extensions to pull in code samples from a bundled example application.
 
 1. [Set up Docker](https://docs.docker.com/engine/installation/).
 
-1. Join the thoughtbot [organization] on Docker Hub.
+1. Join the thoughtbot [organization] on Docker Hub and login.
+
+        $ docker login
 
 1. Pull the [latest image].
 
