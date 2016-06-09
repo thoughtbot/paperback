@@ -14,15 +14,15 @@ the thoughtbot [code of conduct].
 
 1. Follow [installation](README.md#installation) instructions.
 
-1. Open an interactive Docker shell.
-
-        $ bin/docker-shell
-
 1. Edit files as normal on your local host.
 
-1. Run build commands on the container.
+1. Build the Docker image.
 
-        $ bundle install
+        $ docker build --no-cache --tag thoughtbot/paperback .
+
+1. Run commands on the container.
+
+        $ bin/docker-shell
         $ rake
 
 ## Releasing

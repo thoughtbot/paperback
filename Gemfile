@@ -1,10 +1,12 @@
 source "https://rubygems.org"
 
+ruby "2.1.5"
+
 gem "activesupport", "~> 4.1.5"
 gem "cocaine", "~> 0.5.4"
 gem "coderay", "~> 1.1.0"
 gem "kindlegen", "~> 2.9.1"
-gem "nokogiri", "~> 1.6.3.1"
+gem "nokogiri", "~> 1.6.8"
 gem "pdf-reader", "~> 1.3.3"
 gem "redcarpet", "~> 3.2.3"
 gem "rmagick", "~> 2.13.3"

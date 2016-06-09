@@ -10,10 +10,11 @@ extensions to pull in code samples from a bundled example application.
 
 1. [Set up Docker](https://docs.docker.com/engine/installation/).
 
-1. Get the [latest release](https://github.com/thoughtbot/paperback/releases)
-   and load the image.
+1. Join the thoughtbot [organization] on Docker Hub.
 
-        $ gunzip --to-stdout thoughtbot-paperback-X.Y.Z.tar.gz | docker load
+1. Pull the [latest image].
+
+        $ docker pull thoughtbot/paperback
 
 ## Getting Started
 
@@ -52,3 +53,6 @@ You can modify the styling by compiling the Sass.
 
 For information about local development,
 see the [contributing guidelines](CONTRIBUTING.md).
+
+[latest image]: https://hub.docker.com/r/thoughtbot/paperback/
+[organization]: https://hub.docker.com/u/thoughtbot/
