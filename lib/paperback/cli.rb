@@ -34,5 +34,10 @@ module Paperback
     def stats
       Paperback::Commands::Stats.call
     end
+
+    desc "pandoc", "Run pandoc with the provided arguments"
+    def pandoc(*arguments)
+      puts Paperback::Commands::Pandoc.call(arguments.join(" "))
+    end
   end
 end

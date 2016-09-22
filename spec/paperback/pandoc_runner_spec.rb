@@ -1,29 +1,28 @@
-describe Paperback::Pandoc do
-  describe "#generate" do
+describe Paperback::PandocRunner do
+  describe "#run" do
     before do
       allow(Dir).to receive(:chdir).and_yield
       allow(Paperback).to receive(:target_root).and_return("")
-
-      @package = double(Paperback::Package, target: "")
-      @pandoc = Paperback::Pandoc.new(@package)
     end
 
     context "with an unsupported version of pandoc" do
       it "raises an error" do
         stub_pandoc("--version", "pandoc 1.11.0")
 
-        expect { @pandoc.generate(:foo, ["bar"]) }.to raise_error(RuntimeError)
+        expect {
+          Paperback::PandocRunner.new("--help").run
+        }.to raise_error(RuntimeError)
       end
     end
 
-    it "adds --smart and --output=format to the given arguments" do
+    it "runs pandoc with the given command" do
       stub_pandoc("--version", "pandoc 1.11.1")
-      stub_pandoc("--foo --bar --smart --output=html ", "")
-      allow(@package).to receive(:target).with("format").and_return("html")
+      stub_pandoc("--to=html5", "")
 
-      @pandoc.generate("format", %w(--foo --bar))
+      pandoc_runner = Paperback::PandocRunner.new("--to=html5")
+      pandoc_runner.run
 
-      expect_pandoc("--foo --bar --smart --output=html ")
+      expect_pandoc("--to=html5")
     end
   end
 
