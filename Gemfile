@@ -1,17 +1,18 @@
 source "https://rubygems.org"
 
-ruby "2.1.5"
+ruby "2.4.1"
 
 gem "activesupport", "~> 4.1.5"
 gem "cocaine", "~> 0.5.4"
 gem "coderay", "~> 1.1.0"
 gem "kindlegen", "~> 2.9.1"
-gem "nokogiri", "~> 1.6.8"
+gem "nokogiri", "~> 1.8.1"
 gem "pdf-reader", "~> 1.3.3"
 gem "redcarpet", "~> 3.2.3"
 gem "rmagick", "~> 2.13.3"
 gem "terminal-table", "~> 1.4.5"
 gem "thor", "~> 0.19.1"
+gem "json", "~> 1.8.6"
 
 group :development, :test do
   gem "aruba", "~> 0.6.1"
@@ -19,4 +20,5 @@ group :development, :test do
   gem "rake", "~> 10.3.2"
   gem "rspec", "~> 3.0.0"
   gem "rubocop", "0.25.0"
+  gem "cucumber", "~> 1.3.18"
 end
