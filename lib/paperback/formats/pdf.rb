@@ -12,7 +12,7 @@ module Paperback
 
       def args
         [
-          "--chapters",
+          "--top-level-division=chapter",
           "--latex-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
