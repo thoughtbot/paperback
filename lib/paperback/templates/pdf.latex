@@ -9,6 +9,14 @@
   \newfontfamily\quotefont[Ligatures=TeX]{$mainfont$}
 \usepackage{xcolor,footmisc}
 \def\footnotelayout{\color{blue}}
+\usepackage{float}
+\let\origfigure=\figure
+\let\endorigfigure=\endfigure
+\renewenvironment{figure}[1][]{%
+  \origfigure[H]
+}{%
+  \endorigfigure
+}
 $if(mainfont)$
   \setmainfont[Ligatures=TeX]{$mainfont$}
 $endif$
