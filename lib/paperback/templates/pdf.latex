@@ -179,6 +179,14 @@ $if(date)$
 \date{$date$}
 $endif$
 
+$if(links-as-notes)$
+\usepackage{letltxmacro}
+% Alias href to originalHref to avoid an infinite loop
+\LetLtxMacro{\originalHref}{\href}
+% Make links footnotes in addition to hotlinks:
+\renewcommand{\href}[2]{\originalHref{#1}{#2}\footnote{\url{#1}}}
+$endif$
+
 % Remove "Chapter x" text from chapter titles
 \makeatletter
 \def\@makechapterhead#1{%

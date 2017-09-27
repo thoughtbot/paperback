@@ -17,7 +17,8 @@ module Paperback
           "--template=#{pdf_latex_template_path}",
           "--toc",
           '--variable=mainfont:"Open Sans"',
-          "--variable=monofont:Inconsolata"
+          "--variable=monofont:Inconsolata",
+          "--variable=links-as-notes:true"
         ]
       end
 
