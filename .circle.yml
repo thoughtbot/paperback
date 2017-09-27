@@ -15,14 +15,6 @@ jobs:
         name: Restore bundle cache
         key: paperback-{{ checksum "Gemfile.lock" }}
 
-      # - type: cache-restore
-      #   name: Restore apt cache
-      #   key: paperback-apt-{{ checksum "Gemfile.lock" }}
-
-      # - run: sudo dpkg -i /home/circleci/.cache/apt/archives/*.deb || true
-
-      # - run: mkdir -p /home/circleci/.cache/apt/archives/partial && touch /home/circleci/.cache/apt/archives/lock && chmod 640 /home/circleci/.cache/apt/archives/lock && sudo apt-get install -o=dir::cache=/home/circleci/.cache/apt pandoc
-
       - run: wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb
 
       - run: sudo dpkg -i pandoc-1.19.2.1-1-amd64.deb
@@ -34,11 +26,5 @@ jobs:
         key: paperback-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-
-      # - type: cache-save
-      #   name: Store apt cache
-      #   key: paperback-apt-{{ checksum "Gemfile.lock" }}
-      #   paths:
-      #     - ~/.cache/apt
 
       - run: bundle exec rake
