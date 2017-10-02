@@ -16,7 +16,7 @@ module Paperback
           "--latex-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
-          '--variable=mainfont:"Open Sans"',
+          '--variable=mainfont:"Tiempos Text Regular Test Regular"',
           "--variable=monofont:Inconsolata",
           "--variable=links-as-notes:true"
         ]

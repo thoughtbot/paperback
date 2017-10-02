@@ -7,8 +7,9 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \newcommand{\euro}{€}
   \newfontfamily\quotefont[Ligatures=TeX]{$mainfont$}
-\usepackage{xcolor,footmisc}
-\def\footnotelayout{\color{blue}}
+\usepackage{xcolor}
+\usepackage[bottom]{footmisc}
+\def\footnotelayout{\color{black}}
 \usepackage{float}
 \let\origfigure=\figure
 \let\endorigfigure=\endfigure
@@ -18,7 +19,7 @@
   \endorigfigure
 }
 $if(mainfont)$
-  \setmainfont[Ligatures=TeX]{$mainfont$}
+  \setmainfont[Ligatures=TeX,SizeFeatures={Size=12}]{$mainfont$}
 $endif$
 $if(sansfont)$
   \setsansfont[Ligatures=TeX]{$sansfont$}
@@ -39,9 +40,6 @@ $if(mainfont)$
 $endif$
 $if(sansfont)$
     \setsansfont{$sansfont$}
-$endif$
-$if(monofont)$
-    \setmonofont[Scale=0.8]{$monofont$}
 $endif$
 $if(mathfont)$
     \setmathfont{$mathfont$}
@@ -138,7 +136,9 @@ $if(strikeout)$
 $endif$
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
+\renewcommand{\baselinestretch}{1.6} % Line-height
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
+
 $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
