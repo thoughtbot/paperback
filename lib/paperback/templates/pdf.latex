@@ -18,11 +18,23 @@
 }{%
   \endorigfigure
 }
+
+% Brand colors
+\definecolor{thoughtbotred}{HTML}{ED3E44}
+\definecolor{thoughtbotgrey}{HTML}{4E4E54}
+
 $if(mainfont)$
-  \setmainfont[Ligatures=TeX,SizeFeatures={Size=12}]{$mainfont$}
+  \setmainfont[
+    Ligatures=TeX,
+    SizeFeatures={Size=12},
+    BoldFont={Tiempos Text Medium Test Regular}
+  ]{$mainfont$}
 $endif$
 $if(sansfont)$
-  \setsansfont[Ligatures=TeX]{$sansfont$}
+  \setsansfont[
+    Ligatures=TeX,
+    BoldFont={* Medium}
+  ]{$sansfont$}
 $endif$
 $if(monofont)$
   \setmonofont[Scale=0.8]{$monofont$}
@@ -169,16 +181,6 @@ $endfor$
 \newcommand{\reducedstrut}{\vrule width 0pt height .9\ht\strutbox depth .9\dp\strutbox\relax}
 \renewcommand{\texttt}[1]{\setlength{\fboxsep}{0pt}\oldtexttt{\colorbox{Light}{\reducedstrut#1}}}
 
-$if(title)$
-\title{$title$}
-$endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-$if(date)$
-\date{$date$}
-$endif$
-
 $if(links-as-notes)$
 \usepackage{letltxmacro}
 % Alias href to originalHref to avoid an infinite loop
@@ -187,16 +189,28 @@ $if(links-as-notes)$
 \renewcommand{\href}[2]{\originalHref{#1}{#2}\footnote{\url{#1}}}
 $endif$
 
+% Full page chapters
 % Remove "Chapter x" text from chapter titles
+\usepackage{afterpage}
+\usepackage{pagecolor}
 \makeatletter
 \def\@makechapterhead#1{%
-  \vspace*{50\p@}%
-  {\parindent \z@ \raggedright \normalfont
+  \vspace*{\fill}
+  {\parindent \z@ \center \normalfont
     \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 40\p@
+    \Huge \sffamily \textcolor{white}{#1}\par\nobreak
+    \pagenumbering{gobble}\afterpage{\pagenumbering{arabic}}
+    \newpagecolor{thoughtbotgrey}\afterpage{\restorepagecolor}
+    \vspace*{\fill}
+    \clearpage
   }}
   \makeatother
+
+% Set formats for each heading level
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\sffamily}
+\titleformat*{\subsection}{\large\sffamily}
+\titleformat*{\subsubsection}{\large\sffamily}
 
 \usepackage{pdfpages}
 
@@ -207,9 +221,14 @@ $endif$
 \pagenumbering{roman}
 \frontmatter
 \includepdf[pages={1}]{images/cover.pdf}
-$if(title)$
-\maketitle
-$endif$
+
+\begin{titlepage}
+  \centering
+  \vspace*{\baselineskip}
+  {\Huge \sffamily \bfseries \textcolor{thoughtbotred}{PLAYBOOK} \\}
+  \vspace{\baselineskip}
+  {\Large \sffamily thoughtbot}
+\end{titlepage}
 
 $for(include-before)$
 $include-before$

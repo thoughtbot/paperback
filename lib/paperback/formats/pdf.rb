@@ -18,6 +18,7 @@ module Paperback
           "--toc",
           '--variable=mainfont:"Tiempos Text Regular Test Regular"',
           "--variable=monofont:Inconsolata",
+          '--variable=sansfont:"Calibre"',
           "--variable=links-as-notes:true"
         ]
       end
