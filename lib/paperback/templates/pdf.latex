@@ -170,11 +170,6 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
-% Customize quote blocks
-\newcommand*{\openquote}{\tikz[remember picture,overlay,xshift=-15pt,yshift=-10pt]
-     \node (OQ) {\quotefont\fontsize{60}{60}\selectfont``};\kern0pt}
-\expandafter\def\expandafter\quote\expandafter{\quote\openquote}
-
 % Add background color to inline verbatim blocks
 \definecolor{Light}{gray}{.92}
 \let\oldtexttt\texttt
