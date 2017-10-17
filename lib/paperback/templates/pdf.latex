@@ -199,7 +199,7 @@ $endif$
   {\parindent \z@ \center \normalfont
     \interlinepenalty\@M
     \Huge \sffamily \textcolor{white}{#1}\par\nobreak
-    \pagenumbering{gobble}\afterpage{\pagenumbering{arabic}}
+    \thispagestyle{empty}
     \newpagecolor{thoughtbotgrey}\afterpage{\restorepagecolor}
     \vspace*{\fill}
     \clearpage
