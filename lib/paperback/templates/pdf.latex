@@ -27,13 +27,13 @@ $if(mainfont)$
   \setmainfont[
     Ligatures=TeX,
     SizeFeatures={Size=12},
-    BoldFont={Tiempos Text Medium Test Regular}
+    BoldFont={$mainfont$}
   ]{$mainfont$}
 $endif$
 $if(sansfont)$
   \setsansfont[
     Ligatures=TeX,
-    BoldFont={* Medium}
+    BoldFont={$sansfont$}
   ]{$sansfont$}
 $endif$
 $if(monofont)$
