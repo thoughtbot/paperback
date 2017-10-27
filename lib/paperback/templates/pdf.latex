@@ -204,8 +204,9 @@ $endif$
   }}
   \makeatother
 
-\headheight 0pt              %% put this outside
-\headsep 40pt                 %% put this outside
+% Header chapter & number styling
+\headheight 0pt
+\headsep 40pt
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
