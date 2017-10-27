@@ -201,6 +201,15 @@ $endif$
   }}
   \makeatother
 
+\headheight 0pt              %% put this outside
+\headsep 40pt                 %% put this outside
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,LO]{\small\sffamily\nouppercase{\leftmark}}
+\fancyhead[RE,RO]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
 % Set formats for each heading level
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\sffamily}
