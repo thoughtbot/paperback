@@ -27,7 +27,10 @@ $if(mainfont)$
   \setmainfont[
     Ligatures=TeX,
     SizeFeatures={Size=12},
-    BoldFont={$mainfont$}
+  ]{$mainfont$}
+$endif$
+$if(sansfont)$
+  \setsansfont[
   ]{$mainfont$}
 $endif$
 $if(sansfont)$
