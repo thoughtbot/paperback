@@ -13,7 +13,7 @@ module Paperback
       def args
         [
           "--top-level-division=chapter",
-          "--latex-engine=xelatex",
+          "--pdf-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
           '--variable=mainfont:"Tiempos Text Regular Test Regular"',

@@ -18,7 +18,7 @@ module Paperback
       end
 
       args.push(
-        "--smart",
+        "-f markdown+smart",
         "--output=#{package.target(format)}",
         package.target(:md)
       )
