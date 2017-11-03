@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,oneside,$if(lang)$$lang$,$endif$]{book}
+\documentclass[12pt,letterpaper,twoside,$if(lang)$$lang$,$endif$]{book}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -68,7 +68,7 @@ $endif$
 $if(geometry)$
 \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $else$
-\usepackage[paperwidth=6in, paperheight=9in]{geometry}
+\usepackage[paperwidth=6in,paperheight=9in,top=2cm,bottom=2cm,outer=3cm,inner=2cm]{geometry}
 $endif$
 $if(natbib)$
 \usepackage{natbib}
@@ -192,13 +192,14 @@ $endif$
 \usepackage{pagecolor}
 \makeatletter
 \def\@makechapterhead#1{%
-  \vspace*{\fill}
-  {\parindent \z@ \center \normalfont
+  {
+    \newgeometry{top=4.4in,left=0cm,right=0cm}
+    \parindent\z@\center\normalfont
     \interlinepenalty\@M
-    \Huge \sffamily \textcolor{white}{#1}\par\nobreak
+    \Huge\sffamily\textcolor{white}{#1}\par\nobreak
     \thispagestyle{empty}
     \newpagecolor{thoughtbotgrey}\afterpage{\restorepagecolor}
-    \vspace*{\fill}
+    \restoregeometry
     \clearpage
   }}
   \makeatother
@@ -231,10 +232,12 @@ $endif$
 
 \begin{titlepage}
   \centering
+  \newgeometry{top=5cm,bottom=0cm,right=0cm,left=0cm}
   \vspace*{\baselineskip}
   {\Huge \sffamily \bfseries \textcolor{thoughtbotred}{PLAYBOOK} \\}
   \vspace{\baselineskip}
   {\Large \sffamily thoughtbot}
+  \restoregeometry
 \end{titlepage}
 
 $for(include-before)$
