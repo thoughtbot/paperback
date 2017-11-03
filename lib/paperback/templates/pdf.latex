@@ -8,8 +8,6 @@
   \newcommand{\euro}{€}
   \newfontfamily\quotefont[Ligatures=TeX]{$mainfont$}
 \usepackage{xcolor}
-\usepackage[bottom]{footmisc}
-\def\footnotelayout{\color{black}}
 \usepackage{float}
 \let\origfigure=\figure
 \let\endorigfigure=\endfigure
@@ -183,7 +181,19 @@ $if(links-as-notes)$
 % Alias href to originalHref to avoid an infinite loop
 \LetLtxMacro{\originalHref}{\href}
 % Make links footnotes in addition to hotlinks:
-\renewcommand{\href}[2]{\originalHref{#1}{#2}\footnote{\url{#1}}}
+\renewcommand{\href}[2]{\originalHref{#1}{#2}\hspace{1mm}\footnote{\url{#1}}}
+% Make footnoterule full length and add spacing
+\addtolength{\skip\footins}{1em}
+\addtolength{\footnotesep}{0.5em}
+\renewcommand\footnoterule{\rule{\linewidth}{0.5pt}}
+\usepackage{footmisc}
+% Style footnote numbers in the footer
+\makeatletter
+  \long\def\@makefntext#1{\leavevmode%
+    \@thefnmark:\hspace{1em}\nobreak
+    \relax#1%
+  }
+\makeatother
 $endif$
 
 % Full page chapters
