@@ -1,4 +1,5 @@
 \documentclass[12pt,letterpaper,twoside,$if(lang)$$lang$,$endif$]{book}
+\raggedbottom
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -186,7 +187,7 @@ $if(links-as-notes)$
 \addtolength{\skip\footins}{1em}
 \addtolength{\footnotesep}{0.5em}
 \renewcommand\footnoterule{\rule{\linewidth}{0.5pt}}
-\usepackage{footmisc}
+\usepackage[bottom]{footmisc}
 % Style footnote numbers in the footer
 \makeatletter
   \long\def\@makefntext#1{\leavevmode%
