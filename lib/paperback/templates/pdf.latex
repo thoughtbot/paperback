@@ -257,6 +257,7 @@ $endif$
   \vspace{\baselineskip}
   {\Large\sffamily thoughtbot}
   \restoregeometry
+  \newpage
 \end{titlepage}
 
 $for(include-before)$
@@ -295,4 +296,29 @@ $for(include-after)$
 $include-after$
 
 $endfor$
+
+
+\newenvironment{lastpage}{
+  \vfill
+  \centering
+  \newgeometry{top=0cm}
+  \vspace*{\fill}
+  \pagestyle{empty}
+  \begin{center}
+}{
+  \end{center}
+  \vspace*{\fill}
+  \restoregeometry
+  \clearpage
+}
+
+$if(custom-last-page)$
+\newpage
+\begin{lastpage}
+thoughtbot is primarily a group of people who care about making awesome products. We hope the practices we’ve shared here will be helpful to you.
+
+Thank you for reading.
+\end{lastpage}
+$endif$
+
 \end{document}

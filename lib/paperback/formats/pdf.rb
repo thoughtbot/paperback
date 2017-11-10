@@ -19,7 +19,8 @@ module Paperback
           '--variable=mainfont:"Tiempos Text"',
           '--variable=monofont:"Fira Mono"',
           '--variable=sansfont:"Calibre"',
-          "--variable=links-as-notes:true"
+          "--variable=links-as-notes:true",
+          "--variable=custom-last-page:true"
         ]
       end
 
