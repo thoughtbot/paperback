@@ -200,14 +200,21 @@ $endif$
 % Remove "Chapter x" text from chapter titles
 \usepackage{afterpage}
 \usepackage{pagecolor}
+\usepackage{fancyhdr}
+% Define custom page style to remove number
+\fancypagestyle{chapterpage}{
+  \fancyhf{} % clear header/footer
+  \renewcommand{\headrulewidth}{0pt} % Remove page header rule
+}
+% Assemble custom chapter page
 \makeatletter
-\def\@makechapterhead#1{%
+\def\@makechapterhead#1{
   {
     \newgeometry{top=4.4in,left=0cm,right=0cm}
     \parindent\z@\center\normalfont
     \interlinepenalty\@M
     \Huge\sffamily\textcolor{white}{#1}\par\nobreak
-    \thispagestyle{empty}
+    \thispagestyle{chapterpage}
     \newpagecolor{thoughtbotgrey}\afterpage{\restorepagecolor}
     \restoregeometry
     \clearpage
@@ -217,7 +224,6 @@ $endif$
 % Header chapter & number styling
 \headheight 0pt
 \headsep 40pt
-\usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[LE,LO]{\small\sffamily\nouppercase{\leftmark}}
