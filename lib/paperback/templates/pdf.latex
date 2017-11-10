@@ -8,6 +8,7 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \newcommand{\euro}{€}
   \newfontfamily\quotefont[Ligatures=TeX]{$mainfont$}
+\usepackage[defaultlines=3,all]{nowidow}
 \usepackage{xcolor}
 \usepackage{float}
 \let\origfigure=\figure
