@@ -251,7 +251,6 @@ $endif$
 \begin{document}
 \pagenumbering{roman}
 \frontmatter
-\includepdf[pages={1}]{images/cover.pdf}
 
 \begin{titlepage}
   \centering
