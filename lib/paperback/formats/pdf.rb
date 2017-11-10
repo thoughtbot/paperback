@@ -17,7 +17,7 @@ module Paperback
           "--template=#{pdf_latex_template_path}",
           "--toc",
           '--variable=mainfont:"Tiempos Text"',
-          "--variable=monofont:Inconsolata",
+          '--variable=monofont:"Fira Mono"',
           '--variable=sansfont:"Calibre"',
           "--variable=links-as-notes:true"
         ]

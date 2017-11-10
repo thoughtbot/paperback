@@ -29,10 +29,6 @@ $if(mainfont)$
 $endif$
 $if(sansfont)$
   \setsansfont[
-  ]{$mainfont$}
-$endif$
-$if(sansfont)$
-  \setsansfont[
     Ligatures=TeX,
     BoldFont={$sansfont$ Medium}
   ]{$sansfont$}
