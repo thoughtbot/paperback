@@ -34,7 +34,7 @@ $endif$
 $if(sansfont)$
   \setsansfont[
     Ligatures=TeX,
-    BoldFont={$sansfont$}
+    BoldFont={$sansfont$ Medium}
   ]{$sansfont$}
 $endif$
 $if(monofont)$
@@ -236,6 +236,12 @@ $endif$
 \titleformat*{\section}{\Large\sffamily}
 \titleformat*{\subsection}{\large\sffamily}
 \titleformat*{\subsubsection}{\large\sffamily}
+
+% Contents page
+\usepackage{tocloft}
+\renewcommand{\contentsname}{\sffamily{Contents}}
+\setlength{\cftbeforetoctitleskip}{-2em}
+\setlength{\cftaftertoctitleskip}{1em}
 
 \usepackage{pdfpages}
 
