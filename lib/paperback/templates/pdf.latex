@@ -257,9 +257,9 @@ $endif$
   \centering
   \newgeometry{top=5cm,bottom=0cm,right=0cm,left=0cm}
   \vspace*{\baselineskip}
-  {\Huge \sffamily \bfseries \textcolor{thoughtbotred}{PLAYBOOK} \\}
+  {\Huge\bfseries\sffamily\textcolor{thoughtbotred}{PLAYBOOK} \\}
   \vspace{\baselineskip}
-  {\Large \sffamily thoughtbot}
+  {\Large\sffamily thoughtbot}
   \restoregeometry
 \end{titlepage}
 
