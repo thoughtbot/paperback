@@ -197,6 +197,7 @@ $endif$
 \usepackage{afterpage}
 \usepackage{pagecolor}
 \usepackage{fancyhdr}
+\usepackage{emptypage}
 % Full page chapters
 % Remove "Chapter x" text from chapter titles
 $if(fullpage-chapters)$
