@@ -323,6 +323,8 @@ $endfor$
 $if(custom-last-page)$
 \newpage
 \begin{lastpage}
+\section*{\centering{Goodbye}}
+
 thoughtbot is primarily a group of people who care about making awesome products. We hope the practices we’ve shared here will be helpful to you.
 
 Thank you for reading.
