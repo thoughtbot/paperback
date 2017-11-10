@@ -20,7 +20,10 @@ module Paperback
           '--variable=monofont:"Fira Mono"',
           '--variable=sansfont:"Calibre"',
           "--variable=links-as-notes:true",
-          "--variable=custom-last-page:true"
+          "--variable=custom-last-page:true",
+          "--variable=fullpage-chapters:true",
+          "--variable=custom-titlepage:true",
+          "--variable=twoside:true"
         ]
       end
 

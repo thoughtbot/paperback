@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,twoside,$if(lang)$$lang$,$endif$]{book}
+\documentclass[12pt,letterpaper,$if(twoside)$twoside$else$oneside$endif$,$if(lang)$$lang$,$endif$]{book}
 \raggedbottom
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -194,11 +194,12 @@ $if(links-as-notes)$
 \makeatother
 $endif$
 
-% Full page chapters
-% Remove "Chapter x" text from chapter titles
 \usepackage{afterpage}
 \usepackage{pagecolor}
 \usepackage{fancyhdr}
+% Full page chapters
+% Remove "Chapter x" text from chapter titles
+$if(fullpage-chapters)$
 % Define custom page style to remove number
 \fancypagestyle{chapterpage}{
   \fancyhf{} % clear header/footer
@@ -218,6 +219,7 @@ $endif$
     \clearpage
   }}
   \makeatother
+$endif$
 
 % Header chapter & number styling
 \headheight 0pt
@@ -228,17 +230,21 @@ $endif$
 \fancyhead[RE,RO]{\small\sffamily\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
+$if(sansfont)$
 % Set formats for each heading level
 \usepackage{titlesec}
 \titleformat*{\section}{\Large\sffamily}
 \titleformat*{\subsection}{\large\sffamily}
 \titleformat*{\subsubsection}{\large\sffamily}
+$endif$
 
+$if(sansfont)$
 % Contents page
 \usepackage{tocloft}
 \renewcommand{\contentsname}{\sffamily{Contents}}
 \setlength{\cftbeforetoctitleskip}{-2em}
 \setlength{\cftaftertoctitleskip}{1em}
+$endif$
 
 \usepackage{pdfpages}
 
@@ -249,6 +255,7 @@ $endif$
 \pagenumbering{roman}
 \frontmatter
 
+$if(custom-titlepage)$
 \begin{titlepage}
   \centering
   \newgeometry{top=5cm,bottom=0cm,right=0cm,left=0cm}
@@ -259,6 +266,7 @@ $endif$
   \restoregeometry
   \newpage
 \end{titlepage}
+$endif$
 
 $for(include-before)$
 $include-before$
