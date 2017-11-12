@@ -1,7 +1,7 @@
-\thispagestyle{empty}\newgeometry{top=6cm}
+\thispagestyle{empty}
+\newgeometry{top=2cm}
 
-\hypertarget{foreword}{%
-\section{Foreword}\label{foreword}}
+\chapter*{Foreword}
 
 When I started thoughtbot more than 14 years ago, I never envisioned
 that we would be helping people all over the world bring their ideas to
@@ -20,8 +20,6 @@ love to use, in environments that were not humane.
 We came to understand that we believed there was a better way to work,
 and we had a tremendous opportunity and responsibility to bring that to
 people struggling in those other organizations.
-
-\restoregeometry\thispagestyle{empty}
 
 What you'll find in the pages of this book are not just what we've
 learned over the last 14 years about the best way to build products, but
