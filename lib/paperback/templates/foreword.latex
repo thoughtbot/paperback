@@ -1,0 +1,40 @@
+\thispagestyle{empty}\newgeometry{top=6cm}
+
+\hypertarget{foreword}{%
+\section{Foreword}\label{foreword}}
+
+When I started thoughtbot more than 14 years ago, I never envisioned
+that we would be helping people all over the world bring their ideas to
+life, and to be working every day to have a different kind of company
+across 7 cities.
+
+In fact, for many years, we strove for quite the opposite. We worked to
+stay small, because we didn't know how to be larger and remain the kind
+of company we wanted to be.
+
+However, over the years I also met more and more people who worked in
+environments that were not fulfilling. Working long hours to hit
+arbitrary deadlines that didn't matter, on products that people didn't
+love to use, in environments that were not humane.
+
+We came to understand that we believed there was a better way to work,
+and we had a tremendous opportunity and responsibility to bring that to
+people struggling in those other organizations.
+
+\restoregeometry\thispagestyle{empty}
+
+What you'll find in the pages of this book are not just what we've
+learned over the last 14 years about the best way to build products, but
+also the best ways we've found to scale our beliefs beyond just a
+handful of designers and developers in Boston.
+
+If you are just starting out on your journey, or you are well on your
+way, I hope you will find our Playbook useful, and I wish you the best.
+
+\begin{flushright}
+Chad Pytel\\
+CEO of thoughtbot\\
+November 2017
+\end{flushright}
+
+\restoregeometry

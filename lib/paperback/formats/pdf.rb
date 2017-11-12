@@ -16,6 +16,7 @@ module Paperback
           "--pdf-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
+          "--include-before-body=#{foreword_path}",
           '--variable=mainfont:"Tiempos Text"',
           '--variable=monofont:"Fira Mono"',
           '--variable=sansfont:"Calibre"',
@@ -25,6 +26,10 @@ module Paperback
           "--variable=custom-titlepage:true",
           "--variable=twoside:true"
         ]
+      end
+
+      def foreword_path
+        File.expand_path("../../templates/foreword.latex", __FILE__)
       end
 
       def pdf_latex_template_path
