@@ -1,7 +1,13 @@
+% Insert blank page before foreward
+\newpage
 \thispagestyle{empty}
-\newgeometry{top=2cm}
+\mbox{}
 
-\chapter*{Foreword}
+% Pad top of forward
+\newgeometry{top=2cm}
+\fancyhf{}
+\vspace*{5cm}
+\section*{Foreword}
 
 When I started thoughtbot more than 14 years ago, I never envisioned
 that we would be helping people all over the world bring their ideas to
@@ -16,6 +22,9 @@ However, over the years I also met more and more people who worked in
 environments that were not fulfilling. Working long hours to hit
 arbitrary deadlines that didn't matter, on products that people didn't
 love to use, in environments that were not humane.
+
+\clearpage
+\vspace*{5cm}
 
 We came to understand that we believed there was a better way to work,
 and we had a tremendous opportunity and responsibility to bring that to
@@ -35,4 +44,8 @@ CEO of thoughtbot\\
 November 2017
 \end{flushright}
 
+% reset styling
 \restoregeometry
+\fancyhead[LE,LO]{\small\sffamily\nouppercase{\leftmark}}
+\fancyhead[RE,RO]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0pt}

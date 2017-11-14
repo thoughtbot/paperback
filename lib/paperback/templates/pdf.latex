@@ -243,6 +243,7 @@ $if(sansfont)$
 % Contents page
 \usepackage{tocloft}
 \renewcommand{\contentsname}{\sffamily{Contents}}
+\tocloftpagestyle{empty}
 \setlength{\cftbeforetoctitleskip}{-2em}
 \setlength{\cftaftertoctitleskip}{1em}
 $endif$
