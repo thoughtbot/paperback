@@ -1,6 +1,7 @@
 require "paperback/formats/epub"
 require "paperback/formats/html"
 require "paperback/formats/pdf"
+require "paperback/formats/website"
 require "paperback/formats/table_of_contents"
 require "paperback/formats/table_of_contents_renderer"
 
@@ -8,15 +9,16 @@ module Paperback
   module Formats
     FORMAT_CLASSES = [
       Paperback::Formats::HTML,
+      Paperback::Formats::Website,
       Paperback::Formats::PDF,
       Paperback::Formats::EPUB,
       Paperback::Formats::TableOfContents
     ]
 
     class << self
-      def select(package, extension = nil)
+      def select(package, desired_format = nil)
         all(package).select do |format|
-          extension.nil? || format.extension == extension
+          desired_format.nil? || format.type == desired_format
         end
       end
 

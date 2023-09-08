@@ -11,6 +11,10 @@ module Paperback
         fail NotImplementedError
       end
 
+      def type
+        extension
+      end
+
       def generate
         Paperback::Markdown.generate package
         prepare

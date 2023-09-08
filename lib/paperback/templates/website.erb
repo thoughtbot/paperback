@@ -1,0 +1,28 @@
+$if(description-meta)$
+<% content_for :meta_description, "$description-meta$" %>
+$endif$
+$if(title)$
+<% content_for :book_title, "$title$" %>
+$endif$
+$if(subtitle)$
+<% content_for :book_subtitle, "$subtitle$" %>
+$endif$
+$if(pagetitle)$
+<% content_for :chapter_title, "$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$" %>
+$endif$
+$if(next.url)$
+<% content_for :next_chapter_url, "$next.url$" %>
+$endif$
+$if(previous.url)$
+<% content_for :previous_chapter_url, "$previous.url$" %>
+$endif$
+<% content_for :toc do %>
+$table-of-contents$
+<% end %>
+<% content_for :chapter do %>
+$body$
+
+<style>
+$highlighting-css$
+</style>
+<% end %>
