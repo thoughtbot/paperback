@@ -1,4 +1,4 @@
-require "cocaine"
+require "terrapin"
 
 module Paperback
   class Pandoc
@@ -18,7 +18,6 @@ module Paperback
       end
 
       args.push(
-        "--smart",
         "--output=#{package.target(format)}",
         package.target(:md)
       )
@@ -38,7 +37,7 @@ module Paperback
     end
 
     def run(params)
-      Cocaine::CommandLine.new(CLI_DEPENDENCY.name, params).run
+      Terrapin::CommandLine.new(CLI_DEPENDENCY.name, params).run
     end
   end
 end

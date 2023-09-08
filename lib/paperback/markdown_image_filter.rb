@@ -3,7 +3,7 @@ module Paperback
     module Regex
       PARENTAL_PATH = %r{
         (?<prefix>!\[[^\]]*\]\()
-        ((\.\.\/)+)
+        (?<path>(?<relative>\.\./)+)
         (?<suffix>[^)]+\))
       }x
     end

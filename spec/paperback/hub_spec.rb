@@ -6,7 +6,7 @@ describe Paperback::Hub do
 
       Paperback::Hub.checkout pull_request_url
 
-      expect(Cocaine::CommandLine).to have_received(:new)
+      expect(Terrapin::CommandLine).to have_received(:new)
         .with("hub checkout", pull_request_url)
       expect(command_line).to have_received(:run)
     end

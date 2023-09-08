@@ -12,8 +12,8 @@ module Paperback
 
       def args
         [
-          "--chapters",
-          "--latex-engine=xelatex",
+          "--top-level-division=chapter",
+          "--pdf-engine=xelatex",
           "--template=#{pdf_latex_template_path}",
           "--toc",
           '--variable=mainfont:"Open Sans"',

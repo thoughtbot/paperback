@@ -1,9 +1,9 @@
-require "cocaine"
+require "terrapin"
 
 module Paperback
   class Hub
     def self.checkout(pull_request_url)
-      Cocaine::CommandLine.new("hub checkout", pull_request_url).run
+      Terrapin::CommandLine.new("hub checkout", pull_request_url).run
     end
   end
 end

@@ -21,7 +21,7 @@ describe Paperback::Pandoc do
       stub_pandoc("--foo --bar --smart --output=html ", "")
       allow(@package).to receive(:target).with("format").and_return("html")
 
-      @pandoc.generate("format", %w(--foo --bar))
+      @pandoc.generate("format", %w[--foo --bar])
 
       expect_pandoc("--foo --bar --smart --output=html ")
     end
@@ -30,13 +30,13 @@ describe Paperback::Pandoc do
   def stub_pandoc(arguments, output)
     command_line = double(run: output)
 
-    allow(Cocaine::CommandLine).to receive(:new)
+    allow(Terrapin::CommandLine).to receive(:new)
       .with("pandoc", arguments)
       .and_return(command_line)
   end
 
   def expect_pandoc(arguments)
-    expect(Cocaine::CommandLine).to have_received(:new)
+    expect(Terrapin::CommandLine).to have_received(:new)
       .with("pandoc", arguments)
   end
 end

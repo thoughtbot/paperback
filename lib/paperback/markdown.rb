@@ -2,7 +2,7 @@ module Paperback
   class Markdown
     module Regex
       FILE = /
-        \<\<
+        <<
         \[
         (?<file_path>.+)
         \]
@@ -18,7 +18,7 @@ module Paperback
       target = package.target(:md)
 
       unless target.exist?
-        new("#{package.source}", target).generate
+        new(package.source.to_s, target).generate
       end
     end
 

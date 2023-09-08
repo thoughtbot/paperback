@@ -14,7 +14,8 @@ module Paperback
           "--css=#{css_path}",
           "--include-in-header=#{google_fonts_path}",
           "--section-divs",
-          "--self-contained",
+          "--embed-resources",
+          "--standalone",
           "--to=html5",
           "--toc"
         ]

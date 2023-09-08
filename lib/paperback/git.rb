@@ -1,5 +1,5 @@
 require "active_support/core_ext/string/strip"
-require "cocaine"
+require "terrapin"
 
 module Paperback
   class Git
@@ -20,8 +20,8 @@ module Paperback
 
     def run
       full_command = "git #{@subcommand}"
-      options = { expected_outcodes: [0, 1] }
-      command_line = Cocaine::CommandLine.new(full_command, "", options)
+      options = {expected_outcodes: [0, 1]}
+      command_line = Terrapin::CommandLine.new(full_command, "", options)
       self.output = command_line.run
       self.exit_status = command_line.exit_status
       self

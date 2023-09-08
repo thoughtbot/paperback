@@ -1,3 +1,3 @@
-Before do
-  @aruba_timeout_seconds = 60
+Aruba.configure do |config|
+  config.exit_timeout = 60
 end

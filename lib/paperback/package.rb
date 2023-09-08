@@ -1,5 +1,17 @@
 module Paperback
   class Package
+    class << self
+      private
+
+      def all
+        [book, sample]
+      end
+
+      def sample
+        new "sample", suffix: "-sample"
+      end
+    end
+
     attr_reader :name
 
     def initialize(name, options = {})
@@ -31,13 +43,5 @@ module Paperback
     private
 
     attr_reader :suffix
-
-    def self.all
-      [book, sample]
-    end
-
-    def self.sample
-      new "sample", suffix: "-sample"
-    end
   end
 end

@@ -14,17 +14,19 @@ module Paperback
       Paperback::Formats::TableOfContents
     ]
 
-    def self.select(package, extension = nil)
-      all(package).select do |format|
-        extension.nil? || format.extension == extension
+    class << self
+      def select(package, extension = nil)
+        all(package).select do |format|
+          extension.nil? || format.extension == extension
+        end
       end
-    end
 
-    private
+      private
 
-    def self.all(package)
-      FORMAT_CLASSES.map do |format_class|
-        format_class.new package
+      def all(package)
+        FORMAT_CLASSES.map do |format_class|
+          format_class.new package
+        end
       end
     end
   end

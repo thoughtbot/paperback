@@ -1,4 +1,4 @@
-require "kindlegen"
+# require "kindlegen"
 require "paperback/formats/base"
 
 module Paperback
@@ -15,7 +15,7 @@ module Paperback
       end
 
       def run
-        Kindlegen.run "#{package.target(:epub)}"
+        # Kindlegen.run "#{package.target(:epub)}"
       end
     end
   end

@@ -5,9 +5,9 @@ module Paperback
     def self.generate
       pdf = source("pdf")
       png = source("png")
-      image = Magick::Image.read(pdf) { self.density = 400 }.first
+      image = Magick::Image.read(pdf) { |image| image.density = 400 }.first
       image.resize 1000, 1000
-      image.write(png) { self["png", "exclude-chunk"] = "date,time" }
+      image.write(png) { |image| image["png", "exclude-chunk"] = "date,time" }
       png
     end
 

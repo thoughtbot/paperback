@@ -57,7 +57,7 @@ Feature: Build
     When I run `paperback build`
     Then it should fail with:
       """
-      pandoc: Error
+      Error producing PDF
       """
 
   Scenario: All packages
