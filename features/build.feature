@@ -119,11 +119,9 @@ Feature: Build
     And the following files should exist:
       | build/a-nice-adventure/a-nice-adventure-sample.epub |
       | build/a-nice-adventure/a-nice-adventure-sample.html |
-      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
       | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
       | build/a-nice-adventure/a-nice-adventure.epub        |
       | build/a-nice-adventure/a-nice-adventure.html        |
-      | build/a-nice-adventure/a-nice-adventure.mobi        |
       | build/a-nice-adventure/a-nice-adventure.pdf         |
       | build/a-nice-adventure/images/cover.pdf             |
       | build/a-nice-adventure/images/cover.png             |
@@ -135,12 +133,10 @@ Feature: Build
     Then the following files should exist:
       | build/a-nice-adventure/a-nice-adventure.epub        |
       | build/a-nice-adventure/a-nice-adventure.html        |
-      | build/a-nice-adventure/a-nice-adventure.mobi        |
       | build/a-nice-adventure/a-nice-adventure.pdf         |
     And the following files should not exist:
       | build/a-nice-adventure/a-nice-adventure-sample.epub |
       | build/a-nice-adventure/a-nice-adventure-sample.html |
-      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
       | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
 
   Scenario: A single format
@@ -150,10 +146,8 @@ Feature: Build
       | build/a-nice-adventure/a-nice-adventure.html        |
     And the following files should not exist:
       | build/a-nice-adventure/a-nice-adventure-sample.epub |
-      | build/a-nice-adventure/a-nice-adventure-sample.mobi |
       | build/a-nice-adventure/a-nice-adventure-sample.pdf  |
       | build/a-nice-adventure/a-nice-adventure.epub        |
-      | build/a-nice-adventure/a-nice-adventure.mobi        |
       | build/a-nice-adventure/a-nice-adventure.pdf         |
 
   Scenario: Successive runs

@@ -1,6 +1,5 @@
 require "paperback/formats/epub"
 require "paperback/formats/html"
-require "paperback/formats/mobi"
 require "paperback/formats/pdf"
 require "paperback/formats/table_of_contents"
 require "paperback/formats/table_of_contents_renderer"
@@ -10,7 +9,7 @@ module Paperback
     FORMAT_CLASSES = [
       Paperback::Formats::HTML,
       Paperback::Formats::PDF,
-      Paperback::Formats::MOBI,
+      Paperback::Formats::EPUB,
       Paperback::Formats::TableOfContents
     ]
 
