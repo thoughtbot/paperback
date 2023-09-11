@@ -16,13 +16,19 @@ Feature: Stats
       """
     And a file named "book/chapters/one.md" with:
       """
-      # One
+      # Part One
+
+      ## Chapter title
+
+      \clearpage
+
+      A chapter that has been written.
 
       \clearpage
       """
     And a file named "book/chapters/two.md" with:
       """
-      # Two
+      # Part Two
 
       STUB
       """
@@ -31,8 +37,8 @@ Feature: Stats
     Then the output should contain:
       """
       +--------------------+---+
-      | Pages              | 5 |
-      | Pages Completed    | 4 |
+      | Pages              | 8 |
+      | Pages Completed    | 7 |
       | Chapters Completed | 1 |
       | Chapters Remaining | 1 |
       +--------------------+---+
