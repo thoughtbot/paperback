@@ -18,12 +18,12 @@ describe Paperback::Pandoc do
 
     it "adds --smart and --output=format to the given arguments" do
       stub_pandoc("--version", "pandoc 1.11.1")
-      stub_pandoc("--foo --bar --smart --output=html ", "")
+      stub_pandoc("--foo --bar --from=markdown+smart --output=html ", "")
       allow(@package).to receive(:target).with("format").and_return("html")
 
       @pandoc.generate("format", %w[--foo --bar])
 
-      expect_pandoc("--foo --bar --smart --output=html ")
+      expect_pandoc("--foo --bar --from=markdown+smart --output=html ")
     end
   end
 
