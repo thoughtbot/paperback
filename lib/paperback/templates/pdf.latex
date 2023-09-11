@@ -182,6 +182,9 @@ $endif$
 
 \usepackage{pdfpages}
 
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 \begin{document}
 \pagenumbering{roman}
 \frontmatter
