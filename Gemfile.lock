@@ -57,9 +57,15 @@ GEM
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.4)
     minitest (5.20.0)
     multi_test (1.1.0)
+    nokogiri (1.15.4)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.15.4-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.3)
@@ -138,6 +144,8 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  unknown
+  x86_64-linux
 
 DEPENDENCIES
   activesupport

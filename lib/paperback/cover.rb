@@ -1,4 +1,4 @@
-require "RMagick"
+require "rmagick"
 
 module Paperback
   class Cover

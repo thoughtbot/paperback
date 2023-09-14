@@ -8,33 +8,37 @@ extensions to pull in code samples from a bundled example application.
 
 ## Installation
 
-1. [Set up Docker](https://docs.docker.com/engine/installation/).
+Running Paperback in a container, built with the included Dockerfile, is the
+easiest way to ensure Paperback is running with all of its many dependencies,
+including fonts.
 
-1. Join the thoughtbot [organization] on Docker Hub and login.
+1. [Set up Podman](https://podman.io/docs/installation).
 
-        $ docker login
+1. Build the image.
 
-1. Pull the [latest image].
+        $ podman build --arch arm64 -t paperback .
 
-        $ docker pull thoughtbot/paperback
+> Note: The current Dockerfile is still a work in progress.
+> It is set up to work on Apple Silicon systems (arm64).
+> It has not yet been tested on Intel macOS or Linux systems.
 
 ## Getting Started
 
 1. Get an overview of available commands.
 
-        $ docker run thoughtbot/paperback help
+        $ podman run localhost/paperback help
 
 1. Generate a new book.
 
         $ mkdir DIRECTORY && cd DIRECTORY
-        $ docker run --volume $PWD:/src thoughtbot/paperback new
+        $ podman run --volume $PWD:/src localhost/paperback new
 
 1. [Push it to GitHub](http://git.io/bxAu).
 
 1. Build all packages and formats or a subset.
 
-        $ docker run --volume $PWD:/src thoughtbot/paperback build
-        $ docker run --volume $PWD:/src thoughtbot/paperback build --format pdf --package book
+        $ podman run --volume $PWD:/src localhost/paperback build
+        $ podman run --volume $PWD:/src localhost/paperback build --format pdf --package book
 
 ## Formatting
 
@@ -55,6 +59,3 @@ You can modify the styling by compiling the Sass.
 
 For information about local development,
 see the [contributing guidelines](CONTRIBUTING.md).
-
-[latest image]: https://hub.docker.com/r/thoughtbot/paperback/
-[organization]: https://hub.docker.com/u/thoughtbot/
