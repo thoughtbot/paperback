@@ -10,7 +10,9 @@ RUN apt-get update && \
         locales \
         texlive-fonts-recommended \
         texlive-latex-extra \
-        texlive-xetex && \
+        texlive-xetex \
+        libvips \
+        libvips-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the locale

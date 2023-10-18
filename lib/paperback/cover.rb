@@ -1,14 +1,12 @@
-require "rmagick"
+require "vips"
 
 module Paperback
   class Cover
     def self.generate
       pdf = source("pdf")
       png = source("png")
-      image = Magick::Image.read(pdf) { |image| image.density = 400 }.first
-      image.resize 1000, 1000
-      image.strip!
-      image.write(png)
+      image = Vips::Image.new_from_file pdf.to_s, dpi: 400
+      image.write_to_file png.to_s
       png
     end
 
