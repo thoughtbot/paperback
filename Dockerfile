@@ -1,4 +1,4 @@
-FROM --platform=arm64 ruby:3.2.2
+FROM ruby:3.2.2
 MAINTAINER thoughtbot <support@thoughtbot.com>
 
 # Install packages
@@ -21,9 +21,13 @@ ENV LANGUAGE $LANG
 ENV LC_ALL $LANG
 RUN echo "$LANG UTF-8" >> /etc/locale.gen && locale-gen
 
+# Automatically bring --platform into scope, so we can pick the correct .deb.
+# This has been tested with arm64 and amd64 values.
+ARG TARGETARCH
+
 # Install Pandoc
 ENV PANDOC_VERSION 3.1.8
-ENV PANDOC_PACKAGE pandoc-$PANDOC_VERSION-1-arm64.deb
+ENV PANDOC_PACKAGE pandoc-$PANDOC_VERSION-1-$TARGETARCH.deb
 RUN wget https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/$PANDOC_PACKAGE && \
     dpkg -i $PANDOC_PACKAGE && \
     rm $PANDOC_PACKAGE
