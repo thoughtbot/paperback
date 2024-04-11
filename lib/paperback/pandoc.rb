@@ -18,7 +18,7 @@ module Paperback
       end
 
       args.push(
-        "--from=markdown+smart",
+        "--from=markdown+smart+fenced_divs",
         "--output=#{package.target(format)}",
         package.target(:md)
       )
